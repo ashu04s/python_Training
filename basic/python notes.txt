@@ -1,0 +1,19 @@
+#type casting
+1 evel kis type ki value karka uski type ma value convert
+2. float()
+3. int()
+
+
+flow control:>
+-> if statement
+	if condition:
+
+-> if else statement
+	elif condtion2:
+->  nested statement
+-> elif statement(ladder if else)
+-> match
+
+     		if condition:
+		elif condtion2:
+		else 

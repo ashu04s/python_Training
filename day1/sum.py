@@ -1,0 +1,6 @@
+a = int(input("Enter the first number: "))
+b =int(input("enter the second numvber"))
+print(f"sum of {a} and {b} is {a+b}")
+print(f"sub of {a} and {b} is {a-b}")
+print(f"mul of {a} and {b} is {a*b}")
+print(f" division  of {a} and {b} is {a/b}")

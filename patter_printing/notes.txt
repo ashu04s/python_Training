@@ -1,0 +1,438 @@
+PATTERN PRINTING IN PYTHON
+
+1. PATTERN PRINTING
+
+Pattern printing ka matlab hai loops ka use karke kisi specific pattern mein characters, numbers ya symbols ko print karna.
+
+Mostly pattern printing ke liye:
+
+1. for loop
+2. nested for loop
+3. range()
+4. print()
+5. end parameter
+
+use hote hain.
+
+2. BASIC CONCEPT
+
+Pattern printing mein generally:
+
+Outer loop = Rows control karta hai. 
+
+Inner loop = Columns / elements control karta hai.
+
+Example:
+
+for i in range(1, 4):
+for j in range(1, 4):
+print("*", end=" ")
+print()
+
+Output:
+
+---
+
+---
+
+---
+
+Yahan:
+Outer loop = 3 rows
+Inner loop = Har row mein 3 stars
+
+3. print() AND end=" "
+
+Normally:
+
+print("*")
+print("*")
+
+Output:
+
+*
+*
+
+Har print ke baad new line aa jati hai.
+
+Agar same line mein print karna ho:
+
+print("*", end=" ")
+
+Output:
+
+---
+
+end=" " ka matlab hai print ke baad new line na lagao, space do.
+
+4. print() FOR NEW LINE
+
+Nested loop mein inner loop complete hone ke baad:
+
+print()
+
+likhte hain.
+
+Example:
+
+for i in range(3):
+for j in range(3):
+print("*", end=" ")
+print()
+
+Inner loop = Stars print karega.
+
+print() = Next line par le jayega.
+
+5. SQUARE PATTERN
+
+Code:
+
+for i in range(4):
+for j in range(4):
+print("*", end=" ")
+print()
+
+Output:
+
+---
+
+---
+
+---
+
+---
+
+6. RIGHT ANGLE TRIANGLE
+
+Output:
+
+*
+* *
+
+---
+
+---
+
+Code:
+
+for i in range(1, 5):
+for j in range(i):
+print("*", end=" ")
+print()
+
+Important:
+
+Outer loop decide karta hai rows.
+
+Inner loop mein j < i hota hai, isliye har row mein stars increase hote hain.
+
+7. INVERTED RIGHT ANGLE TRIANGLE
+
+Output:
+
+---
+
+---
+
+* *
+*
+
+Code:
+
+for i in range(4, 0, -1):
+for j in range(i):
+print("*", end=" ")
+print()
+
+Yahan stars har row mein decrease hote hain.
+
+8. NUMBER TRIANGLE
+
+Output:
+
+1
+1 2
+1 2 3
+1 2 3 4
+
+Code:
+
+for i in range(1, 5):
+for j in range(1, i + 1):
+print(j, end=" ")
+print()
+
+9. SAME NUMBER TRIANGLE
+
+Output:
+
+1
+2 2
+3 3 3
+4 4 4 4
+
+Code:
+
+for i in range(1, 5):
+for j in range(i):
+print(i, end=" ")
+print()
+
+Difference:
+
+print(i) = Row number print hota hai.
+
+print(j) = Column number print hota hai.
+
+10. INCREASING NUMBER PATTERN
+
+Output:
+
+1
+12
+123
+1234
+12345
+
+Code:
+
+for i in range(1, 6):
+for j in range(1, i + 1):
+print(j, end="")
+print()
+
+11. DECREASING NUMBER PATTERN
+
+Output:
+
+12345
+1234
+123
+12
+1
+
+Code:
+
+for i in range(5, 0, -1):
+for j in range(1, i + 1):
+print(j, end="")
+print()
+
+12. CONTINUOUS NUMBER PATTERN
+
+Output:
+
+1
+2 3
+4 5 6
+7 8 9 10
+
+Code:
+
+num = 1
+
+for i in range(1, 5):
+for j in range(i):
+print(num, end=" ")
+num += 1
+print()
+
+13. PYRAMID STAR PATTERN
+
+Output:
+
+*
+* *
+
+---
+
+---
+
+Code:
+
+for i in range(1, 5):
+for j in range(4 - i):
+print(" ", end=" ")
+
+```
+for j in range(i):
+    print("*", end=" ")
+
+print()
+```
+
+Pyramid mein:
+
+1. Spaces
+2. Stars
+3. New line
+
+important hote hain.
+
+14. INVERTED PYRAMID
+
+Output:
+
+---
+
+---
+
+* *
+*
+
+Basic logic:
+
+for i in range(4, 0, -1):
+for j in range(4 - i):
+print(" ", end=" ")
+
+```
+for j in range(i):
+    print("*", end=" ")
+
+print()
+```
+
+15. DIAMOND PATTERN
+
+Output:
+
+*
+* *
+
+---
+
+---
+
+---
+
+* *
+*
+
+Diamond ko generally 2 parts mein divide karte hain:
+
+1. Increasing pyramid
+2. Decreasing pyramid
+
+Code:
+
+for i in range(1, 5):
+for j in range(4 - i):
+print(" ", end=" ")
+for j in range(i):
+print("*", end=" ")
+print()
+
+for i in range(3, 0, -1):
+for j in range(4 - i):
+print(" ", end=" ")
+for j in range(i):
+print("*", end=" ")
+print()
+
+16. ALPHABET PATTERN
+
+Output:
+
+A
+A B
+A B C
+A B C D
+
+Code:
+
+for i in range(1, 5):
+for j in range(i):
+print(chr(65 + j), end=" ")
+print()
+
+chr(65) = A
+
+chr(66) = B
+
+chr(67) = C
+
+17. SAME ALPHABET PATTERN
+
+Output:
+
+A
+B B
+C C C
+D D D D
+
+Code:
+
+for i in range(4):
+for j in range(i + 1):
+print(chr(65 + i), end=" ")
+print()
+
+18. MAIN FORMULA FOR PATTERN PRINTING
+
+Pattern printing mein sabse important cheez hai:
+
+Outer Loop = Number of rows
+
+Inner Loop = Number of elements in each row
+
+Example:
+
+for i in range(1, 5):
+for j in range(i):
+print("*", end=" ")
+print()
+
+Yahan:
+
+i = Row control
+
+j = Column/element control
+
+19. PATTERN SOLVING APPROACH
+
+Kisi bhi pattern ko solve karne ke liye:
+
+Step 1:
+Pehle rows count karo.
+
+Step 2:
+Har row mein kitne elements hain, count karo.
+
+Step 3:
+Dekho elements increase ho rahe hain ya decrease.
+
+Step 4:
+Check karo spaces required hain ya nahi.
+
+Step 5:
+Outer loop se rows control karo.
+
+Step 6:
+Inner loop se elements print karo.
+
+Step 7:
+Har row ke end mein print() lagao.
+
+20. MOST IMPORTANT RULE
+
+Pattern Printing:
+
+Outer Loop
+↓
+Rows
+
+Inner Loop
+↓
+Columns / Elements
+
+print(..., end=" ")
+↓
+Same line mein print
+
+print()
+↓
+Next line
+
+Pattern printing mein nested loops ka concept sabse important hai.

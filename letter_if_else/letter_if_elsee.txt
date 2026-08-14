@@ -1,0 +1,13 @@
+letter if-else 
+if(condition):
+    statement
+elif(condition):
+   statement2
+elif(conditon):
+    statement2
+else:
+    deafult statement
+
+
+
+nested if    
