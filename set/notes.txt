@@ -1,0 +1,2648 @@
+# PYTHON SET - COMPLETE NOTES
+# BASIC TO ADVANCED
+
+==================================================
+1. WHAT IS A SET?
+==================================================
+
+A set is an unordered collection of unique elements in Python.
+
+Main properties of a set:
+
+1. Unordered
+2. Mutable
+3. Does not allow duplicate elements
+4. Elements must be hashable
+5. Does not support indexing
+6. Does not support slicing
+7. Supports mathematical set operations
+8. Can contain different hashable data types
+9. A set itself is mutable and therefore unhashable
+
+Example:
+
+```python
+numbers = {10, 20, 30, 40}
+
+print(numbers)
+```
+
+Output may appear in an order such as:
+
+```text
+{40, 10, 20, 30}
+```
+
+The order should not be relied upon.
+
+
+==================================================
+2. CREATING A SET
+==================================================
+
+Basic set:
+
+```python
+numbers = {10, 20, 30, 40}
+```
+
+String set:
+
+```python
+names = {"Ashu", "Rahul", "Aman"}
+```
+
+Mixed set:
+
+```python
+data = {10, "Ashu", 20.5, True}
+```
+
+Empty set:
+
+IMPORTANT:
+
+```python
+a = {}
+```
+
+This creates an empty dictionary, NOT a set.
+
+Correct way to create an empty set:
+
+```python
+a = set()
+```
+
+Check:
+
+```python
+print(type(a))
+```
+
+Output:
+
+```text
+<class 'set'>
+```
+
+
+==================================================
+3. DUPLICATE VALUES IN SET
+==================================================
+
+A set automatically removes duplicate values.
+
+Example:
+
+```python
+numbers = {10, 20, 10, 30, 20, 40}
+
+print(numbers)
+```
+
+Output contains only unique values:
+
+```text
+{10, 20, 30, 40}
+```
+
+Therefore:
+
+```text
+Set = Collection of unique elements
+```
+
+
+==================================================
+4. SET IS UNORDERED
+==================================================
+
+A set does not provide sequence-style indexing.
+
+Example:
+
+```python
+numbers = {10, 20, 30, 40}
+```
+
+You should not expect:
+
+```python
+numbers[0]
+```
+
+This gives:
+
+```text
+TypeError
+```
+
+Use a loop to access elements:
+
+```python
+for num in numbers:
+    print(num)
+```
+
+
+==================================================
+5. SET DOES NOT SUPPORT INDEXING
+==================================================
+
+Lists support:
+
+```python
+numbers = [10, 20, 30]
+
+print(numbers[0])
+```
+
+Sets do not:
+
+```python
+numbers = {10, 20, 30}
+
+print(numbers[0])
+```
+
+This gives an error because sets are not indexable.
+
+
+==================================================
+6. SET DOES NOT SUPPORT SLICING
+==================================================
+
+This is invalid:
+
+```python
+numbers = {10, 20, 30, 40}
+
+print(numbers[1:3])
+```
+
+Sets do not support slicing.
+
+
+==================================================
+7. SET IS MUTABLE
+==================================================
+
+A set can be modified after creation.
+
+Example:
+
+```python
+numbers = {10, 20, 30}
+
+numbers.add(40)
+
+print(numbers)
+```
+
+Output:
+
+```text
+{10, 20, 30, 40}
+```
+
+
+==================================================
+8. ADD ELEMENT USING add()
+==================================================
+
+`add()` adds one element to a set.
+
+Syntax:
+
+```python
+set_name.add(element)
+```
+
+Example:
+
+```python
+numbers = {10, 20, 30}
+
+numbers.add(40)
+
+print(numbers)
+```
+
+
+==================================================
+9. ADDING DUPLICATE USING add()
+==================================================
+
+If the element already exists, nothing new is added.
+
+```python
+numbers = {10, 20, 30}
+
+numbers.add(20)
+
+print(numbers)
+```
+
+The set remains:
+
+```text
+{10, 20, 30}
+```
+
+
+==================================================
+10. ADD MULTIPLE ELEMENTS USING update()
+==================================================
+
+`update()` adds multiple elements from an iterable.
+
+Example:
+
+```python
+numbers = {10, 20, 30}
+
+numbers.update([40, 50, 60])
+
+print(numbers)
+```
+
+Result contains:
+
+```text
+{10, 20, 30, 40, 50, 60}
+```
+
+
+You can use a tuple:
+
+```python
+numbers.update((70, 80))
+```
+
+You can use another set:
+
+```python
+numbers.update({90, 100})
+```
+
+
+==================================================
+11. DIFFERENCE BETWEEN add() AND update()
+==================================================
+
+`add()` adds one object as one element.
+
+```python
+a = {1, 2, 3}
+
+a.add(4)
+```
+
+Result:
+
+```text
+{1, 2, 3, 4}
+```
+
+`update()` adds elements from an iterable.
+
+```python
+a = {1, 2, 3}
+
+a.update([4, 5, 6])
+```
+
+Result:
+
+```text
+{1, 2, 3, 4, 5, 6}
+```
+
+
+Important example:
+
+```python
+a = {1, 2, 3}
+
+a.add([4, 5])
+```
+
+This gives an error because a list is unhashable.
+
+But:
+
+```python
+a.update([4, 5])
+```
+
+works.
+
+
+==================================================
+12. REMOVE ELEMENT USING remove()
+==================================================
+
+`remove()` removes a specific element.
+
+```python
+numbers = {10, 20, 30, 40}
+
+numbers.remove(30)
+
+print(numbers)
+```
+
+
+IMPORTANT:
+
+If the element does not exist, `remove()` raises `KeyError`.
+
+Example:
+
+```python
+numbers.remove(100)
+```
+
+This gives:
+
+```text
+KeyError
+```
+
+
+==================================================
+13. discard()
+==================================================
+
+`discard()` also removes an element.
+
+Difference:
+
+`remove()` -> gives error if element doesn't exist.
+
+`discard()` -> does NOT give an error if element doesn't exist.
+
+Example:
+
+```python
+numbers = {10, 20, 30}
+
+numbers.discard(20)
+
+print(numbers)
+```
+
+Example:
+
+```python
+numbers.discard(100)
+```
+
+No error.
+
+
+==================================================
+14. remove() VS discard()
+==================================================
+
+```text
+remove()
+---------
+Element exists     -> removes it
+Element absent     -> KeyError
+
+
+discard()
+---------
+Element exists     -> removes it
+Element absent     -> no error
+```
+
+
+==================================================
+15. pop()
+==================================================
+
+`pop()` removes and returns an arbitrary element from a set.
+
+Example:
+
+```python
+numbers = {10, 20, 30, 40}
+
+x = numbers.pop()
+
+print(x)
+print(numbers)
+```
+
+IMPORTANT:
+
+Do NOT assume `pop()` removes the first or last element.
+
+A set is unordered.
+
+
+==================================================
+16. clear()
+==================================================
+
+`clear()` removes all elements.
+
+```python
+numbers = {10, 20, 30}
+
+numbers.clear()
+
+print(numbers)
+```
+
+Output:
+
+```text
+set()
+```
+
+
+==================================================
+17. del
+==================================================
+
+`del` can delete the entire set variable.
+
+```python
+numbers = {10, 20, 30}
+
+del numbers
+```
+
+After this, the variable no longer exists.
+
+
+==================================================
+18. LENGTH OF SET
+==================================================
+
+Use `len()`.
+
+```python
+numbers = {10, 20, 30, 40}
+
+print(len(numbers))
+```
+
+Output:
+
+```text
+4
+```
+
+
+==================================================
+19. MEMBERSHIP OPERATOR
+==================================================
+
+Use `in`:
+
+```python
+numbers = {10, 20, 30}
+
+print(20 in numbers)
+```
+
+Output:
+
+```text
+True
+```
+
+Example:
+
+```python
+print(100 in numbers)
+```
+
+Output:
+
+```text
+False
+```
+
+
+==================================================
+20. NOT IN
+==================================================
+
+```python
+numbers = {10, 20, 30}
+
+print(50 not in numbers)
+```
+
+Output:
+
+```text
+True
+```
+
+
+==================================================
+21. LOOP THROUGH SET
+==================================================
+
+Use a `for` loop:
+
+```python
+numbers = {10, 20, 30, 40}
+
+for num in numbers:
+    print(num)
+```
+
+Remember:
+
+The iteration order of a set should not be relied upon.
+
+
+==================================================
+22. CONVERT LIST TO SET
+==================================================
+
+Use `set()`.
+
+```python
+numbers = [10, 20, 10, 30, 20, 40]
+
+result = set(numbers)
+
+print(result)
+```
+
+The duplicates are removed.
+
+
+==================================================
+23. REMOVE DUPLICATES FROM LIST USING SET
+==================================================
+
+```python
+numbers = [10, 20, 10, 30, 20, 40]
+
+numbers = list(set(numbers))
+
+print(numbers)
+```
+
+IMPORTANT:
+
+This removes duplicates but does not preserve the original list order.
+
+If order matters, don't use a plain set conversion for that purpose.
+
+
+==================================================
+24. SET TO LIST
+==================================================
+
+```python
+numbers = {10, 20, 30}
+
+result = list(numbers)
+
+print(result)
+```
+
+
+==================================================
+25. SET TO TUPLE
+==================================================
+
+```python
+numbers = {10, 20, 30}
+
+result = tuple(numbers)
+
+print(result)
+```
+
+
+==================================================
+26. TUPLE TO SET
+==================================================
+
+```python
+numbers = (10, 20, 10, 30)
+
+result = set(numbers)
+
+print(result)
+```
+
+Duplicates are removed.
+
+
+==================================================
+27. SET OPERATIONS
+==================================================
+
+Python supports mathematical set operations.
+
+Important operations:
+
+1. Union
+2. Intersection
+3. Difference
+4. Symmetric Difference
+5. Subset
+6. Superset
+7. Disjoint
+
+
+==================================================
+28. UNION
+==================================================
+
+Union combines all unique elements from two sets.
+
+Operator:
+
+```python
+|
+```
+
+Method:
+
+```python
+union()
+```
+
+Example:
+
+```python
+a = {1, 2, 3}
+b = {3, 4, 5}
+
+print(a | b)
+```
+
+Output:
+
+```text
+{1, 2, 3, 4, 5}
+```
+
+Using method:
+
+```python
+print(a.union(b))
+```
+
+
+==================================================
+29. INTERSECTION
+==================================================
+
+Intersection gives common elements.
+
+Operator:
+
+```python
+&
+```
+
+Method:
+
+```python
+intersection()
+```
+
+Example:
+
+```python
+a = {1, 2, 3}
+b = {2, 3, 4}
+
+print(a & b)
+```
+
+Output:
+
+```text
+{2, 3}
+```
+
+Using method:
+
+```python
+print(a.intersection(b))
+```
+
+
+==================================================
+30. DIFFERENCE
+==================================================
+
+Difference gives elements present in the first set but not in the second.
+
+Operator:
+
+```python
+-
+```
+
+Example:
+
+```python
+a = {1, 2, 3}
+b = {2, 3, 4}
+
+print(a - b)
+```
+
+Output:
+
+```text
+{1}
+```
+
+Important:
+
+```python
+a - b
+```
+
+is not necessarily the same as:
+
+```python
+b - a
+```
+
+Example:
+
+```python
+print(b - a)
+```
+
+Output:
+
+```text
+{4}
+```
+
+
+==================================================
+31. DIFFERENCE METHOD
+==================================================
+
+```python
+a = {1, 2, 3}
+b = {2, 3, 4}
+
+print(a.difference(b))
+```
+
+Output:
+
+```text
+{1}
+```
+
+
+==================================================
+32. SYMMETRIC DIFFERENCE
+==================================================
+
+Symmetric difference gives elements that are in either set but NOT in both.
+
+Operator:
+
+```python
+^
+```
+
+Method:
+
+```python
+symmetric_difference()
+```
+
+Example:
+
+```python
+a = {1, 2, 3}
+b = {2, 3, 4}
+
+print(a ^ b)
+```
+
+Output:
+
+```text
+{1, 4}
+```
+
+
+==================================================
+33. SET OPERATIONS QUICK TABLE
+==================================================
+
+Operation:
+
+Union:
+
+```python
+a | b
+```
+
+Intersection:
+
+```python
+a & b
+```
+
+Difference:
+
+```python
+a - b
+```
+
+Symmetric Difference:
+
+```python
+a ^ b
+```
+
+
+==================================================
+34. UNION METHOD
+==================================================
+
+```python
+a = {1, 2}
+b = {2, 3}
+
+result = a.union(b)
+
+print(result)
+```
+
+Output:
+
+```text
+{1, 2, 3}
+```
+
+
+==================================================
+35. INTERSECTION METHOD
+==================================================
+
+```python
+a = {1, 2, 3}
+b = {2, 3, 4}
+
+result = a.intersection(b)
+
+print(result)
+```
+
+Output:
+
+```text
+{2, 3}
+```
+
+
+==================================================
+36. DIFFERENCE METHOD
+==================================================
+
+```python
+a = {1, 2, 3}
+b = {2, 3, 4}
+
+result = a.difference(b)
+
+print(result)
+```
+
+Output:
+
+```text
+{1}
+```
+
+
+==================================================
+37. SYMMETRIC DIFFERENCE METHOD
+==================================================
+
+```python
+a = {1, 2, 3}
+b = {2, 3, 4}
+
+result = a.symmetric_difference(b)
+
+print(result)
+```
+
+Output:
+
+```text
+{1, 4}
+```
+
+
+==================================================
+38. UPDATE SET OPERATIONS
+==================================================
+
+There are methods that modify the original set.
+
+union_update equivalent:
+
+```python
+a.update(b)
+```
+
+Intersection update:
+
+```python
+a.intersection_update(b)
+```
+
+Difference update:
+
+```python
+a.difference_update(b)
+```
+
+Symmetric difference update:
+
+```python
+a.symmetric_difference_update(b)
+```
+
+
+==================================================
+39. update()
+==================================================
+
+`update()` modifies the original set by adding elements.
+
+```python
+a = {1, 2, 3}
+b = {3, 4, 5}
+
+a.update(b)
+
+print(a)
+```
+
+Output:
+
+```text
+{1, 2, 3, 4, 5}
+```
+
+
+==================================================
+40. intersection_update()
+==================================================
+
+Keeps only common elements in the original set.
+
+```python
+a = {1, 2, 3}
+b = {2, 3, 4}
+
+a.intersection_update(b)
+
+print(a)
+```
+
+Output:
+
+```text
+{2, 3}
+```
+
+
+==================================================
+41. difference_update()
+==================================================
+
+Removes elements found in another set.
+
+```python
+a = {1, 2, 3}
+b = {2, 3, 4}
+
+a.difference_update(b)
+
+print(a)
+```
+
+Output:
+
+```text
+{1}
+```
+
+
+==================================================
+42. symmetric_difference_update()
+==================================================
+
+Updates the original set with the symmetric difference.
+
+```python
+a = {1, 2, 3}
+b = {2, 3, 4}
+
+a.symmetric_difference_update(b)
+
+print(a)
+```
+
+Output:
+
+```text
+{1, 4}
+```
+
+
+==================================================
+43. SUBSET
+==================================================
+
+A set A is a subset of B if every element of A is also present in B.
+
+Operator:
+
+```python
+<=
+```
+
+Method:
+
+```python
+issubset()
+```
+
+Example:
+
+```python
+a = {1, 2}
+b = {1, 2, 3, 4}
+
+print(a.issubset(b))
+```
+
+Output:
+
+```text
+True
+```
+
+Using operator:
+
+```python
+print(a <= b)
+```
+
+
+==================================================
+44. PROPER SUBSET
+==================================================
+
+Use:
+
+```python
+<
+```
+
+Example:
+
+```python
+a = {1, 2}
+b = {1, 2, 3}
+
+print(a < b)
+```
+
+Output:
+
+```text
+True
+```
+
+If both sets are equal:
+
+```python
+a = {1, 2}
+b = {1, 2}
+
+print(a < b)
+```
+
+Output:
+
+```text
+False
+```
+
+
+==================================================
+45. SUPERSET
+==================================================
+
+A set A is a superset of B if A contains every element of B.
+
+Method:
+
+```python
+issuperset()
+```
+
+Example:
+
+```python
+a = {1, 2, 3, 4}
+b = {1, 2}
+
+print(a.issuperset(b))
+```
+
+Output:
+
+```text
+True
+```
+
+Operator:
+
+```python
+print(a >= b)
+```
+
+
+==================================================
+46. PROPER SUPERSET
+==================================================
+
+Use:
+
+```python
+>
+```
+
+Example:
+
+```python
+a = {1, 2, 3}
+b = {1, 2}
+
+print(a > b)
+```
+
+Output:
+
+```text
+True
+```
+
+
+==================================================
+47. DISJOINT SETS
+==================================================
+
+Two sets are disjoint if they have no common elements.
+
+Method:
+
+```python
+isdisjoint()
+```
+
+Example:
+
+```python
+a = {1, 2, 3}
+b = {4, 5, 6}
+
+print(a.isdisjoint(b))
+```
+
+Output:
+
+```text
+True
+```
+
+
+If they have a common element:
+
+```python
+a = {1, 2, 3}
+b = {3, 4, 5}
+
+print(a.isdisjoint(b))
+```
+
+Output:
+
+```text
+False
+```
+
+
+==================================================
+48. SET COMPARISON
+==================================================
+
+Sets can be compared using:
+
+==
+
+!=
+
+<
+
+<=
+
+>
+
+>=
+
+
+Example:
+
+```python
+a = {1, 2, 3}
+b = {3, 2, 1}
+
+print(a == b)
+```
+
+Output:
+
+```text
+True
+```
+
+Order does not matter for set equality.
+
+
+==================================================
+49. SET COMPARISON WITH ==
+==================================================
+
+```python
+a = {1, 2, 3}
+b = {1, 2, 3}
+
+print(a == b)
+```
+
+Output:
+
+True
+
+
+==================================================
+50. SET COPY
+==================================================
+
+Use `copy()`:
+
+```python
+a = {1, 2, 3}
+
+b = a.copy()
+
+print(b)
+```
+
+`b` is a separate set object.
+
+
+==================================================
+51. SET ALIASING
+==================================================
+
+Be careful:
+
+```python
+a = {1, 2, 3}
+b = a
+```
+
+Both variables refer to the same set.
+
+```python
+b.add(4)
+
+print(a)
+```
+
+Output:
+
+```text
+{1, 2, 3, 4}
+```
+
+Use:
+
+```python
+b = a.copy()
+```
+
+when you want a separate set object.
+
+
+==================================================
+52. SET OF STRINGS
+==================================================
+
+```python
+names = {"Ashu", "Rahul", "Aman"}
+
+for name in names:
+    print(name)
+```
+
+
+==================================================
+53. SET OF CHARACTERS
+==================================================
+
+```python
+letters = {"a", "b", "c", "d"}
+
+print(letters)
+```
+
+
+==================================================
+54. STRING TO SET
+==================================================
+
+```python
+name = "Ashu"
+
+result = set(name)
+
+print(result)
+```
+
+The result contains unique characters.
+
+Example:
+
+```python
+name = "hello"
+
+print(set(name))
+```
+
+Result contains:
+
+```text
+{'h', 'e', 'l', 'o'}
+```
+
+There is only one `l`.
+
+
+==================================================
+55. SET OF TUPLES
+==================================================
+
+Tuples are hashable if their elements are hashable, so tuples can be elements of a set.
+
+Example:
+
+```python
+data = {
+    (1, 2),
+    (3, 4),
+    (5, 6)
+}
+
+print(data)
+```
+
+
+==================================================
+56. SET CANNOT CONTAIN A LIST
+==================================================
+
+This is invalid:
+
+```python
+data = {
+    [1, 2],
+    [3, 4]
+}
+```
+
+Reason:
+
+Lists are mutable and unhashable.
+
+It gives:
+
+```text
+TypeError
+```
+
+
+==================================================
+57. SET CANNOT CONTAIN A DICTIONARY
+==================================================
+
+This is also invalid:
+
+```python
+data = {
+    {"name": "Ashu"}
+}
+```
+
+Dictionaries are unhashable.
+
+
+==================================================
+58. SET CAN CONTAIN A FROZENSET
+==================================================
+
+A `frozenset` is immutable and hashable.
+
+Therefore it can be an element of a set.
+
+Example:
+
+```python
+data = {
+    frozenset({1, 2}),
+    frozenset({3, 4})
+}
+
+print(data)
+```
+
+
+==================================================
+59. SET COMPREHENSION
+==================================================
+
+Python supports set comprehension.
+
+Syntax:
+
+```python
+{expression for item in iterable}
+```
+
+Example:
+
+```python
+numbers = {x for x in range(1, 6)}
+
+print(numbers)
+```
+
+Result:
+
+```text
+{1, 2, 3, 4, 5}
+```
+
+
+==================================================
+60. SET COMPREHENSION WITH EXPRESSION
+==================================================
+
+Squares:
+
+```python
+squares = {x * x for x in range(1, 6)}
+
+print(squares)
+```
+
+Result:
+
+```text
+{1, 4, 9, 16, 25}
+```
+
+
+==================================================
+61. SET COMPREHENSION WITH CONDITION
+==================================================
+
+Even numbers:
+
+```python
+even = {x for x in range(1, 11) if x % 2 == 0}
+
+print(even)
+```
+
+Result:
+
+```text
+{2, 4, 6, 8, 10}
+```
+
+
+Odd numbers:
+
+```python
+odd = {x for x in range(1, 11) if x % 2 != 0}
+
+print(odd)
+```
+
+
+==================================================
+62. SET COMPREHENSION WITH IF-ELSE
+==================================================
+
+```python
+result = {
+    "Even" if x % 2 == 0 else "Odd"
+    for x in range(1, 6)
+}
+
+print(result)
+```
+
+Important:
+
+A set removes duplicate results, so repeated strings may appear only once.
+
+
+==================================================
+63. FROZENSET
+==================================================
+
+A `frozenset` is an immutable version of a set.
+
+Normal set:
+
+```python
+a = {1, 2, 3}
+```
+
+Frozen set:
+
+```python
+a = frozenset({1, 2, 3})
+```
+
+A frozenset cannot be modified.
+
+It has no:
+
+```text
+add()
+remove()
+discard()
+pop()
+clear()
+```
+
+because it is immutable.
+
+
+==================================================
+64. FROZENSET EXAMPLE
+==================================================
+
+```python
+a = frozenset([1, 2, 3])
+
+print(a)
+```
+
+Trying:
+
+```python
+a.add(4)
+```
+
+gives an error.
+
+
+==================================================
+65. WHY USE FROZENSET?
+==================================================
+
+Use frozenset when:
+
+1. You need an immutable set.
+2. You want to use a set-like object as a dictionary key.
+3. You want to store a set inside another set.
+
+
+Example:
+
+```python
+key = frozenset({1, 2, 3})
+
+data = {
+    key: "value"
+}
+
+print(data[key])
+```
+
+
+==================================================
+66. SET AS DICTIONARY KEY
+==================================================
+
+A normal set cannot be a dictionary key.
+
+Wrong:
+
+```python
+data = {
+    {1, 2, 3}: "hello"
+}
+```
+
+This gives:
+
+```text
+TypeError
+```
+
+Use frozenset:
+
+```python
+data = {
+    frozenset({1, 2, 3}): "hello"
+}
+```
+
+
+==================================================
+67. SET OPERATIONS WITH MULTIPLE SETS
+==================================================
+
+Union:
+
+```python
+a = {1, 2}
+b = {2, 3}
+c = {3, 4}
+
+result = a | b | c
+
+print(result)
+```
+
+Output:
+
+```text
+{1, 2, 3, 4}
+```
+
+
+Intersection:
+
+```python
+result = a & b & c
+```
+
+
+==================================================
+68. SET METHODS QUICK TABLE
+==================================================
+
+Method              Purpose
+
+add()               Add one element
+
+update()            Add multiple elements
+
+remove()            Remove element; error if absent
+
+discard()           Remove element; no error if absent
+
+pop()               Remove and return arbitrary element
+
+clear()             Remove all elements
+
+copy()              Create shallow copy
+
+union()             Combine sets
+
+intersection()      Common elements
+
+difference()        Elements only in first set
+
+symmetric_difference()
+                    Elements in either but not both
+
+intersection_update()
+                    Modify set to keep common elements
+
+difference_update()
+                    Modify set by removing another set's elements
+
+symmetric_difference_update()
+                    Modify set using symmetric difference
+
+issubset()           Check subset
+
+issuperset()         Check superset
+
+isdisjoint()         Check no common elements
+
+
+==================================================
+69. SET OPERATORS QUICK TABLE
+==================================================
+
+Union:
+
+```python
+a | b
+```
+
+Intersection:
+
+```python
+a & b
+```
+
+Difference:
+
+```python
+a - b
+```
+
+Symmetric Difference:
+
+```python
+a ^ b
+```
+
+Subset:
+
+```python
+a <= b
+```
+
+Proper Subset:
+
+```python
+a < b
+```
+
+Superset:
+
+```python
+a >= b
+```
+
+Proper Superset:
+
+```python
+a > b
+```
+
+
+==================================================
+70. PRACTICAL PROGRAM - REMOVE DUPLICATES
+==================================================
+
+```python
+numbers = [10, 20, 10, 30, 20, 40]
+
+unique = set(numbers)
+
+print(unique)
+```
+
+
+==================================================
+71. PRACTICAL PROGRAM - COMMON ELEMENTS
+==================================================
+
+```python
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+
+common = a & b
+
+print(common)
+```
+
+Output:
+
+```text
+{3, 4}
+```
+
+
+==================================================
+72. PRACTICAL PROGRAM - UNIQUE ELEMENTS
+==================================================
+
+```python
+a = {1, 2, 3}
+b = {3, 4, 5}
+
+result = a ^ b
+
+print(result)
+```
+
+Output:
+
+```text
+{1, 2, 4, 5}
+
+
+==================================================
+73. PRACTICAL PROGRAM - CHECK SUBSET
+==================================================
+
+```python
+a = {1, 2}
+b = {1, 2, 3, 4}
+
+if a.issubset(b):
+    print("a is subset of b")
+else:
+    print("a is not subset of b")
+```
+
+
+==================================================
+74. PRACTICAL PROGRAM - CHECK DUPLICATES IN LIST
+==================================================
+
+```python
+numbers = [10, 20, 30, 10, 40]
+
+if len(numbers) != len(set(numbers)):
+    print("Duplicates exist")
+else:
+    print("No duplicates")
+```
+
+
+Why does this work?
+
+Original list:
+
+```text
+5 elements
+```
+
+Unique set:
+
+```text
+4 elements
+```
+
+Different lengths mean duplicates existed.
+
+
+==================================================
+75. PRACTICAL PROGRAM - FIND DUPLICATES
+==================================================
+
+```python
+numbers = [10, 20, 10, 30, 20, 40]
+
+seen = set()
+duplicates = set()
+
+for num in numbers:
+    if num in seen:
+        duplicates.add(num)
+    else:
+        seen.add(num)
+
+print(duplicates)
+```
+
+Output:
+
+```text
+{10, 20}
+```
+
+
+==================================================
+76. PRACTICAL PROGRAM - UNIQUE COMMON VALUES
+==================================================
+
+```python
+a = [1, 2, 2, 3, 4]
+b = [2, 3, 3, 5, 6]
+
+result = set(a) & set(b)
+
+print(result)
+```
+
+Output:
+
+```text
+{2, 3}
+
+
+==================================================
+77. PRACTICAL PROGRAM - FIND UNIQUE VALUES
+==================================================
+
+```python
+numbers = [1, 2, 2, 3, 4, 4, 5]
+
+unique = set(numbers)
+
+print(unique)
+```
+
+
+==================================================
+78. PRACTICAL PROGRAM - FIND MISSING ELEMENT
+==================================================
+
+Example:
+
+```python
+all_numbers = {1, 2, 3, 4, 5}
+present = {1, 2, 4, 5}
+
+missing = all_numbers - present
+
+print(missing)
+```
+
+Output:
+
+```text
+{3}
+```
+
+
+==================================================
+79. SET TIME COMPLEXITY
+==================================================
+
+Sets are implemented using hash tables.
+
+Average-case complexity:
+
+Add:
+
+O(1)
+
+Remove:
+
+O(1)
+
+Discard:
+
+O(1)
+
+Membership:
+
+O(1)
+
+Lookup:
+
+O(1)
+
+Average-case union/intersection/difference depend on the sizes of the sets involved.
+
+Important:
+
+These are average-case complexities, not guaranteed worst-case bounds.
+
+
+==================================================
+80. SET VS LIST
+==================================================
+
+LIST:
+
+```python
+a = [10, 20, 30, 20]
+```
+
+Properties:
+
+- Ordered
+- Mutable
+- Allows duplicates
+- Supports indexing
+- Supports slicing
+- Membership is generally O(n)
+
+
+SET:
+
+```python
+a = {10, 20, 30}
+```
+
+Properties:
+
+- No sequence indexing
+- Mutable
+- Does not allow duplicates
+- No slicing
+- Very fast average membership testing
+- Supports set operations
+
+
+==================================================
+81. SET VS TUPLE
+==================================================
+
+SET:
+
+```python
+a = {10, 20, 30}
+```
+
+TUPLE:
+
+```python
+a = (10, 20, 30)
+```
+
+Set:
+
+- Mutable
+- Unique elements
+- No indexing
+- Unordered
+- Mathematical operations
+
+Tuple:
+
+- Immutable
+- Allows duplicates
+- Ordered
+- Supports indexing
+- Supports slicing
+
+
+==================================================
+82. SET VS DICTIONARY
+==================================================
+
+Set:
+
+```python
+a = {1, 2, 3}
+```
+
+Dictionary:
+
+```python
+a = {
+    "name": "Ashu",
+    "age": 20
+}
+```
+
+Set stores unique elements.
+
+Dictionary stores key-value pairs.
+
+IMPORTANT:
+
+```python
+{}
+```
+
+creates an empty dictionary.
+
+For empty set:
+
+```python
+set()
+```
+
+
+==================================================
+83. IMPORTANT HASHABLE CONCEPT
+==================================================
+
+Set elements must be hashable.
+
+Common hashable types:
+
+int
+float
+str
+bool
+tuple (if its elements are hashable)
+frozenset
+
+Common unhashable types:
+
+list
+dict
+set
+
+
+Example:
+
+Valid:
+
+```python
+a = {1, "Ashu", (10, 20)}
+```
+
+Invalid:
+
+```python
+a = {1, [10, 20]}
+```
+
+Invalid:
+
+```python
+a = {1, {"name": "Ashu"}}
+```
+
+
+==================================================
+84. WHY SET MEMBERSHIP IS FAST
+==================================================
+
+Example:
+
+```python
+numbers = {10, 20, 30, 40, 50}
+
+print(30 in numbers)
+```
+
+Sets use hashing internally, allowing average O(1) membership testing.
+
+This is why sets are commonly used when we need to quickly check whether an item exists.
+
+
+==================================================
+85. SET AND ORDER
+==================================================
+
+Do not write programs that depend on the iteration order of a set.
+
+Example:
+
+```python
+numbers = {10, 20, 30, 40}
+
+for num in numbers:
+    print(num)
+```
+
+The order is not something your program should rely on.
+
+
+If you need ordered data, use a list or another appropriate sequence.
+
+
+==================================================
+86. IMPORTANT: SET OF MUTABLE OBJECTS
+==================================================
+
+This is invalid:
+
+```python
+a = {[1, 2], [3, 4]}
+```
+
+Because lists are mutable and unhashable.
+
+Use tuples:
+
+```python
+a = {(1, 2), (3, 4)}
+```
+
+
+==================================================
+87. NESTED SET
+==================================================
+
+A normal set cannot directly contain another normal set:
+
+```python
+a = {{1, 2}, {3, 4}}
+```
+
+This is invalid because sets are unhashable.
+
+Use frozenset:
+
+```python
+a = {
+    frozenset({1, 2}),
+    frozenset({3, 4})
+}
+```
+
+
+==================================================
+88. SET COPYING
+==================================================
+
+Shallow copy:
+
+```python
+a = {1, 2, 3}
+
+b = a.copy()
+```
+
+You can also use:
+
+```python
+b = set(a)
+```
+
+
+==================================================
+89. SET FROM RANGE
+==================================================
+
+```python
+numbers = set(range(1, 6))
+
+print(numbers)
+```
+
+Result:
+
+```text
+{1, 2, 3, 4, 5}
+```
+
+
+==================================================
+90. SET INPUT FROM USER
+==================================================
+
+```python
+numbers = set(map(int, input("Enter numbers: ").split()))
+
+print(numbers)
+```
+
+Input:
+
+```text
+10 20 30 20 40
+```
+
+Result contains unique integers.
+
+
+==================================================
+91. SET WITH CONDITIONAL LOGIC
+==================================================
+
+Example:
+
+```python
+numbers = {10, 15, 20, 25, 30}
+
+even = set()
+
+for num in numbers:
+    if num % 2 == 0:
+        even.add(num)
+
+print(even)
+```
+
+
+==================================================
+92. SET COMPREHENSION PRACTICE
+==================================================
+
+Squares:
+
+```python
+squares = {x ** 2 for x in range(1, 6)}
+
+print(squares)
+```
+
+Even numbers:
+
+```python
+even = {x for x in range(1, 11) if x % 2 == 0}
+
+print(even)
+```
+
+Numbers divisible by 3:
+
+```python
+numbers = {x for x in range(1, 21) if x % 3 == 0}
+
+print(numbers)
+```
+
+
+==================================================
+93. IMPORTANT SET INTERVIEW QUESTIONS
+==================================================
+
+Q1. What is a set?
+
+A set is a mutable collection of unique elements in Python.
+
+Q2. Does a set allow duplicate values?
+
+No.
+
+Q3. Does a set support indexing?
+
+No.
+
+Q4. Does a set support slicing?
+
+No.
+
+Q5. How do you create an empty set?
+
+```python
+set()
+```
+
+Q6. What is the difference between `{}` and `set()`?
+
+`{}` creates an empty dictionary.
+
+`set()` creates an empty set.
+
+Q7. What is the difference between remove() and discard()?
+
+`remove()` raises KeyError when the element is absent.
+
+`discard()` does not raise an error.
+
+Q8. What is the difference between add() and update()?
+
+`add()` adds one element.
+
+`update()` adds elements from an iterable.
+
+Q9. Can a list be an element of a set?
+
+No, because lists are unhashable.
+
+Q10. Can a tuple be an element of a set?
+
+Yes, if all elements inside the tuple are hashable.
+
+Q11. Can a set be a dictionary key?
+
+No.
+
+Q12. What is frozenset?
+
+An immutable and hashable version of a set.
+
+Q13. What is union?
+
+Combines all unique elements.
+
+Q14. What is intersection?
+
+Returns common elements.
+
+Q15. What is difference?
+
+Returns elements present in the first set but not the second.
+
+Q16. What is symmetric difference?
+
+Returns elements that belong to either set but not both.
+
+Q17. What is a subset?
+
+A set whose every element is contained in another set.
+
+Q18. What is a superset?
+
+A set that contains every element of another set.
+
+Q19. What is a disjoint set?
+
+Two sets with no common elements.
+
+Q20. Why is set membership fast?
+
+Because sets use hash-table-based lookup internally.
+
+
+==================================================
+94. QUICK REVISION
+==================================================
+
+Create set:
+
+```python
+a = {1, 2, 3}
+```
+
+Empty set:
+
+```python
+a = set()
+```
+
+Add:
+
+```python
+a.add(4)
+```
+
+Add multiple:
+
+```python
+a.update([5, 6])
+```
+
+Remove:
+
+```python
+a.remove(4)
+```
+
+Safe remove:
+
+```python
+a.discard(4)
+```
+
+Remove arbitrary element:
+
+```python
+a.pop()
+```
+
+Clear:
+
+```python
+a.clear()
+```
+
+Length:
+
+```python
+len(a)
+```
+
+Membership:
+
+```python
+4 in a
+```
+
+Union:
+
+```python
+a | b
+```
+
+Intersection:
+
+```python
+a & b
+```
+
+Difference:
+
+```python
+a - b
+```
+
+Symmetric difference:
+
+```python
+a ^ b
+```
+
+Subset:
+
+```python
+a <= b
+```
+
+Proper subset:
+
+```python
+a < b
+```
+
+Superset:
+
+```python
+a >= b
+```
+
+Proper superset:
+
+```python
+a > b
+```
+
+Disjoint:
+
+```python
+a.isdisjoint(b)
+```
+
+List to set:
+
+```python
+set(my_list)
+```
+
+Set to list:
+
+```python
+list(my_set)
+```
+
+Set comprehension:
+
+```python
+{x for x in range(10)}
+```
+
+Immutable set:
+
+```python
+frozenset({1, 2, 3})
+```
+
+
+==================================================
+95. MOST IMPORTANT THINGS TO REMEMBER
+==================================================
+
+1. Set stores unique elements.
+2. Set is mutable.
+3. Set does not support indexing.
+4. Set does not support slicing.
+5. Set elements must be hashable.
+6. Duplicate elements are automatically removed.
+7. `{}` creates an empty dictionary.
+8. `set()` creates an empty set.
+9. `add()` adds one element.
+10. `update()` adds multiple elements.
+11. `remove()` raises KeyError if element is absent.
+12. `discard()` does not raise an error if element is absent.
+13. `pop()` removes an arbitrary element.
+14. `clear()` removes all elements.
+15. `union()` combines sets.
+16. `intersection()` finds common elements.
+17. `difference()` finds elements unique to the first set.
+18. `symmetric_difference()` finds elements in either set but not both.
+19. `issubset()` checks subset.
+20. `issuperset()` checks superset.
+21. `isdisjoint()` checks whether two sets have no common elements.
+22. Set membership is average O(1).
+23. Set comprehension is supported.
+24. `frozenset` is an immutable set.
+25. A frozenset can be used as a dictionary key.
+26. A normal set cannot be a dictionary key.
+27. A list cannot be an element of a set.
+28. A tuple can be an element of a set if it is hashable.
+29. Set order should not be relied upon.
+30. Use a set when uniqueness and fast membership testing are important.
+
+
+==================================================
+96. ONE-LINE EXAM DEFINITION
+==================================================
+
+A set is a mutable collection of unique hashable elements in Python that does not support sequence indexing and provides efficient membership testing and mathematical set operations.
+
+
+==================================================
+END OF PYTHON SET NOTES
+==================================================

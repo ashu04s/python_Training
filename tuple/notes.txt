@@ -1,0 +1,2396 @@
+Sure bhai. Below are **complete Python Tuple notes from basic to advanced**, formatted so you can directly copy-paste them into a `.txt` file.
+
+# PYTHON TUPLE - COMPLETE NOTES
+# BASIC TO ADVANCED
+
+==================================================
+1. WHAT IS A TUPLE?
+==================================================
+
+A tuple is an ordered collection of elements in Python.
+
+Tuples are:
+
+1. Ordered
+2. Immutable
+3. Allow duplicate values
+4. Can store different data types
+5. Can contain nested tuples
+6. Can be indexed
+7. Can be sliced
+8. Can be used as dictionary keys if all their elements are hashable
+
+Tuples are generally written using parentheses ().
+
+Example:
+
+```python
+numbers = (10, 20, 30, 40, 50)
+
+print(numbers)
+```
+
+Output:
+
+(10, 20, 30, 40, 50)
+
+
+==================================================
+2. CREATING A TUPLE
+==================================================
+
+Basic tuple:
+
+```python
+numbers = (10, 20, 30, 40)
+```
+
+Tuple with strings:
+
+```python
+names = ("Ashu", "Rahul", "Aman")
+```
+
+Tuple with different data types:
+
+```python
+data = (10, "Ashu", 20.5, True)
+```
+
+Empty tuple:
+
+```python
+empty = ()
+```
+
+Tuple containing another tuple:
+
+```python
+data = ((1, 2), (3, 4))
+```
+
+
+==================================================
+3. TUPLE WITHOUT PARENTHESES
+==================================================
+
+Parentheses are optional in many tuple expressions.
+
+Example:
+
+```python
+numbers = 10, 20, 30, 40
+
+print(numbers)
+```
+
+Output:
+
+(10, 20, 30, 40)
+
+This is called tuple packing.
+
+
+==================================================
+4. SINGLE ELEMENT TUPLE
+==================================================
+
+This is very important.
+
+Wrong:
+
+```python
+a = (10)
+```
+
+Here, `a` is an integer, not a tuple.
+
+Correct:
+
+```python
+a = (10,)
+```
+
+The comma makes it a tuple.
+
+Example:
+
+```python
+a = (10,)
+
+print(type(a))
+```
+
+Output:
+
+<class 'tuple'>
+
+
+Another example:
+
+```python
+a = "Ashu",
+print(type(a))
+```
+
+Output:
+
+<class 'tuple'>
+
+
+==================================================
+5. CHECKING TYPE OF TUPLE
+==================================================
+
+Use type():
+
+```python
+numbers = (10, 20, 30)
+
+print(type(numbers))
+```
+
+Output:
+
+<class 'tuple'>
+
+
+==================================================
+6. TUPLE INDEXING
+==================================================
+
+Tuple indexing starts from 0.
+
+Example:
+
+```python
+names = ("Ashu", "Rahul", "Aman", "Ravi")
+```
+
+Index:
+
+0 -> Ashu
+1 -> Rahul
+2 -> Aman
+3 -> Ravi
+
+Example:
+
+```python
+print(names[0])
+print(names[1])
+print(names[2])
+print(names[3])
+```
+
+Output:
+
+Ashu
+Rahul
+Aman
+Ravi
+
+
+==================================================
+7. NEGATIVE INDEXING
+==================================================
+
+Negative indexing starts from -1.
+
+Example:
+
+```python
+names = ("Ashu", "Rahul", "Aman", "Ravi")
+
+print(names[-1])
+print(names[-2])
+print(names[-3])
+print(names[-4])
+```
+
+Output:
+
+Ravi
+Aman
+Rahul
+Ashu
+
+
+==================================================
+8. TUPLE SLICING
+==================================================
+
+Slicing is used to get a part of a tuple.
+
+Syntax:
+
+```python
+tuple[start:stop]
+```
+
+Example:
+
+```python
+numbers = (10, 20, 30, 40, 50)
+
+print(numbers[1:4])
+```
+
+Output:
+
+(20, 30, 40)
+
+Important:
+
+Start index is included.
+Stop index is excluded.
+
+
+==================================================
+9. DIFFERENT SLICING EXAMPLES
+==================================================
+
+```python
+numbers = (10, 20, 30, 40, 50)
+```
+
+From beginning:
+
+```python
+print(numbers[:3])
+```
+
+Output:
+
+(10, 20, 30)
+
+
+From index 2:
+
+```python
+print(numbers[2:])
+```
+
+Output:
+
+(30, 40, 50)
+
+
+Complete tuple:
+
+```python
+print(numbers[:])
+```
+
+Output:
+
+(10, 20, 30, 40, 50)
+
+
+==================================================
+10. SLICING WITH STEP
+==================================================
+
+Syntax:
+
+```python
+tuple[start:stop:step]
+```
+
+Example:
+
+```python
+numbers = (10, 20, 30, 40, 50, 60)
+
+print(numbers[0:6:2])
+```
+
+Output:
+
+(10, 30, 50)
+
+
+==================================================
+11. REVERSE A TUPLE
+==================================================
+
+Using slicing:
+
+```python
+numbers = (10, 20, 30, 40, 50)
+
+print(numbers[::-1])
+```
+
+Output:
+
+(50, 40, 30, 20, 10)
+
+
+==================================================
+12. TUPLES ARE IMMUTABLE
+==================================================
+
+The most important property of a tuple is that it is immutable.
+
+Immutable means we cannot directly change, add, or remove tuple elements after creation.
+
+Example:
+
+```python
+numbers = (10, 20, 30)
+
+numbers[0] = 100
+```
+
+This produces:
+
+TypeError
+
+
+Lists are mutable:
+
+```python
+numbers = [10, 20, 30]
+
+numbers[0] = 100
+```
+
+But tuples are immutable:
+
+```python
+numbers = (10, 20, 30)
+
+numbers[0] = 100
+```
+
+This will give an error.
+
+
+==================================================
+13. WHY ARE TUPLES IMMUTABLE?
+==================================================
+
+Tuples are useful when data should not be modified.
+
+Example:
+
+```python
+student = ("Ashu", 20, "CSE")
+```
+
+If these values should remain fixed, a tuple can be used.
+
+Benefits:
+
+1. Data protection
+2. Can be used as dictionary keys when hashable
+3. Generally smaller/lighter than equivalent lists
+4. Useful for fixed collections
+5. Can communicate that data is not intended to change
+
+
+==================================================
+14. LENGTH OF TUPLE
+==================================================
+
+Use len():
+
+```python
+numbers = (10, 20, 30, 40, 50)
+
+print(len(numbers))
+```
+
+Output:
+
+5
+
+
+==================================================
+15. CHECKING ELEMENT IN TUPLE
+==================================================
+
+Use `in`.
+
+```python
+numbers = (10, 20, 30, 40)
+
+print(20 in numbers)
+```
+
+Output:
+
+True
+
+
+Example:
+
+```python
+print(100 in numbers)
+```
+
+Output:
+
+False
+
+
+==================================================
+16. NOT IN
+==================================================
+
+```python
+numbers = (10, 20, 30)
+
+print(50 not in numbers)
+```
+
+Output:
+
+True
+
+
+==================================================
+17. LOOP THROUGH A TUPLE
+==================================================
+
+Using for loop:
+
+```python
+numbers = (10, 20, 30, 40)
+
+for num in numbers:
+    print(num)
+```
+
+Output:
+
+10
+20
+30
+40
+
+
+==================================================
+18. LOOP USING INDEX
+==================================================
+
+```python
+numbers = (10, 20, 30, 40)
+
+for i in range(len(numbers)):
+    print(numbers[i])
+```
+
+
+==================================================
+19. WHILE LOOP WITH TUPLE
+==================================================
+
+```python
+numbers = (10, 20, 30, 40)
+
+i = 0
+
+while i < len(numbers):
+    print(numbers[i])
+    i += 1
+```
+
+
+==================================================
+20. TUPLE CONCATENATION
+==================================================
+
+We can combine tuples using `+`.
+
+```python
+a = (1, 2, 3)
+b = (4, 5, 6)
+
+c = a + b
+
+print(c)
+```
+
+Output:
+
+(1, 2, 3, 4, 5, 6)
+
+
+==================================================
+21. TUPLE REPETITION
+==================================================
+
+Use `*`.
+
+```python
+numbers = (1, 2, 3)
+
+print(numbers * 3)
+```
+
+Output:
+
+(1, 2, 3, 1, 2, 3, 1, 2, 3)
+
+
+==================================================
+22. TUPLE METHODS
+==================================================
+
+Tuple has only two main methods:
+
+1. count()
+2. index()
+
+
+==================================================
+23. count()
+==================================================
+
+`count()` returns the number of times an element appears.
+
+Example:
+
+```python
+numbers = (10, 20, 10, 30, 10)
+
+print(numbers.count(10))
+```
+
+Output:
+
+3
+
+
+==================================================
+24. index()
+==================================================
+
+`index()` returns the index of the first occurrence of an element.
+
+Example:
+
+```python
+numbers = (10, 20, 30, 40)
+
+print(numbers.index(30))
+```
+
+Output:
+
+2
+
+
+If the value doesn't exist:
+
+```python
+numbers.index(100)
+```
+
+It raises:
+
+ValueError
+
+
+==================================================
+25. BUILT-IN FUNCTIONS WITH TUPLES
+==================================================
+
+Important functions:
+
+len()
+max()
+min()
+sum()
+sorted()
+tuple()
+any()
+all()
+
+
+==================================================
+26. sum()
+==================================================
+
+```python
+numbers = (10, 20, 30)
+
+print(sum(numbers))
+```
+
+Output:
+
+60
+
+
+==================================================
+27. max()
+==================================================
+
+```python
+numbers = (10, 50, 20, 80, 30)
+
+print(max(numbers))
+```
+
+Output:
+
+80
+
+
+==================================================
+28. min()
+==================================================
+
+```python
+numbers = (10, 50, 20, 80, 30)
+
+print(min(numbers))
+```
+
+Output:
+
+10
+
+
+==================================================
+29. sorted()
+==================================================
+
+`sorted()` returns a list.
+
+This is important.
+
+```python
+numbers = (50, 10, 30, 20, 40)
+
+result = sorted(numbers)
+
+print(result)
+print(type(result))
+```
+
+Output:
+
+[10, 20, 30, 40, 50]
+
+<class 'list'>
+
+
+If you want a tuple:
+
+```python
+result = tuple(sorted(numbers))
+
+print(result)
+```
+
+Output:
+
+(10, 20, 30, 40, 50)
+
+
+==================================================
+30. tuple() FUNCTION
+==================================================
+
+`tuple()` converts an iterable into a tuple.
+
+List to tuple:
+
+```python
+numbers = [10, 20, 30]
+
+result = tuple(numbers)
+
+print(result)
+```
+
+Output:
+
+(10, 20, 30)
+
+
+String to tuple:
+
+```python
+name = "Ashu"
+
+result = tuple(name)
+
+print(result)
+```
+
+Output:
+
+('A', 's', 'h', 'u')
+
+
+==================================================
+31. LIST TO TUPLE
+==================================================
+
+```python
+numbers = [10, 20, 30, 40]
+
+numbers = tuple(numbers)
+
+print(numbers)
+```
+
+Output:
+
+(10, 20, 30, 40)
+
+
+==================================================
+32. TUPLE TO LIST
+==================================================
+
+```python
+numbers = (10, 20, 30, 40)
+
+numbers = list(numbers)
+
+print(numbers)
+```
+
+Output:
+
+[10, 20, 30, 40]
+
+
+==================================================
+33. TUPLE PACKING
+==================================================
+
+Putting multiple values into one tuple is called tuple packing.
+
+```python
+student = "Ashu", 20, "CSE"
+
+print(student)
+```
+
+Output:
+
+('Ashu', 20, 'CSE')
+
+
+==================================================
+34. TUPLE UNPACKING
+==================================================
+
+Taking values from a tuple and assigning them to variables is called tuple unpacking.
+
+```python
+student = ("Ashu", 20, "CSE")
+
+name, age, branch = student
+
+print(name)
+print(age)
+print(branch)
+```
+
+Output:
+
+Ashu
+20
+CSE
+
+
+==================================================
+35. NUMBER OF VARIABLES DURING UNPACKING
+==================================================
+
+The number of variables should normally match the number of elements.
+
+Correct:
+
+```python
+a, b, c = (10, 20, 30)
+```
+
+Incorrect:
+
+```python
+a, b = (10, 20, 30)
+```
+
+This gives:
+
+ValueError
+
+
+==================================================
+36. STAR UNPACKING
+==================================================
+
+Python allows `*` during unpacking.
+
+```python
+numbers = (10, 20, 30, 40, 50)
+
+a, *b = numbers
+
+print(a)
+print(b)
+```
+
+Output:
+
+10
+[20, 30, 40, 50]
+
+Notice that `b` becomes a list.
+
+
+Another example:
+
+```python
+a, *b, c = (10, 20, 30, 40, 50)
+
+print(a)
+print(b)
+print(c)
+```
+
+Output:
+
+10
+[20, 30, 40]
+50
+
+
+==================================================
+37. SWAPPING VARIABLES USING TUPLE
+==================================================
+
+Python can swap values easily.
+
+```python
+a = 10
+b = 20
+
+a, b = b, a
+
+print(a)
+print(b)
+```
+
+Output:
+
+20
+10
+
+Conceptually this uses tuple packing and unpacking.
+
+
+==================================================
+38. NESTED TUPLE
+==================================================
+
+A tuple inside another tuple is called a nested tuple.
+
+```python
+data = (
+    (1, 2, 3),
+    (4, 5, 6),
+    (7, 8, 9)
+)
+
+print(data)
+```
+
+
+==================================================
+39. ACCESSING NESTED TUPLE
+==================================================
+
+```python
+data = (
+    (1, 2, 3),
+    (4, 5, 6),
+    (7, 8, 9)
+)
+
+print(data[0][1])
+```
+
+Output:
+
+2
+
+
+Explanation:
+
+data[0] gives:
+
+(1, 2, 3)
+
+Then:
+
+data[0][1]
+
+gives:
+
+2
+
+
+==================================================
+40. 2D TUPLE
+==================================================
+
+A tuple containing tuples can represent a 2D structure.
+
+```python
+matrix = (
+    (1, 2, 3),
+    (4, 5, 6),
+    (7, 8, 9)
+)
+```
+
+Access:
+
+```python
+print(matrix[1][2])
+```
+
+Output:
+
+6
+
+
+==================================================
+41. LOOP THROUGH NESTED TUPLE
+==================================================
+
+```python
+matrix = (
+    (1, 2, 3),
+    (4, 5, 6),
+    (7, 8, 9)
+)
+
+for row in matrix:
+    for value in row:
+        print(value, end=" ")
+    print()
+```
+
+Output:
+
+1 2 3
+4 5 6
+7 8 9
+
+
+==================================================
+42. TUPLE OF DIFFERENT DATA TYPES
+==================================================
+
+```python
+data = (
+    10,
+    "Ashu",
+    20.5,
+    True,
+    [1, 2, 3]
+)
+
+print(data)
+```
+
+A tuple can contain different types.
+
+Important:
+
+The tuple itself is immutable, but mutable objects inside it can still be changed.
+
+
+==================================================
+43. MUTABLE OBJECT INSIDE TUPLE
+==================================================
+
+Example:
+
+```python
+data = (10, [20, 30], 40)
+
+data[1].append(50)
+
+print(data)
+```
+
+Output:
+
+(10, [20, 30, 50], 40)
+
+
+Why?
+
+The tuple cannot change which object is stored at index 1, but the list object stored there is mutable.
+
+This is an important advanced concept.
+
+
+==================================================
+44. TUPLE AS DICTIONARY KEY
+==================================================
+
+A tuple containing only hashable elements can be used as a dictionary key.
+
+Example:
+
+```python
+locations = {
+    (28.61, 77.20): "Delhi",
+    (19.07, 72.87): "Mumbai"
+}
+
+print(locations[(28.61, 77.20)])
+```
+
+Output:
+
+Delhi
+
+
+A list cannot be used as a dictionary key because lists are unhashable.
+
+Incorrect:
+
+```python
+data = {
+    [1, 2]: "value"
+}
+```
+
+This gives:
+
+TypeError
+
+
+==================================================
+45. HASHABLE TUPLE
+==================================================
+
+A tuple is hashable only when all of its elements are hashable.
+
+This can be used as a dictionary key:
+
+```python
+a = (1, 2, 3)
+
+data = {
+    a: "Hello"
+}
+```
+
+But this cannot:
+
+```python
+a = (1, [2, 3])
+
+data = {
+    a: "Hello"
+}
+```
+
+because the tuple contains a list, and lists are unhashable.
+
+
+==================================================
+46. ANY() WITH TUPLE
+==================================================
+
+`any()` returns True if at least one element is truthy.
+
+```python
+data = (False, False, True)
+
+print(any(data))
+```
+
+Output:
+
+True
+
+
+Example:
+
+```python
+data = (0, 0, 0)
+
+print(any(data))
+```
+
+Output:
+
+False
+
+
+==================================================
+47. ALL() WITH TUPLE
+==================================================
+
+`all()` returns True if every element is truthy.
+
+```python
+data = (True, True, True)
+
+print(all(data))
+```
+
+Output:
+
+True
+
+
+Example:
+
+```python
+data = (True, False, True)
+
+print(all(data))
+```
+
+Output:
+
+False
+
+
+==================================================
+48. TUPLE COMPARISON
+==================================================
+
+Tuples can be compared.
+
+```python
+a = (1, 2, 3)
+b = (1, 2, 3)
+
+print(a == b)
+```
+
+Output:
+
+True
+
+
+Example:
+
+```python
+a = (1, 2)
+b = (1, 3)
+
+print(a < b)
+```
+
+Output:
+
+True
+
+Python compares tuples element by element.
+
+
+==================================================
+49. TUPLE MEMBERSHIP
+==================================================
+
+Use:
+
+in
+not in
+
+Example:
+
+```python
+data = (10, 20, 30)
+
+print(20 in data)
+print(50 not in data)
+```
+
+Output:
+
+True
+True
+
+
+==================================================
+50. TUPLE CONCATENATION AND IMMUTABILITY
+==================================================
+
+When you use `+`, the original tuples are not modified.
+
+```python
+a = (1, 2)
+b = (3, 4)
+
+c = a + b
+
+print(a)
+print(b)
+print(c)
+```
+
+Output:
+
+(1, 2)
+(3, 4)
+(1, 2, 3, 4)
+
+
+==================================================
+51. DELETE A TUPLE
+==================================================
+
+Although we cannot delete individual elements, we can delete the complete tuple variable.
+
+```python
+numbers = (10, 20, 30)
+
+del numbers
+```
+
+After this, `numbers` no longer exists.
+
+
+==================================================
+52. TUPLE VS LIST
+==================================================
+
+Tuple:
+
+```python
+numbers = (10, 20, 30)
+```
+
+List:
+
+```python
+numbers = [10, 20, 30]
+```
+
+Main differences:
+
+Tuple:
+- Immutable
+- Uses ()
+- Fewer methods
+- Good for fixed data
+- Can be dictionary key if hashable
+- Usually smaller than equivalent list
+
+List:
+- Mutable
+- Uses []
+- Many methods
+- Good for changing data
+- Cannot be dictionary key
+- More flexible
+
+
+==================================================
+53. TUPLE VS LIST TABLE
+==================================================
+
+Feature             Tuple              List
+
+Syntax              ()                 []
+
+Mutable              No                 Yes
+
+Duplicate values     Yes                Yes
+
+Ordered              Yes                Yes
+
+Indexing             Yes                Yes
+
+Slicing              Yes                Yes
+
+append()             No                 Yes
+
+remove()             No                 Yes
+
+insert()             No                 Yes
+
+count()              Yes                Yes
+
+index()              Yes                Yes
+
+Fixed data            Good               Less suitable
+
+Changing data         Not suitable       Good
+
+
+==================================================
+54. WHY USE TUPLE INSTEAD OF LIST?
+==================================================
+
+Use tuple when:
+
+1. Data should not change.
+2. You want to represent a fixed collection.
+3. You want a potentially more compact immutable container.
+4. You need a hashable composite key.
+5. You want to communicate that the data is fixed.
+
+
+Example:
+
+```python
+rgb = (255, 0, 0)
+```
+
+This represents a fixed RGB value.
+
+
+==================================================
+55. TUPLE MEMORY
+==================================================
+
+Tuples are generally more memory-efficient than lists for the same elements because tuples are immutable and have a simpler internal structure.
+
+Example:
+
+```python
+a = [10, 20, 30]
+b = (10, 20, 30)
+```
+
+Both store references to the same values conceptually, but the containers themselves have different overhead.
+
+
+==================================================
+56. TUPLE INPUT FROM USER
+==================================================
+
+Using split():
+
+```python
+data = tuple(input("Enter values: ").split())
+
+print(data)
+```
+
+Input:
+
+10 20 30
+
+Output:
+
+('10', '20', '30')
+
+
+These values are strings.
+
+
+==================================================
+57. INTEGER TUPLE INPUT
+==================================================
+
+```python
+data = tuple(map(int, input("Enter numbers: ").split()))
+
+print(data)
+```
+
+Input:
+
+10 20 30
+
+Output:
+
+(10, 20, 30)
+
+
+==================================================
+58. SORTING A TUPLE
+==================================================
+
+`tuple.sort()` does not exist.
+
+Wrong:
+
+```python
+numbers = (30, 10, 20)
+
+numbers.sort()
+```
+
+This gives:
+
+AttributeError
+
+
+Correct:
+
+```python
+numbers = (30, 10, 20)
+
+numbers = tuple(sorted(numbers))
+
+print(numbers)
+```
+
+Output:
+
+(10, 20, 30)
+
+
+==================================================
+59. REVERSE A TUPLE
+==================================================
+
+There is no `reverse()` method for tuples.
+
+Use slicing:
+
+```python
+numbers = (10, 20, 30, 40)
+
+print(numbers[::-1])
+```
+
+Output:
+
+(40, 30, 20, 10)
+
+
+Or:
+
+```python
+numbers = (10, 20, 30, 40)
+
+result = tuple(reversed(numbers))
+
+print(result)
+```
+
+
+==================================================
+60. TUPLE OF ONE ELEMENT
+==================================================
+
+Remember this:
+
+```python
+a = (10)
+```
+
+Type:
+
+int
+
+But:
+
+```python
+a = (10,)
+```
+
+Type:
+
+tuple
+
+The comma is important.
+
+
+==================================================
+61. COMMON TUPLE ERRORS
+==================================================
+
+ERROR 1:
+
+```python
+a = (10, 20, 30)
+
+a[0] = 100
+```
+
+Reason:
+
+Tuples are immutable.
+
+
+ERROR 2:
+
+```python
+a = (10, 20, 30)
+
+a.append(40)
+```
+
+Reason:
+
+Tuple does not have append().
+
+
+ERROR 3:
+
+```python
+a = (10, 20, 30)
+
+a.remove(20)
+```
+
+Reason:
+
+Tuple does not have remove().
+
+
+ERROR 4:
+
+```python
+a = (10, 20, 30)
+
+a.sort()
+```
+
+Reason:
+
+Tuple does not have sort().
+
+
+ERROR 5:
+
+```python
+a = (10, 20, 30)
+
+print(a[10])
+```
+
+Reason:
+
+IndexError because index 10 does not exist.
+
+
+==================================================
+62. TUPLE METHODS VS LIST METHODS
+==================================================
+
+Tuple has:
+
+count()
+index()
+
+List has:
+
+append()
+extend()
+insert()
+remove()
+pop()
+clear()
+sort()
+reverse()
+copy()
+count()
+index()
+
+Reason:
+
+Tuple is immutable, so methods that modify the collection are not available.
+
+
+==================================================
+63. TUPLE UNPACKING WITH FUNCTION
+==================================================
+
+A function can return multiple values using a tuple.
+
+```python
+def student():
+    return "Ashu", 20, "CSE"
+
+name, age, branch = student()
+
+print(name)
+print(age)
+print(branch)
+```
+
+Output:
+
+Ashu
+20
+CSE
+
+
+==================================================
+64. FUNCTION RETURNING TUPLE
+==================================================
+
+```python
+def calculate(a, b):
+    return a + b, a - b
+
+result = calculate(10, 5)
+
+print(result)
+```
+
+Output:
+
+(15, 5)
+
+
+You can unpack it:
+
+```python
+add, subtract = calculate(10, 5)
+
+print(add)
+print(subtract)
+```
+
+
+==================================================
+65. TUPLE INSIDE FUNCTION ARGUMENTS
+==================================================
+
+Using `*args`:
+
+```python
+def add(*numbers):
+    total = 0
+
+    for num in numbers:
+        total += num
+
+    return total
+
+print(add(10, 20, 30))
+```
+
+Output:
+
+60
+
+`args` is collected as a tuple.
+
+
+==================================================
+66. *args IS A TUPLE
+==================================================
+
+```python
+def test(*args):
+    print(args)
+    print(type(args))
+
+test(10, 20, 30)
+```
+
+Output:
+
+(10, 20, 30)
+
+<class 'tuple'>
+
+
+==================================================
+67. TUPLE AS FUNCTION ARGUMENT
+==================================================
+
+```python
+def display(data):
+    print(data)
+
+numbers = (10, 20, 30)
+
+display(numbers)
+```
+
+Output:
+
+(10, 20, 30)
+
+
+==================================================
+68. NESTED UNPACKING
+==================================================
+
+```python
+student = ("Ashu", (20, "CSE"))
+
+name, (age, branch) = student
+
+print(name)
+print(age)
+print(branch)
+```
+
+Output:
+
+Ashu
+20
+CSE
+
+
+==================================================
+69. ENUMERATE WITH TUPLE
+==================================================
+
+```python
+names = ("Ashu", "Rahul", "Aman")
+
+for index, name in enumerate(names):
+    print(index, name)
+```
+
+Output:
+
+0 Ashu
+1 Rahul
+2 Aman
+
+
+==================================================
+70. ZIP WITH TUPLES
+==================================================
+
+`zip()` can combine multiple sequences.
+
+```python
+names = ("Ashu", "Rahul", "Aman")
+marks = (90, 80, 85)
+
+result = tuple(zip(names, marks))
+
+print(result)
+```
+
+Output:
+
+(('Ashu', 90), ('Rahul', 80), ('Aman', 85))
+
+
+==================================================
+71. TUPLE COMPREHENSION
+==================================================
+
+Python does NOT have a separate tuple comprehension syntax.
+
+For example:
+
+```python
+result = (x * x for x in range(5))
+```
+
+This creates a generator, not a tuple.
+
+To create a tuple:
+
+```python
+result = tuple(x * x for x in range(5))
+
+print(result)
+```
+
+Output:
+
+(0, 1, 4, 9, 16)
+
+
+==================================================
+72. GENERATOR VS TUPLE
+==================================================
+
+Generator expression:
+
+```python
+result = (x * x for x in range(5))
+```
+
+Tuple:
+
+```python
+result = tuple(x * x for x in range(5))
+```
+
+The first creates a generator.
+
+The second creates an actual tuple.
+
+
+==================================================
+73. TUPLE OF TUPLES SORTING
+==================================================
+
+Example:
+
+```python
+students = (
+    ("Ashu", 80),
+    ("Rahul", 90),
+    ("Aman", 70)
+)
+
+result = tuple(sorted(students, key=lambda x: x[1]))
+
+print(result)
+```
+
+Output:
+
+(('Aman', 70), ('Ashu', 80), ('Rahul', 90))
+
+
+==================================================
+74. PRACTICAL PROGRAM - FIND SUM
+==================================================
+
+```python
+numbers = (10, 20, 30, 40, 50)
+
+total = sum(numbers)
+
+print("Sum =", total)
+```
+
+
+==================================================
+75. PRACTICAL PROGRAM - FIND MAXIMUM
+==================================================
+
+```python
+numbers = (10, 50, 20, 80, 30)
+
+maximum = max(numbers)
+
+print("Maximum =", maximum)
+```
+
+
+==================================================
+76. PRACTICAL PROGRAM - FIND MINIMUM
+==================================================
+
+```python
+numbers = (10, 50, 20, 80, 30)
+
+minimum = min(numbers)
+
+print("Minimum =", minimum)
+```
+
+
+==================================================
+77. PRACTICAL PROGRAM - COUNT EVEN NUMBERS
+==================================================
+
+```python
+numbers = (10, 15, 20, 25, 30, 35)
+
+count = 0
+
+for num in numbers:
+    if num % 2 == 0:
+        count += 1
+
+print("Even =", count)
+```
+
+
+==================================================
+78. PRACTICAL PROGRAM - PRINT EVEN NUMBERS
+==================================================
+
+```python
+numbers = (10, 15, 20, 25, 30, 35)
+
+for num in numbers:
+    if num % 2 == 0:
+        print(num)
+```
+
+
+==================================================
+79. PRACTICAL PROGRAM - PRINT ODD NUMBERS
+==================================================
+
+```python
+numbers = (10, 15, 20, 25, 30, 35)
+
+for num in numbers:
+    if num % 2 != 0:
+        print(num)
+```
+
+
+==================================================
+80. PRACTICAL PROGRAM - CHECK PALINDROME
+==================================================
+
+```python
+data = (1, 2, 3, 2, 1)
+
+if data == data[::-1]:
+    print("Palindrome")
+else:
+    print("Not Palindrome")
+```
+
+Output:
+
+Palindrome
+
+
+==================================================
+81. PRACTICAL PROGRAM - REMOVE DUPLICATES
+==================================================
+
+Using set:
+
+```python
+numbers = (10, 20, 10, 30, 20, 40)
+
+result = tuple(set(numbers))
+
+print(result)
+```
+
+Important:
+
+Set does not guarantee preserving the original order.
+
+If order must be preserved:
+
+```python
+numbers = (10, 20, 10, 30, 20, 40)
+
+result = []
+
+for num in numbers:
+    if num not in result:
+        result.append(num)
+
+result = tuple(result)
+
+print(result)
+```
+
+Output:
+
+(10, 20, 30, 40)
+
+
+==================================================
+82. PRACTICAL PROGRAM - SECOND LARGEST
+==================================================
+
+```python
+numbers = (10, 50, 20, 80, 30)
+
+unique = tuple(set(numbers))
+unique = tuple(sorted(unique))
+
+print("Second largest =", unique[-2])
+```
+
+Output:
+
+Second largest = 50
+
+
+==================================================
+83. PRACTICAL PROGRAM - MERGE TWO TUPLES
+==================================================
+
+```python
+a = (1, 2, 3)
+b = (4, 5, 6)
+
+result = a + b
+
+print(result)
+```
+
+Output:
+
+(1, 2, 3, 4, 5, 6)
+
+
+==================================================
+84. PRACTICAL PROGRAM - FIND DUPLICATES
+==================================================
+
+```python
+numbers = (10, 20, 10, 30, 20, 40)
+
+duplicates = []
+
+for num in numbers:
+    if numbers.count(num) > 1 and num not in duplicates:
+        duplicates.append(num)
+
+print(tuple(duplicates))
+```
+
+Output:
+
+(10, 20)
+
+
+==================================================
+85. TUPLE TIME COMPLEXITY
+==================================================
+
+For a tuple with n elements:
+
+Index access:
+
+O(1)
+
+Length:
+
+O(1)
+
+Membership search:
+
+O(n)
+
+count():
+
+O(n)
+
+index():
+
+O(n)
+
+Slicing:
+
+O(k), where k is the size of the resulting slice
+
+Concatenation:
+
+O(n + m), approximately, for tuples of sizes n and m
+
+
+==================================================
+86. IMPORTANT INTERVIEW QUESTIONS
+==================================================
+
+Q1. What is a tuple?
+
+A tuple is an ordered and immutable collection in Python.
+
+
+Q2. How do you create a tuple?
+
+```python
+a = (10, 20, 30)
+```
+
+
+Q3. Can a tuple contain duplicate values?
+
+Yes.
+
+```python
+a = (10, 20, 10, 30)
+```
+
+
+Q4. Can a tuple contain different data types?
+
+Yes.
+
+```python
+a = (10, "Ashu", 20.5, True)
+```
+
+
+Q5. Can we modify a tuple?
+
+No. Tuples are immutable.
+
+
+Q6. How many methods does a tuple have?
+
+The tuple type has two main methods:
+
+count()
+index()
+
+
+Q7. Difference between list and tuple?
+
+List is mutable, while tuple is immutable.
+
+
+Q8. Can a tuple be a dictionary key?
+
+Yes, if all elements of the tuple are hashable.
+
+
+Q9. Can a list be a dictionary key?
+
+No, because lists are unhashable.
+
+
+Q10. What is tuple packing?
+
+Combining multiple values into a tuple.
+
+```python
+a = 10, 20, 30
+```
+
+
+Q11. What is tuple unpacking?
+
+Assigning tuple elements to separate variables.
+
+```python
+a, b, c = (10, 20, 30)
+```
+
+
+Q12. How do you create a single-element tuple?
+
+```python
+a = (10,)
+```
+
+
+Q13. Does Python have tuple comprehension?
+
+No. A parenthesized expression such as:
+
+```python
+(x for x in range(5))
+```
+
+creates a generator expression, not a tuple.
+
+
+Q14. How can you convert a list into a tuple?
+
+```python
+a = tuple(my_list)
+```
+
+
+Q15. How can you convert a tuple into a list?
+
+```python
+a = list(my_tuple)
+```
+
+
+==================================================
+87. QUICK REVISION
+==================================================
+
+Tuple syntax:
+
+```python
+a = (10, 20, 30)
+```
+
+Empty tuple:
+
+```python
+a = ()
+```
+
+Single-element tuple:
+
+```python
+a = (10,)
+```
+
+Indexing:
+
+```python
+a[0]
+```
+
+Negative indexing:
+
+```python
+a[-1]
+```
+
+Slicing:
+
+```python
+a[1:4]
+```
+
+Reverse:
+
+```python
+a[::-1]
+```
+
+Length:
+
+```python
+len(a)
+```
+
+Membership:
+
+```python
+10 in a
+```
+
+Count:
+
+```python
+a.count(10)
+```
+
+Index:
+
+```python
+a.index(10)
+```
+
+Sum:
+
+```python
+sum(a)
+```
+
+Maximum:
+
+```python
+max(a)
+```
+
+Minimum:
+
+```python
+min(a)
+```
+
+Sort:
+
+```python
+tuple(sorted(a))
+```
+
+List to tuple:
+
+```python
+tuple(list1)
+```
+
+Tuple to list:
+
+```python
+list(tuple1)
+```
+
+Packing:
+
+```python
+a = 10, 20, 30
+```
+
+Unpacking:
+
+```python
+x, y, z = a
+```
+
+Star unpacking:
+
+```python
+x, *y = a
+```
+
+
+==================================================
+88. MOST IMPORTANT POINTS TO REMEMBER
+==================================================
+
+1. Tuple is ordered.
+2. Tuple is immutable.
+3. Tuple allows duplicate values.
+4. Tuple allows different data types.
+5. Tuple indexing starts from 0.
+6. Negative indexing starts from -1.
+7. Tuple supports slicing.
+8. Tuple has two main methods: count() and index().
+9. Tuple does not support append(), remove(), insert(), pop(), sort(), or reverse().
+10. Use tuple() to convert another iterable into a tuple.
+11. Use list() to convert a tuple into a list.
+12. Single-element tuple requires a comma.
+13. Tuple packing means creating a tuple from multiple values.
+14. Tuple unpacking means extracting values into variables.
+15. `*` can be used for extended unpacking.
+16. A tuple can contain mutable objects such as lists.
+17. A tuple can be used as a dictionary key if all its elements are hashable.
+18. `sorted(tuple)` returns a list.
+19. Tuple does not have a separate comprehension syntax.
+20. `*args` is stored as a tuple.
+
+
+==================================================
+89. ONE-LINE EXAM DEFINITION
+==================================================
+
+A tuple is an ordered, immutable collection in Python that can store multiple elements of the same or different data types and allows duplicate values.
+
+
+==================================================
+90. FINAL COMPARISON
+==================================================
+
+LIST:
+
+```python
+a = [10, 20, 30]
+```
+
+Mutable.
+
+TUPLE:
+
+```python
+a = (10, 20, 30)
+```
+
+Immutable.
+
+STRING:
+
+```python
+a = "Ashu"
+```
+
+Immutable sequence of characters.
+
+SET:
+
+```python
+a = {10, 20, 30}
+```
+
+Mutable collection of unique hashable elements; unordered as a sequence.
+
+DICTIONARY:
+
+```python
+a = {
+    "name": "Ashu",
+    "age": 20
+}
+```
+
+Mutable key-value collection.
+
+
+==================================================
+END OF PYTHON TUPLE NOTES
+==================================================

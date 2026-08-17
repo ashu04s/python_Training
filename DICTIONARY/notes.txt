@@ -1,0 +1,2709 @@
+# PYTHON DICTIONARY - COMPLETE NOTES
+# BASIC TO ADVANCED
+
+==================================================
+1. WHAT IS A DICTIONARY?
+==================================================
+
+A dictionary is a collection of data stored in the form of:
+
+KEY : VALUE
+
+A dictionary is used to store data with a unique key.
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "branch": "CSE"
+}
+
+print(student)
+```
+
+Output:
+
+```text
+{'name': 'Ashu', 'age': 20, 'branch': 'CSE'}
+```
+
+Main properties of a dictionary:
+
+1. Stores data as key-value pairs
+2. Mutable
+3. Keys must be unique
+4. Keys must be hashable
+5. Values can be of any data type
+6. Supports insertion order preservation in modern Python
+7. Does not support numeric indexing like lists
+8. Can contain nested dictionaries
+9. Can contain different data types
+
+
+==================================================
+2. DICTIONARY SYNTAX
+==================================================
+
+Syntax:
+
+```python
+dictionary = {
+    key1: value1,
+    key2: value2,
+    key3: value3
+}
+```
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "city": "Hisar"
+}
+```
+
+
+==================================================
+3. CREATING A DICTIONARY
+==================================================
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "course": "B.Tech"
+}
+
+print(student)
+```
+
+
+Another example:
+
+```python
+marks = {
+    "Java": 85,
+    "Python": 90,
+    "SQL": 80
+}
+
+print(marks)
+```
+
+
+==================================================
+4. EMPTY DICTIONARY
+==================================================
+
+An empty dictionary can be created using:
+
+```python
+data = {}
+```
+
+or:
+
+```python
+data = dict()
+```
+
+Check type:
+
+```python
+data = {}
+
+print(type(data))
+```
+
+Output:
+
+```text
+<class 'dict'>
+```
+
+
+IMPORTANT:
+
+```python
+{}
+```
+
+creates an empty dictionary, NOT an empty set.
+
+Empty set:
+
+```python
+set()
+```
+
+
+==================================================
+5. KEY-VALUE PAIR
+==================================================
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+```
+
+Here:
+
+```text
+"name" → key
+"Ashu" → value
+
+"age" → key
+20     → value
+```
+
+
+==================================================
+6. KEYS MUST BE UNIQUE
+==================================================
+
+A dictionary cannot have duplicate keys.
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "name": "Rahul"
+}
+
+print(student)
+```
+
+Output:
+
+```text
+{'name': 'Rahul', 'age': 20}
+```
+
+The later value replaces the earlier value.
+
+Therefore:
+
+KEY → UNIQUE
+
+
+==================================================
+7. VALUES CAN BE DUPLICATE
+==================================================
+
+Values do not need to be unique.
+
+Example:
+
+```python
+marks = {
+    "Ashu": 80,
+    "Rahul": 80,
+    "Aman": 90
+}
+
+print(marks)
+```
+
+Here two students have the same marks.
+
+
+==================================================
+8. DIFFERENT DATA TYPES IN DICTIONARY
+==================================================
+
+Keys and values can have different data types.
+
+Example:
+
+```python
+data = {
+    "name": "Ashu",
+    "age": 20,
+    "marks": 85.5,
+    "passed": True
+}
+
+print(data)
+```
+
+
+==================================================
+9. ACCESSING DICTIONARY VALUES
+==================================================
+
+Use the key.
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "branch": "CSE"
+}
+
+print(student["name"])
+print(student["age"])
+print(student["branch"])
+```
+
+Output:
+
+```text
+Ashu
+20
+CSE
+```
+
+
+==================================================
+10. ACCESSING NON-EXISTING KEY
+==================================================
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+print(student["city"])
+```
+
+This gives:
+
+```text
+KeyError
+```
+
+Because `"city"` does not exist.
+
+
+==================================================
+11. get()
+==================================================
+
+`get()` is a safer way to access a dictionary value.
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+print(student.get("name"))
+```
+
+Output:
+
+```text
+Ashu
+```
+
+If key does not exist:
+
+```python
+print(student.get("city"))
+```
+
+Output:
+
+```text
+None
+```
+
+It does not raise `KeyError`.
+
+
+==================================================
+12. get() WITH DEFAULT VALUE
+==================================================
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+print(student.get("city", "Not Found"))
+```
+
+Output:
+
+```text
+Not Found
+```
+
+Syntax:
+
+```python
+dictionary.get(key, default_value)
+```
+
+
+==================================================
+13. ADDING NEW ELEMENT
+==================================================
+
+Dictionary is mutable, so we can add new key-value pairs.
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+student["city"] = "Hisar"
+
+print(student)
+```
+
+Output:
+
+```text
+{'name': 'Ashu', 'age': 20, 'city': 'Hisar'}
+```
+
+
+==================================================
+14. MODIFYING VALUE
+==================================================
+
+If the key already exists, assigning a new value modifies it.
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+student["age"] = 21
+
+print(student)
+```
+
+Output:
+
+```text
+{'name': 'Ashu', 'age': 21}
+```
+
+
+IMPORTANT:
+
+```text
+New key       → Add
+Existing key  → Update
+```
+
+
+==================================================
+15. update()
+==================================================
+
+`update()` is used to add or modify multiple key-value pairs.
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+student.update({
+    "age": 21,
+    "city": "Hisar"
+})
+
+print(student)
+```
+
+Output:
+
+```text
+{'name': 'Ashu', 'age': 21, 'city': 'Hisar'}
+```
+
+
+==================================================
+16. update() WITH KEYWORD ARGUMENTS
+==================================================
+
+```python
+student = {
+    "name": "Ashu"
+}
+
+student.update(age=20, city="Hisar")
+
+print(student)
+```
+
+
+==================================================
+17. REMOVE ELEMENT USING pop()
+==================================================
+
+`pop()` removes a specified key and returns its value.
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "city": "Hisar"
+}
+
+value = student.pop("age")
+
+print(value)
+print(student)
+```
+
+Output:
+
+```text
+20
+{'name': 'Ashu', 'city': 'Hisar'}
+```
+
+
+==================================================
+18. pop() WITH DEFAULT VALUE
+==================================================
+
+If the key may not exist:
+
+```python
+student = {
+    "name": "Ashu"
+}
+
+result = student.pop("age", "Not Found")
+
+print(result)
+```
+
+Output:
+
+```text
+Not Found
+```
+
+
+==================================================
+19. popitem()
+==================================================
+
+`popitem()` removes and returns the last inserted key-value pair.
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "city": "Hisar"
+}
+
+result = student.popitem()
+
+print(result)
+print(student)
+```
+
+Output:
+
+```text
+('city', 'Hisar')
+{'name': 'Ashu', 'age': 20}
+```
+
+Modern Python dictionaries preserve insertion order, so `popitem()` removes the last inserted pair.
+
+
+==================================================
+20. clear()
+==================================================
+
+`clear()` removes all elements.
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+student.clear()
+
+print(student)
+```
+
+Output:
+
+```text
+{}
+```
+
+
+==================================================
+21. del
+==================================================
+
+`del` can delete a specific key-value pair.
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "city": "Hisar"
+}
+
+del student["age"]
+
+print(student)
+```
+
+Output:
+
+```text
+{'name': 'Ashu', 'city': 'Hisar'}
+```
+
+
+You can delete the entire dictionary:
+
+```python
+del student
+```
+
+
+==================================================
+22. CHECK IF KEY EXISTS
+==================================================
+
+Use `in`.
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+print("name" in student)
+```
+
+Output:
+
+```text
+True
+```
+
+Important:
+
+`in` checks dictionary KEYS by default.
+
+
+Example:
+
+```python
+print("city" in student)
+```
+
+Output:
+
+```text
+False
+
+
+==================================================
+23. CHECK KEY DOES NOT EXIST
+==================================================
+
+Use `not in`.
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+print("city" not in student)
+```
+
+Output:
+
+```text
+True
+```
+
+
+==================================================
+24. GET ALL KEYS
+==================================================
+
+Use `keys()`.
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "city": "Hisar"
+}
+
+print(student.keys())
+```
+
+Output looks like:
+
+```text
+dict_keys(['name', 'age', 'city'])
+```
+
+
+==================================================
+25. LOOP THROUGH KEYS
+==================================================
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "city": "Hisar"
+}
+
+for key in student.keys():
+    print(key)
+```
+
+Output:
+
+```text
+name
+age
+city
+```
+
+
+You can also simply write:
+
+```python
+for key in student:
+    print(key)
+```
+
+
+==================================================
+26. GET ALL VALUES
+==================================================
+
+Use `values()`.
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "city": "Hisar"
+}
+
+print(student.values())
+```
+
+Output:
+
+```text
+dict_values(['Ashu', 20, 'Hisar'])
+```
+
+
+==================================================
+27. LOOP THROUGH VALUES
+==================================================
+
+```python
+for value in student.values():
+    print(value)
+```
+
+
+==================================================
+28. GET KEYS AND VALUES
+==================================================
+
+Use `items()`.
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "city": "Hisar"
+}
+
+print(student.items())
+```
+
+Output:
+
+```text
+dict_items([
+    ('name', 'Ashu'),
+    ('age', 20),
+    ('city', 'Hisar')
+])
+```
+
+
+==================================================
+29. LOOP THROUGH KEYS AND VALUES
+==================================================
+
+This is one of the most important dictionary patterns.
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "city": "Hisar"
+}
+
+for key, value in student.items():
+    print(key, value)
+```
+
+Output:
+
+```text
+name Ashu
+age 20
+city Hisar
+```
+
+
+==================================================
+30. DICTIONARY LENGTH
+==================================================
+
+Use `len()`.
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "city": "Hisar"
+}
+
+print(len(student))
+```
+
+Output:
+
+```text
+3
+```
+
+The length is the number of key-value pairs.
+
+
+==================================================
+31. COPYING DICTIONARY
+==================================================
+
+Use `copy()`.
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+new_student = student.copy()
+
+print(new_student)
+```
+
+
+==================================================
+32. DICTIONARY ALIASING
+==================================================
+
+Be careful:
+
+```python
+a = {
+    "name": "Ashu"
+}
+
+b = a
+
+b["age"] = 20
+
+print(a)
+```
+
+Output:
+
+```text
+{'name': 'Ashu', 'age': 20}
+```
+
+Because `a` and `b` refer to the same dictionary.
+
+Use:
+
+```python
+b = a.copy()
+```
+
+to create a separate shallow copy.
+
+
+==================================================
+33. DICTIONARY FROM LIST OF TUPLES
+==================================================
+
+Use `dict()`.
+
+```python
+data = [
+    ("name", "Ashu"),
+    ("age", 20),
+    ("city", "Hisar")
+]
+
+student = dict(data)
+
+print(student)
+```
+
+Output:
+
+```text
+{'name': 'Ashu', 'age': 20, 'city': 'Hisar'}
+```
+
+
+==================================================
+34. DICTIONARY FROM TWO LISTS
+==================================================
+
+Use `zip()`.
+
+```python
+keys = ["name", "age", "city"]
+values = ["Ashu", 20, "Hisar"]
+
+student = dict(zip(keys, values))
+
+print(student)
+```
+
+Output:
+
+```text
+{'name': 'Ashu', 'age': 20, 'city': 'Hisar'}
+```
+
+
+==================================================
+35. dict.fromkeys()
+==================================================
+
+`fromkeys()` creates a dictionary using a sequence of keys.
+
+Example:
+
+```python
+keys = ["name", "age", "city"]
+
+student = dict.fromkeys(keys)
+
+print(student)
+```
+
+Output:
+
+```text
+{'name': None, 'age': None, 'city': None}
+```
+
+
+You can provide a default value:
+
+```python
+student = dict.fromkeys(keys, 0)
+
+print(student)
+```
+
+Output:
+
+```text
+{'name': 0, 'age': 0, 'city': 0}
+
+
+==================================================
+36. NESTED DICTIONARY
+==================================================
+
+A dictionary can contain another dictionary.
+
+Example:
+
+```python
+students = {
+    "student1": {
+        "name": "Ashu",
+        "age": 20
+    },
+
+    "student2": {
+        "name": "Rahul",
+        "age": 21
+    }
+}
+
+print(students)
+```
+
+
+==================================================
+37. ACCESSING NESTED DICTIONARY
+==================================================
+
+```python
+students = {
+    "student1": {
+        "name": "Ashu",
+        "age": 20
+    },
+
+    "student2": {
+        "name": "Rahul",
+        "age": 21
+    }
+}
+
+print(students["student1"]["name"])
+```
+
+Output:
+
+```text
+Ashu
+```
+
+
+Another example:
+
+```python
+print(students["student2"]["age"])
+```
+
+Output:
+
+```text
+21
+```
+
+
+==================================================
+38. MODIFY NESTED DICTIONARY
+==================================================
+
+```python
+students = {
+    "student1": {
+        "name": "Ashu",
+        "age": 20
+    }
+}
+
+students["student1"]["age"] = 21
+
+print(students)
+```
+
+
+==================================================
+39. LIST INSIDE DICTIONARY
+==================================================
+
+Dictionary values can be lists.
+
+```python
+student = {
+    "name": "Ashu",
+    "marks": [80, 90, 85]
+}
+
+print(student["marks"])
+```
+
+Output:
+
+```text
+[80, 90, 85]
+```
+
+
+Access individual list element:
+
+```python
+print(student["marks"][1])
+```
+
+Output:
+
+```text
+90
+
+
+==================================================
+40. DICTIONARY INSIDE LIST
+==================================================
+
+A list can contain dictionaries.
+
+```python
+students = [
+    {"name": "Ashu", "age": 20},
+    {"name": "Rahul", "age": 21},
+    {"name": "Aman", "age": 19}
+]
+
+print(students[0])
+```
+
+Output:
+
+```text
+{'name': 'Ashu', 'age': 20}
+```
+
+
+Access value:
+
+```python
+print(students[0]["name"])
+```
+
+Output:
+
+```text
+Ashu
+
+
+==================================================
+41. LOOP THROUGH LIST OF DICTIONARIES
+==================================================
+
+```python
+students = [
+    {"name": "Ashu", "age": 20},
+    {"name": "Rahul", "age": 21},
+    {"name": "Aman", "age": 19}
+]
+
+for student in students:
+    print(student["name"], student["age"])
+```
+
+
+==================================================
+42. DICTIONARY COMPREHENSION
+==================================================
+
+Python supports dictionary comprehension.
+
+Syntax:
+
+```python
+{key: value for item in iterable}
+```
+
+Example:
+
+```python
+numbers = {x: x * x for x in range(1, 6)}
+
+print(numbers)
+```
+
+Output:
+
+```text
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+```
+
+
+==================================================
+43. DICTIONARY COMPREHENSION WITH CONDITION
+==================================================
+
+Even numbers:
+
+```python
+numbers = {
+    x: x * x
+    for x in range(1, 11)
+    if x % 2 == 0
+}
+
+print(numbers)
+```
+
+Output:
+
+```text
+{2: 4, 4: 16, 6: 36, 8: 64, 10: 100}
+```
+
+
+==================================================
+44. DICTIONARY COMPREHENSION WITH IF-ELSE
+==================================================
+
+```python
+numbers = {
+    x: "Even" if x % 2 == 0 else "Odd"
+    for x in range(1, 6)
+}
+
+print(numbers)
+```
+
+Output:
+
+```text
+{
+    1: 'Odd',
+    2: 'Even',
+    3: 'Odd',
+    4: 'Even',
+    5: 'Odd'
+}
+```
+
+
+==================================================
+45. SWAPPING KEYS AND VALUES
+==================================================
+
+Example:
+
+```python
+data = {
+    "a": 1,
+    "b": 2,
+    "c": 3
+}
+
+result = {
+    value: key
+    for key, value in data.items()
+}
+
+print(result)
+```
+
+Output:
+
+```text
+{1: 'a', 2: 'b', 3: 'c'}
+```
+
+Important:
+
+This works safely when the original values are unique and hashable.
+
+
+==================================================
+46. SORT DICTIONARY BY KEYS
+==================================================
+
+Example:
+
+```python
+data = {
+    "c": 30,
+    "a": 10,
+    "b": 20
+}
+
+result = dict(sorted(data.items()))
+
+print(result)
+```
+
+Output:
+
+```text
+{'a': 10, 'b': 20, 'c': 30}
+```
+
+
+==================================================
+47. SORT DICTIONARY BY VALUES
+==================================================
+
+```python
+marks = {
+    "Ashu": 80,
+    "Rahul": 95,
+    "Aman": 70
+}
+
+result = dict(
+    sorted(
+        marks.items(),
+        key=lambda item: item[1]
+    )
+)
+
+print(result)
+```
+
+Output:
+
+```text
+{'Aman': 70, 'Ashu': 80, 'Rahul': 95}
+```
+
+
+Descending order:
+
+```python
+result = dict(
+    sorted(
+        marks.items(),
+        key=lambda item: item[1],
+        reverse=True
+    )
+)
+```
+
+
+==================================================
+48. MAXIMUM VALUE IN DICTIONARY
+==================================================
+
+Example:
+
+```python
+marks = {
+    "Ashu": 80,
+    "Rahul": 95,
+    "Aman": 70
+}
+
+maximum = max(marks.values())
+
+print(maximum)
+```
+
+Output:
+
+```text
+95
+```
+
+
+==================================================
+49. KEY WITH MAXIMUM VALUE
+==================================================
+
+```python
+marks = {
+    "Ashu": 80,
+    "Rahul": 95,
+    "Aman": 70
+}
+
+student = max(marks, key=marks.get)
+
+print(student)
+```
+
+Output:
+
+```text
+Rahul
+```
+
+
+==================================================
+50. MINIMUM VALUE
+==================================================
+
+```python
+marks = {
+    "Ashu": 80,
+    "Rahul": 95,
+    "Aman": 70
+}
+
+minimum = min(marks.values())
+
+print(minimum)
+```
+
+
+Key with minimum value:
+
+```python
+student = min(marks, key=marks.get)
+
+print(student)
+```
+
+
+==================================================
+51. DICTIONARY KEYS
+==================================================
+
+Dictionary keys must be hashable.
+
+Valid keys:
+
+```python
+data = {
+    1: "one",
+    "name": "Ashu",
+    (1, 2): "tuple"
+}
+```
+
+Common hashable types:
+
+int
+float
+str
+bool
+tuple (if its elements are hashable)
+frozenset
+
+
+==================================================
+52. INVALID DICTIONARY KEYS
+==================================================
+
+Lists cannot be dictionary keys:
+
+```python
+data = {
+    [1, 2]: "hello"
+}
+```
+
+This gives:
+
+```text
+TypeError
+```
+
+Sets cannot be keys:
+
+```python
+data = {
+    {1, 2}: "hello"
+}
+```
+
+Also invalid.
+
+Dictionaries cannot be keys.
+
+
+==================================================
+53. DICTIONARY VALUES
+==================================================
+
+Dictionary values can be almost any Python object.
+
+Example:
+
+```python
+data = {
+    "name": "Ashu",
+    "marks": [80, 90],
+    "address": {
+        "city": "Hisar"
+    },
+    "skills": {"Python", "Java"}
+}
+```
+
+Values can be:
+
+- String
+- Integer
+- Float
+- Boolean
+- List
+- Tuple
+- Set
+- Dictionary
+- Objects
+
+
+==================================================
+54. DICTIONARY ORDER
+==================================================
+
+Modern Python dictionaries preserve insertion order.
+
+Example:
+
+```python
+data = {}
+
+data["a"] = 1
+data["b"] = 2
+data["c"] = 3
+
+print(data)
+```
+
+Output:
+
+```text
+{'a': 1, 'b': 2, 'c': 3}
+```
+
+The insertion order is preserved.
+
+IMPORTANT:
+
+Dictionary is ordered in modern Python, but it is still not accessed using numeric indexes like a list.
+
+
+==================================================
+55. DICTIONARY DOES NOT USE NUMERIC INDEXING
+==================================================
+
+This is incorrect:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+print(student[0])
+```
+
+It gives:
+
+```text
+KeyError
+```
+
+Use the key:
+
+```python
+print(student["name"])
+```
+
+
+==================================================
+56. KEYS VIEW
+==================================================
+
+`keys()` returns a dynamic view object.
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+keys = student.keys()
+
+print(keys)
+```
+
+If the dictionary changes, the view reflects the change.
+
+```python
+student["city"] = "Hisar"
+
+print(keys)
+```
+
+Output includes `"city"`.
+
+
+==================================================
+57. VALUES VIEW
+==================================================
+
+Similarly:
+
+```python
+values = student.values()
+```
+
+returns a dynamic view of values.
+
+
+==================================================
+58. ITEMS VIEW
+==================================================
+
+```python
+items = student.items()
+```
+
+returns a dynamic view of key-value pairs.
+
+Each item behaves like a tuple:
+
+```text
+(key, value)
+```
+
+
+==================================================
+59. DICTIONARY ITERATION
+==================================================
+
+When directly iterating over a dictionary:
+
+```python
+for item in student:
+    print(item)
+```
+
+Python iterates over keys.
+
+
+To get values:
+
+```python
+for value in student.values():
+    print(value)
+```
+
+
+To get both:
+
+```python
+for key, value in student.items():
+    print(key, value)
+```
+
+
+==================================================
+60. SHALLOW COPY VS DEEP COPY
+==================================================
+
+`copy()` creates a shallow copy.
+
+Example:
+
+```python
+data = {
+    "name": "Ashu",
+    "marks": [80, 90]
+}
+
+new_data = data.copy()
+```
+
+The outer dictionaries are separate, but nested mutable objects may still be shared.
+
+For a deep independent copy:
+
+```python
+import copy
+
+new_data = copy.deepcopy(data)
+```
+
+Deep copy recursively copies nested objects.
+
+
+==================================================
+61. SETDEFAULT()
+==================================================
+
+`setdefault()` returns the value for a key.
+
+If the key does not exist, it creates the key with the specified default value.
+
+Example:
+
+```python
+student = {
+    "name": "Ashu"
+}
+
+result = student.setdefault("age", 20)
+
+print(result)
+print(student)
+```
+
+Output:
+
+```text
+20
+{'name': 'Ashu', 'age': 20}
+```
+
+
+If the key already exists:
+
+```python
+student = {
+    "age": 21
+}
+
+result = student.setdefault("age", 20)
+
+print(result)
+print(student)
+```
+
+Output:
+
+```text
+21
+{'age': 21}
+```
+
+The existing value is not replaced.
+
+
+==================================================
+62. setdefault() USE CASE
+==================================================
+
+It can be useful for grouping.
+
+Example:
+
+```python
+students = {}
+
+students.setdefault("CSE", []).append("Ashu")
+students.setdefault("CSE", []).append("Rahul")
+students.setdefault("ECE", []).append("Aman")
+
+print(students)
+```
+
+Output:
+
+```text
+{
+    'CSE': ['Ashu', 'Rahul'],
+    'ECE': ['Aman']
+}
+```
+
+
+==================================================
+63. NESTED DICTIONARY PRACTICE
+==================================================
+
+```python
+college = {
+    "student": {
+        "name": "Ashu",
+        "age": 20,
+        "skills": {
+            "frontend": ["HTML", "CSS", "JavaScript"],
+            "backend": ["Java", "Spring Boot"]
+        }
+    }
+}
+
+print(college["student"]["skills"]["frontend"][1])
+```
+
+Output:
+
+```text
+CSS
+```
+
+
+==================================================
+64. DICTIONARY WITH LIST OF DICTIONARIES
+==================================================
+
+Common in real-world applications and APIs.
+
+```python
+students = [
+    {
+        "name": "Ashu",
+        "marks": 85
+    },
+    {
+        "name": "Rahul",
+        "marks": 90
+    },
+    {
+        "name": "Aman",
+        "marks": 75
+    }
+]
+
+for student in students:
+    print(student["name"], student["marks"])
+```
+
+
+==================================================
+65. JSON AND DICTIONARY
+==================================================
+
+Python dictionaries are commonly used to represent JSON-like data.
+
+Example:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "skills": ["Python", "Java", "React"]
+}
+```
+
+JSON uses a very similar structure.
+
+However, Python dictionaries and JSON are not exactly the same thing.
+
+JSON is a text/data interchange format.
+
+Python `json` module can convert between them.
+
+
+==================================================
+66. DICTIONARY TO JSON
+==================================================
+
+```python
+import json
+
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+
+result = json.dumps(student)
+
+print(result)
+```
+
+`json.dumps()` converts a Python object to a JSON string.
+
+
+==================================================
+67. JSON TO DICTIONARY
+==================================================
+
+```python
+import json
+
+data = '{"name": "Ashu", "age": 20}'
+
+student = json.loads(data)
+
+print(student)
+print(type(student))
+```
+
+Output:
+
+```text
+{'name': 'Ashu', 'age': 20}
+<class 'dict'>
+```
+
+
+==================================================
+68. PRACTICAL PROGRAM - COUNT FREQUENCY
+==================================================
+
+Dictionary is very useful for counting frequency.
+
+```python
+numbers = [10, 20, 10, 30, 20, 10]
+
+frequency = {}
+
+for num in numbers:
+    if num in frequency:
+        frequency[num] += 1
+    else:
+        frequency[num] = 1
+
+print(frequency)
+```
+
+Output:
+
+```text
+{10: 3, 20: 2, 30: 1}
+```
+
+
+==================================================
+69. FREQUENCY USING get()
+==================================================
+
+Shorter version:
+
+```python
+numbers = [10, 20, 10, 30, 20, 10]
+
+frequency = {}
+
+for num in numbers:
+    frequency[num] = frequency.get(num, 0) + 1
+
+print(frequency)
+```
+
+Output:
+
+```text
+{10: 3, 20: 2, 30: 1}
+```
+
+
+==================================================
+70. FREQUENCY USING setdefault()
+==================================================
+
+```python
+numbers = [10, 20, 10, 30, 20, 10]
+
+frequency = {}
+
+for num in numbers:
+    frequency.setdefault(num, 0)
+    frequency[num] += 1
+
+print(frequency)
+```
+
+
+==================================================
+71. CHARACTER FREQUENCY
+==================================================
+
+```python
+text = "hello"
+
+frequency = {}
+
+for char in text:
+    frequency[char] = frequency.get(char, 0) + 1
+
+print(frequency)
+```
+
+Output:
+
+```text
+{'h': 1, 'e': 1, 'l': 2, 'o': 1}
+```
+
+
+==================================================
+72. FIND DUPLICATE VALUES
+==================================================
+
+```python
+data = {
+    "a": 10,
+    "b": 20,
+    "c": 10,
+    "d": 30
+}
+
+values = list(data.values())
+
+duplicates = set()
+
+for value in values:
+    if values.count(value) > 1:
+        duplicates.add(value)
+
+print(duplicates)
+```
+
+Output:
+
+```text
+{10}
+```
+
+
+==================================================
+73. MERGE TWO DICTIONARIES
+==================================================
+
+Using `update()`:
+
+```python
+a = {
+    "name": "Ashu",
+    "age": 20
+}
+
+b = {
+    "city": "Hisar",
+    "branch": "CSE"
+}
+
+a.update(b)
+
+print(a)
+```
+
+
+Using `|` in modern Python:
+
+```python
+a = {"name": "Ashu"}
+b = {"age": 20}
+
+c = a | b
+
+print(c)
+```
+
+The original dictionaries remain unchanged when using `|`.
+
+
+==================================================
+74. DICTIONARY MERGE WITH DUPLICATE KEYS
+==================================================
+
+```python
+a = {
+    "name": "Ashu",
+    "age": 20
+}
+
+b = {
+    "age": 21,
+    "city": "Hisar"
+}
+
+c = a | b
+
+print(c)
+```
+
+Output:
+
+```text
+{'name': 'Ashu', 'age': 21, 'city': 'Hisar'}
+```
+
+The value from the right-hand dictionary wins for duplicate keys.
+
+
+==================================================
+75. DICTIONARY COMPREHENSION PRACTICE
+==================================================
+
+Create cubes:
+
+```python
+cubes = {
+    x: x ** 3
+    for x in range(1, 6)
+}
+
+print(cubes)
+```
+
+Output:
+
+```text
+{
+    1: 1,
+    2: 8,
+    3: 27,
+    4: 64,
+    5: 125
+}
+```
+
+
+==================================================
+76. FILTER DICTIONARY
+==================================================
+
+Example:
+
+```python
+marks = {
+    "Ashu": 85,
+    "Rahul": 60,
+    "Aman": 90,
+    "Ravi": 55
+}
+
+passed = {
+    name: mark
+    for name, mark in marks.items()
+    if mark >= 60
+}
+
+print(passed)
+```
+
+Output:
+
+```text
+{'Ashu': 85, 'Rahul': 60, 'Aman': 90}
+```
+
+
+==================================================
+77. FIND STUDENT WITH HIGHEST MARKS
+==================================================
+
+```python
+marks = {
+    "Ashu": 85,
+    "Rahul": 95,
+    "Aman": 90
+}
+
+topper = max(marks, key=marks.get)
+
+print("Topper:", topper)
+print("Marks:", marks[topper])
+```
+
+Output:
+
+```text
+Topper: Rahul
+Marks: 95
+```
+
+
+==================================================
+78. FIND STUDENT WITH LOWEST MARKS
+==================================================
+
+```python
+marks = {
+    "Ashu": 85,
+    "Rahul": 95,
+    "Aman": 60
+}
+
+lowest = min(marks, key=marks.get)
+
+print("Lowest:", lowest)
+print("Marks:", marks[lowest])
+```
+
+
+==================================================
+79. NESTED DICTIONARY LOOP
+==================================================
+
+```python
+students = {
+    "student1": {
+        "name": "Ashu",
+        "age": 20
+    },
+    "student2": {
+        "name": "Rahul",
+        "age": 21
+    }
+}
+
+for student_id, data in students.items():
+    print(student_id)
+
+    for key, value in data.items():
+        print(key, value)
+```
+
+
+==================================================
+80. DICTIONARY TIME COMPLEXITY
+==================================================
+
+Python dictionaries are hash-table-based.
+
+Average-case:
+
+Access by key:
+O(1)
+
+Insert:
+O(1)
+
+Update:
+O(1)
+
+Delete:
+O(1)
+
+Membership by key:
+O(1)
+
+These are average-case complexities.
+
+Iteration:
+O(n)
+
+
+==================================================
+81. LIST VS DICTIONARY
+==================================================
+
+LIST:
+
+```python
+students = ["Ashu", "Rahul", "Aman"]
+```
+
+Access:
+
+```python
+students[0]
+```
+
+DICTIONARY:
+
+```python
+students = {
+    1: "Ashu",
+    2: "Rahul",
+    3: "Aman"
+}
+```
+
+Access:
+
+```python
+students[1]
+```
+
+Main difference:
+
+List -> access using index
+
+Dictionary -> access using key
+
+
+==================================================
+82. DICTIONARY VS SET
+==================================================
+
+Dictionary:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+```
+
+Stores:
+
+KEY : VALUE
+
+
+Set:
+
+```python
+numbers = {10, 20, 30}
+```
+
+Stores:
+
+UNIQUE VALUES
+
+
+IMPORTANT:
+
+```python
+{}
+```
+
+Empty dictionary
+
+```python
+set()
+```
+
+Empty set
+
+
+==================================================
+83. DICTIONARY VS LIST VS TUPLE VS SET
+==================================================
+
+LIST:
+
+```python
+[10, 20, 30]
+```
+
+- Ordered
+- Mutable
+- Duplicates allowed
+- Indexing available
+
+
+TUPLE:
+
+```python
+(10, 20, 30)
+```
+
+- Ordered
+- Immutable
+- Duplicates allowed
+- Indexing available
+
+
+SET:
+
+```python
+{10, 20, 30}
+```
+
+- Unique elements
+- Mutable
+- No sequence indexing
+- Mathematical operations
+
+
+DICTIONARY:
+
+```python
+{
+    "name": "Ashu",
+    "age": 20
+}
+```
+
+- Key-value pairs
+- Mutable
+- Keys unique
+- Fast average key lookup
+
+
+==================================================
+84. IMPORTANT DICTIONARY METHODS
+==================================================
+
+keys()
+values()
+items()
+get()
+update()
+pop()
+popitem()
+clear()
+copy()
+setdefault()
+fromkeys()
+
+
+==================================================
+85. IMPORTANT BUILT-IN FUNCTIONS
+==================================================
+
+len()
+dict()
+sorted()
+max()
+min()
+sum()
+
+
+==================================================
+86. COMMON DICTIONARY ERRORS
+==================================================
+
+ERROR 1:
+
+```python
+student = {
+    "name": "Ashu"
+}
+
+print(student["age"])
+```
+
+Reason:
+
+KeyError
+
+
+ERROR 2:
+
+```python
+student = {
+    ["name"]: "Ashu"
+}
+```
+
+Reason:
+
+List is unhashable and cannot be a key.
+
+
+ERROR 3:
+
+```python
+student = {
+    {"a", "b"}: "value"
+}
+```
+
+Reason:
+
+Set is unhashable.
+
+
+ERROR 4:
+
+Trying to access dictionary with an index:
+
+```python
+student = {
+    "name": "Ashu"
+}
+
+print(student[0])
+```
+
+Reason:
+
+Dictionary uses keys, not sequence indexes.
+
+
+==================================================
+87. IMPORTANT INTERVIEW QUESTIONS
+==================================================
+
+Q1. What is a dictionary?
+
+A dictionary is a mutable collection of key-value pairs.
+
+Q2. Are dictionary keys unique?
+
+Yes.
+
+Q3. Can dictionary values be duplicated?
+
+Yes.
+
+Q4. Can dictionary keys be duplicated?
+
+No. A later value replaces the earlier one.
+
+Q5. Can a list be a dictionary key?
+
+No, because a list is unhashable.
+
+Q6. Can a tuple be a dictionary key?
+
+Yes, if all its elements are hashable.
+
+Q7. How do you create an empty dictionary?
+
+```python
+{}
+```
+
+or:
+
+```python
+dict()
+```
+
+Q8. How do you access a dictionary value?
+
+```python
+data["key"]
+```
+
+or:
+
+```python
+data.get("key")
+```
+
+Q9. Difference between `[]` and `get()`?
+
+`data["key"]` raises `KeyError` if the key does not exist.
+
+`data.get("key")` returns `None` by default.
+
+Q10. What does `keys()` return?
+
+A dynamic view of dictionary keys.
+
+Q11. What does `values()` return?
+
+A dynamic view of dictionary values.
+
+Q12. What does `items()` return?
+
+A dynamic view of key-value pairs.
+
+Q13. What is dictionary comprehension?
+
+A concise way to create dictionaries.
+
+Example:
+
+```python
+{x: x*x for x in range(5)}
+```
+
+Q14. Are dictionaries ordered?
+
+Modern Python dictionaries preserve insertion order.
+
+Q15. What is `setdefault()`?
+
+It returns the value for a key and, if the key does not exist, inserts it with a default value.
+
+Q16. What is `popitem()`?
+
+It removes and returns the last inserted key-value pair.
+
+Q17. What is the average time complexity of dictionary lookup?
+
+O(1).
+
+Q18. Can a dictionary contain another dictionary?
+
+Yes.
+
+Q19. Can a dictionary value be a list?
+
+Yes.
+
+Q20. Can a dictionary key be a set?
+
+No.
+
+Q21. Can a frozenset be a dictionary key?
+
+Yes, because frozenset is hashable.
+
+
+==================================================
+88. QUICK REVISION
+==================================================
+
+Create:
+
+```python
+student = {
+    "name": "Ashu",
+    "age": 20
+}
+```
+
+Empty dictionary:
+
+```python
+data = {}
+```
+
+Empty dictionary using constructor:
+
+```python
+data = dict()
+```
+
+Access:
+
+```python
+student["name"]
+```
+
+Safe access:
+
+```python
+student.get("name")
+```
+
+Add:
+
+```python
+student["city"] = "Hisar"
+```
+
+Update:
+
+```python
+student["age"] = 21
+```
+
+Multiple update:
+
+```python
+student.update({"age": 22, "city": "Hisar"})
+```
+
+Keys:
+
+```python
+student.keys()
+```
+
+Values:
+
+```python
+student.values()
+```
+
+Items:
+
+```python
+student.items()
+```
+
+Remove:
+
+```python
+student.pop("age")
+```
+
+Remove last inserted pair:
+
+```python
+student.popitem()
+```
+
+Clear:
+
+```python
+student.clear()
+```
+
+Delete key:
+
+```python
+del student["age"]
+```
+
+Copy:
+
+```python
+new_student = student.copy()
+```
+
+Check key:
+
+```python
+"name" in student
+```
+
+Length:
+
+```python
+len(student)
+```
+
+Set default:
+
+```python
+student.setdefault("city", "Hisar")
+```
+
+Dictionary comprehension:
+
+```python
+{x: x*x for x in range(5)}
+```
+
+Merge:
+
+```python
+c = a | b
+```
+
+
+==================================================
+89. MOST IMPORTANT POINTS TO REMEMBER
+==================================================
+
+1. Dictionary stores key-value pairs.
+2. Dictionary is mutable.
+3. Keys must be unique.
+4. Values can be duplicated.
+5. Keys must be hashable.
+6. Values can be almost any Python object.
+7. Dictionary uses keys instead of numeric indexes.
+8. `data["key"]` accesses a value.
+9. `get()` provides safer access.
+10. `keys()` returns keys.
+11. `values()` returns values.
+12. `items()` returns key-value pairs.
+13. `update()` adds or updates multiple pairs.
+14. `pop()` removes a specified key.
+15. `popitem()` removes the last inserted pair.
+16. `clear()` removes all pairs.
+17. `setdefault()` gets or creates a key.
+18. Dictionary supports nested dictionaries.
+19. Dictionary supports dictionary comprehension.
+20. Modern Python dictionaries preserve insertion order.
+21. Dictionary lookup is average O(1).
+22. Lists cannot be dictionary keys.
+23. Sets cannot be dictionary keys.
+24. Tuples can be keys if they are hashable.
+25. Frozensets can be dictionary keys.
+26. `{}` is an empty dictionary.
+27. `set()` is an empty set.
+28. `in` checks dictionary keys by default.
+29. `max(dictionary, key=dictionary.get)` can find the key with the highest value.
+30. Dictionaries are heavily used in JSON, APIs, databases, configuration, and real-world Python applications.
+
+
+==================================================
+90. ONE-LINE EXAM DEFINITION
+==================================================
+
+A dictionary in Python is a mutable collection of unique, hashable keys mapped to values, stored as key-value pairs.
+
+
+==================================================
+END OF PYTHON DICTIONARY NOTES
+==================================================
