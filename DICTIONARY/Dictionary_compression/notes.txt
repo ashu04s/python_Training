@@ -1,0 +1,1074 @@
+# PYTHON DICTIONARY COMPREHENSION - SHORT TO ADVANCED NOTES
+# DIRECT COPY AND PASTE FOR TXT FILE
+
+==================================================
+1. WHAT IS DICTIONARY COMPREHENSION?
+==================================================
+
+Dictionary comprehension is a short way to create a dictionary using a single line of code.
+
+It is similar to list comprehension, but it creates a dictionary using:
+
+KEY : VALUE
+
+
+==================================================
+2. BASIC SYNTAX
+==================================================
+
+Syntax:
+
+{key: value for item in iterable}
+
+
+Example:
+
+numbers = [1, 2, 3, 4, 5]
+
+square = {x: x * x for x in numbers}
+
+print(square)
+
+Output:
+
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+
+==================================================
+3. NORMAL FOR LOOP VS DICTIONARY COMPREHENSION
+==================================================
+
+Normal loop:
+
+square = {}
+
+for x in range(1, 6):
+    square[x] = x * x
+
+print(square)
+
+
+Dictionary comprehension:
+
+square = {x: x * x for x in range(1, 6)}
+
+print(square)
+
+
+Both produce:
+
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+
+==================================================
+4. BASIC EXAMPLE
+==================================================
+
+numbers = [1, 2, 3, 4]
+
+result = {x: x for x in numbers}
+
+print(result)
+
+Output:
+
+{1: 1, 2: 2, 3: 3, 4: 4}
+
+
+==================================================
+5. SQUARE USING DICTIONARY COMPREHENSION
+==================================================
+
+result = {x: x * x for x in range(1, 6)}
+
+print(result)
+
+Output:
+
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+
+==================================================
+6. CUBE USING DICTIONARY COMPREHENSION
+==================================================
+
+result = {x: x ** 3 for x in range(1, 6)}
+
+print(result)
+
+Output:
+
+{1: 1, 2: 8, 3: 27, 4: 64, 5: 125}
+
+
+==================================================
+7. EVEN NUMBERS
+==================================================
+
+result = {
+    x: x * x
+    for x in range(1, 11)
+    if x % 2 == 0
+}
+
+print(result)
+
+Output:
+
+{2: 4, 4: 16, 6: 36, 8: 64, 10: 100}
+
+
+==================================================
+8. ODD NUMBERS
+==================================================
+
+result = {
+    x: x * x
+    for x in range(1, 11)
+    if x % 2 != 0
+}
+
+print(result)
+
+Output:
+
+{1: 1, 3: 9, 5: 25, 7: 49, 9: 81}
+
+
+==================================================
+9. DICTIONARY FROM TWO LISTS
+==================================================
+
+names = ["Ashu", "Rahul", "Aman"]
+marks = [90, 80, 85]
+
+result = {
+    name: mark
+    for name, mark in zip(names, marks)
+}
+
+print(result)
+
+Output:
+
+{'Ashu': 90, 'Rahul': 80, 'Aman': 85}
+
+
+==================================================
+10. DICTIONARY FROM TWO LISTS USING ZIP()
+==================================================
+
+keys = ["name", "age", "city"]
+values = ["Ashu", 20, "Hisar"]
+
+result = {
+    key: value
+    for key, value in zip(keys, values)
+}
+
+print(result)
+
+Output:
+
+{
+    'name': 'Ashu',
+    'age': 20,
+    'city': 'Hisar'
+}
+
+
+==================================================
+11. STRING DICTIONARY COMPREHENSION
+==================================================
+
+names = ["Ashu", "Rahul", "Aman"]
+
+result = {
+    name: len(name)
+    for name in names
+}
+
+print(result)
+
+Output:
+
+{
+    'Ashu': 4,
+    'Rahul': 5,
+    'Aman': 4
+}
+
+
+==================================================
+12. CONVERT WORDS TO UPPERCASE
+==================================================
+
+names = ["ashu", "rahul", "aman"]
+
+result = {
+    name: name.upper()
+    for name in names
+}
+
+print(result)
+
+Output:
+
+{
+    'ashu': 'ASHU',
+    'rahul': 'RAHUL',
+    'aman': 'AMAN'
+}
+
+
+==================================================
+13. IF CONDITION
+==================================================
+
+Syntax:
+
+{key: value for item in iterable if condition}
+
+
+Example:
+
+numbers = range(1, 11)
+
+result = {
+    x: x * x
+    for x in numbers
+    if x % 2 == 0
+}
+
+print(result)
+
+
+==================================================
+14. IF-ELSE IN DICTIONARY COMPREHENSION
+==================================================
+
+Syntax:
+
+{key: value_if_true if condition else value_if_false for item in iterable}
+
+
+Example:
+
+numbers = range(1, 6)
+
+result = {
+    x: "Even" if x % 2 == 0 else "Odd"
+    for x in numbers
+}
+
+print(result)
+
+Output:
+
+{
+    1: 'Odd',
+    2: 'Even',
+    3: 'Odd',
+    4: 'Even',
+    5: 'Odd'
+}
+
+
+==================================================
+15. FILTER MARKS
+==================================================
+
+students = {
+    "Ashu": 85,
+    "Rahul": 55,
+    "Aman": 90,
+    "Ravi": 45
+}
+
+passed = {
+    name: marks
+    for name, marks in students.items()
+    if marks >= 60
+}
+
+print(passed)
+
+Output:
+
+{
+    'Ashu': 85,
+    'Aman': 90
+}
+
+
+==================================================
+16. MODIFY EXISTING DICTIONARY
+==================================================
+
+students = {
+    "Ashu": 80,
+    "Rahul": 70,
+    "Aman": 90
+}
+
+updated = {
+    name: marks + 5
+    for name, marks in students.items()
+}
+
+print(updated)
+
+Output:
+
+{
+    'Ashu': 85,
+    'Rahul': 75,
+    'Aman': 95
+}
+
+
+==================================================
+17. CONVERT VALUES TO SQUARE
+==================================================
+
+numbers = {
+    1: 10,
+    2: 20,
+    3: 30
+}
+
+result = {
+    key: value * value
+    for key, value in numbers.items()
+}
+
+print(result)
+
+Output:
+
+{
+    1: 100,
+    2: 400,
+    3: 900
+}
+
+
+==================================================
+18. SWAP KEY AND VALUE
+==================================================
+
+data = {
+    "a": 1,
+    "b": 2,
+    "c": 3
+}
+
+result = {
+    value: key
+    for key, value in data.items()
+}
+
+print(result)
+
+Output:
+
+{
+    1: 'a',
+    2: 'b',
+    3: 'c'
+}
+
+
+IMPORTANT:
+
+Values should be unique if you want to preserve all original entries.
+
+
+==================================================
+19. FILTER DICTIONARY BY VALUE
+==================================================
+
+marks = {
+    "Ashu": 85,
+    "Rahul": 55,
+    "Aman": 90
+}
+
+result = {
+    name: marks
+    for name, marks in marks.items()
+    if marks > 60
+}
+
+print(result)
+
+
+==================================================
+20. FILTER DICTIONARY BY KEY
+==================================================
+
+data = {
+    "apple": 100,
+    "banana": 50,
+    "apricot": 80,
+    "mango": 70
+}
+
+result = {
+    key: value
+    for key, value in data.items()
+    if key.startswith("a")
+}
+
+print(result)
+
+Output:
+
+{
+    'apple': 100,
+    'apricot': 80
+}
+
+
+==================================================
+21. DICTIONARY COMPREHENSION WITH STRING
+==================================================
+
+word = "PYTHON"
+
+result = {
+    char: ord(char)
+    for char in word
+}
+
+print(result)
+
+Output:
+
+{
+    'P': 80,
+    'Y': 89,
+    'T': 84,
+    'H': 72,
+    'O': 79,
+    'N': 78
+}
+
+
+==================================================
+22. CHARACTER FREQUENCY
+==================================================
+
+text = "hello"
+
+result = {
+    char: text.count(char)
+    for char in set(text)
+}
+
+print(result)
+
+
+IMPORTANT:
+
+Using set removes duplicate characters before creating the dictionary.
+
+
+==================================================
+23. COUNT WORDS
+==================================================
+
+words = ["apple", "banana", "apple", "mango", "banana"]
+
+result = {
+    word: words.count(word)
+    for word in set(words)
+}
+
+print(result)
+
+
+Output:
+
+{
+    'apple': 2,
+    'banana': 2,
+    'mango': 1
+}
+
+
+==================================================
+24. NESTED DICTIONARY COMPREHENSION
+==================================================
+
+Dictionary comprehension can create nested dictionaries.
+
+Example:
+
+result = {
+    x: {
+        y: x * y
+        for y in range(1, 4)
+    }
+    for x in range(1, 4)
+}
+
+print(result)
+
+
+Output:
+
+{
+    1: {1: 1, 2: 2, 3: 3},
+    2: {1: 2, 2: 4, 3: 6},
+    3: {1: 3, 2: 6, 3: 9}
+}
+
+
+==================================================
+25. 2D DICTIONARY USING COMPREHENSION
+==================================================
+
+students = ["Ashu", "Rahul", "Aman"]
+
+result = {
+    student: {
+        "marks": 0,
+        "grade": "Not Assigned"
+    }
+    for student in students
+}
+
+print(result)
+
+
+Output:
+
+{
+    'Ashu': {'marks': 0, 'grade': 'Not Assigned'},
+    'Rahul': {'marks': 0, 'grade': 'Not Assigned'},
+    'Aman': {'marks': 0, 'grade': 'Not Assigned'}
+}
+
+
+==================================================
+26. 3D DICTIONARY USING COMPREHENSION
+==================================================
+
+branches = ["CSE", "ECE"]
+
+students = ["Ashu", "Rahul"]
+
+result = {
+    branch: {
+        student: {
+            "marks": 0
+        }
+        for student in students
+    }
+    for branch in branches
+}
+
+print(result)
+
+
+Structure:
+
+branch
+   |
+   student
+       |
+       marks
+
+
+==================================================
+27. DICTIONARY COMPREHENSION WITH RANGE()
+==================================================
+
+result = {
+    x: x * 10
+    for x in range(1, 6)
+}
+
+print(result)
+
+Output:
+
+{
+    1: 10,
+    2: 20,
+    3: 30,
+    4: 40,
+    5: 50
+}
+
+
+==================================================
+28. DICTIONARY COMPREHENSION WITH ENUMERATE()
+==================================================
+
+names = ["Ashu", "Rahul", "Aman"]
+
+result = {
+    index: name
+    for index, name in enumerate(names)
+}
+
+print(result)
+
+Output:
+
+{
+    0: 'Ashu',
+    1: 'Rahul',
+    2: 'Aman'
+}
+
+
+==================================================
+29. DICTIONARY COMPREHENSION WITH ZIP()
+==================================================
+
+names = ["Ashu", "Rahul", "Aman"]
+marks = [90, 80, 85]
+
+result = {
+    name: marks
+    for name, marks in zip(names, marks)
+}
+
+print(result)
+
+
+==================================================
+30. MULTIPLE CONDITIONS
+==================================================
+
+numbers = range(1, 21)
+
+result = {
+    x: x * x
+    for x in numbers
+    if x % 2 == 0
+    if x % 3 == 0
+}
+
+print(result)
+
+Output:
+
+{
+    6: 36,
+    12: 144,
+    18: 324
+}
+
+
+==================================================
+31. AND CONDITION
+==================================================
+
+result = {
+    x: x * x
+    for x in range(1, 21)
+    if x % 2 == 0 and x % 3 == 0
+}
+
+print(result)
+
+
+==================================================
+32. OR CONDITION
+==================================================
+
+result = {
+    x: x * x
+    for x in range(1, 11)
+    if x == 2 or x == 7
+}
+
+print(result)
+
+Output:
+
+{
+    2: 4,
+    7: 49
+}
+
+
+==================================================
+33. DICTIONARY COMPREHENSION FROM LIST
+==================================================
+
+numbers = [1, 2, 3, 4, 5]
+
+result = {
+    x: x * 2
+    for x in numbers
+}
+
+print(result)
+
+Output:
+
+{
+    1: 2,
+    2: 4,
+    3: 6,
+    4: 8,
+    5: 10
+}
+
+
+==================================================
+34. DICTIONARY COMPREHENSION FROM TUPLE
+==================================================
+
+numbers = (1, 2, 3, 4)
+
+result = {
+    x: x * x
+    for x in numbers
+}
+
+print(result)
+
+
+==================================================
+35. DICTIONARY COMPREHENSION FROM SET
+==================================================
+
+numbers = {1, 2, 3, 4}
+
+result = {
+    x: x * x
+    for x in numbers
+}
+
+print(result)
+
+
+==================================================
+36. SORT DICTIONARY USING COMPREHENSION
+==================================================
+
+data = {
+    "c": 30,
+    "a": 10,
+    "b": 20
+}
+
+result = {
+    key: value
+    for key, value in sorted(data.items())
+}
+
+print(result)
+
+Output:
+
+{
+    'a': 10,
+    'b': 20,
+    'c': 30
+}
+
+
+==================================================
+37. REVERSE A DICTIONARY
+==================================================
+
+data = {
+    "a": 1,
+    "b": 2,
+    "c": 3
+}
+
+result = {
+    value: key
+    for key, value in data.items()
+}
+
+print(result)
+
+
+==================================================
+38. PRACTICAL EXAMPLE - GRADES
+==================================================
+
+marks = {
+    "Ashu": 85,
+    "Rahul": 72,
+    "Aman": 45,
+    "Ravi": 30
+}
+
+grades = {
+    name: "A" if mark >= 80
+    else "B" if mark >= 60
+    else "C" if mark >= 40
+    else "F"
+    for name, mark in marks.items()
+}
+
+print(grades)
+
+
+Output:
+
+{
+    'Ashu': 'A',
+    'Rahul': 'B',
+    'Aman': 'C',
+    'Ravi': 'F'
+}
+
+
+==================================================
+39. PRACTICAL EXAMPLE - PASS/FAIL
+==================================================
+
+marks = {
+    "Ashu": 85,
+    "Rahul": 55,
+    "Aman": 90
+}
+
+result = {
+    name: "Pass" if mark >= 40 else "Fail"
+    for name, mark in marks.items()
+}
+
+print(result)
+
+
+==================================================
+40. PRACTICAL EXAMPLE - EVEN/ODD
+==================================================
+
+numbers = range(1, 11)
+
+result = {
+    x: "Even" if x % 2 == 0 else "Odd"
+    for x in numbers
+}
+
+print(result)
+
+
+==================================================
+41. DICTIONARY COMPREHENSION VS LIST COMPREHENSION
+==================================================
+
+LIST COMPREHENSION:
+
+[x * x for x in range(5)]
+
+Output:
+
+[0, 1, 4, 9, 16]
+
+
+DICTIONARY COMPREHENSION:
+
+{x: x * x for x in range(5)}
+
+Output:
+
+{
+    0: 0,
+    1: 1,
+    2: 4,
+    3: 9,
+    4: 16
+}
+
+
+Difference:
+
+List -> [ ]
+
+Dictionary -> {key: value}
+
+
+==================================================
+42. NORMAL LOOP VS DICTIONARY COMPREHENSION
+==================================================
+
+Normal:
+
+result = {}
+
+for x in range(1, 6):
+    result[x] = x * x
+
+
+Comprehension:
+
+result = {
+    x: x * x
+    for x in range(1, 6)
+}
+
+
+==================================================
+43. IMPORTANT SYNTAX
+==================================================
+
+Basic:
+
+{key: value for item in iterable}
+
+
+With condition:
+
+{key: value for item in iterable if condition}
+
+
+With if-else:
+
+{
+    key: value_if_true if condition else value_if_false
+    for item in iterable
+}
+
+
+With dictionary:
+
+{
+    key: value
+    for key, value in dictionary.items()
+}
+
+
+==================================================
+44. COMMON MISTAKE
+==================================================
+
+Wrong:
+
+[x for x in range(5)]
+
+This creates a LIST.
+
+
+Correct dictionary comprehension:
+
+{x: x for x in range(5)}
+
+
+Remember:
+
+LIST:
+
+[expression for item in iterable]
+
+
+DICTIONARY:
+
+{key: value for item in iterable}
+
+
+==================================================
+45. IMPORTANT RULE
+==================================================
+
+Dictionary comprehension must create:
+
+KEY : VALUE
+
+
+Example:
+
+{x: x * 2 for x in range(5)}
+
+Here:
+
+Key = x
+
+Value = x * 2
+
+
+==================================================
+46. QUICK REVISION
+==================================================
+
+Basic:
+
+{x: x for x in range(5)}
+
+
+Square:
+
+{x: x * x for x in range(1, 6)}
+
+
+Cube:
+
+{x: x ** 3 for x in range(1, 6)}
+
+
+Even:
+
+{x: x * x for x in range(1, 11) if x % 2 == 0}
+
+
+Odd:
+
+{x: x * x for x in range(1, 11) if x % 2 != 0}
+
+
+If-else:
+
+{x: "Even" if x % 2 == 0 else "Odd" for x in range(1, 6)}
+
+
+From two lists:
+
+{name: mark for name, mark in zip(names, marks)}
+
+
+From dictionary:
+
+{key: value for key, value in data.items()}
+
+
+Filter dictionary:
+
+{key: value for key, value in data.items() if value > 50}
+
+
+Swap:
+
+{value: key for key, value in data.items()}
+
+
+==================================================
+47. IMPORTANT POINTS
+==================================================
+
+1. Dictionary comprehension creates a dictionary.
+2. It uses { }.
+3. It must have key:value.
+4. It is shorter than a normal for loop.
+5. It can contain conditions.
+6. It can contain if-else.
+7. It can use zip().
+8. It can use enumerate().
+9. It can create nested dictionaries.
+10. It can work with lists, tuples, sets and dictionaries.
+11. Duplicate keys are overwritten.
+12. Very complex comprehensions should be avoided for readability.
+
+
+==================================================
+48. ONE-LINE DEFINITION
+==================================================
+
+Dictionary comprehension is a concise way to create a dictionary by generating key-value pairs from an iterable, optionally using conditions.
+
+
+==================================================
+END OF DICTIONARY COMPREHENSION NOTES
+==================================================

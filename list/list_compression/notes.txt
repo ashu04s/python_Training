@@ -1,0 +1,1355 @@
+# PYTHON LIST COMPREHENSION NOTES
+# BASIC TO ADVANCED
+
+==================================================
+1. WHAT IS LIST COMPREHENSION?
+==================================================
+
+List comprehension is a short and simple way to create a list using a single line of code.
+
+Instead of writing multiple lines using a for loop, we can create a list in a compact way.
+
+Advances:
+1.require fewer lines of code
+2. more time and space effecient
+
+Normal approach:
+
+numbers = []
+
+for i in range(1, 6):
+    numbers.append(i)
+
+print(numbers)
+
+Output:
+[1, 2, 3, 4, 5]
+
+
+Using list comprehension:
+
+numbers = [i for i in range(1, 6)]
+
+print(numbers)
+
+Output:
+[1, 2, 3, 4, 5]
+
+
+==================================================
+2. BASIC SYNTAX
+==================================================
+
+Syntax:
+
+[expression for item in iterable]
+
+Example:
+
+numbers = [i for i in range(1, 6)]
+
+Here:
+
+i          -> item
+range()    -> iterable
+i          -> expression
+
+
+Structure:
+
+[ expression for item in iterable ]
+
+
+==================================================
+3. SIMPLE EXAMPLE
+==================================================
+
+numbers = [i for i in range(1, 6)]
+
+print(numbers)
+
+Output:
+
+[1, 2, 3, 4, 5]
+
+
+==================================================
+4. LIST COMPREHENSION VS NORMAL FOR LOOP
+==================================================
+
+Normal for loop:
+
+numbers = []
+
+for i in range(1, 6):
+    numbers.append(i)
+
+print(numbers)
+
+
+List comprehension:
+
+numbers = [i for i in range(1, 6)]
+
+print(numbers)
+
+Both produce:
+
+[1, 2, 3, 4, 5]
+
+
+==================================================
+5. SQUARE OF NUMBERS
+==================================================
+
+squares = [i * i for i in range(1, 6)]
+
+print(squares)
+
+Output:
+
+[1, 4, 9, 16, 25]
+
+
+==================================================
+6. CUBE OF NUMBERS
+==================================================
+
+cubes = [i ** 3 for i in range(1, 6)]
+
+print(cubes)
+
+Output:
+
+[1, 8, 27, 64, 125]
+
+
+==================================================
+7. EVEN NUMBERS
+==================================================
+
+Syntax:
+
+[expression for item in iterable if condition]
+
+Example:
+
+even = [i for i in range(1, 11) if i % 2 == 0]
+
+print(even)
+
+Output:
+
+[2, 4, 6, 8, 10]
+
+
+==================================================
+8. ODD NUMBERS
+==================================================
+
+odd = [i for i in range(1, 11) if i % 2 != 0]
+
+print(odd)
+
+Output:
+
+[1, 3, 5, 7, 9]
+
+
+==================================================
+9. NUMBERS DIVISIBLE BY 5
+==================================================
+
+numbers = [i for i in range(1, 51) if i % 5 == 0]
+
+print(numbers)
+
+Output:
+
+[5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+
+
+==================================================
+10. POSITIVE NUMBERS
+==================================================
+
+numbers = [-5, -2, 0, 3, 7, -1, 8]
+
+positive = [i for i in numbers if i > 0]
+
+print(positive)
+
+Output:
+
+[3, 7, 8]
+
+
+==================================================
+11. NEGATIVE NUMBERS
+==================================================
+
+numbers = [-5, -2, 0, 3, 7, -1, 8]
+
+negative = [i for i in numbers if i < 0]
+
+print(negative)
+
+Output:
+
+[-5, -2, -1]
+
+
+==================================================
+12. EVEN SQUARES
+==================================================
+
+result = [i * i for i in range(1, 11) if i % 2 == 0]
+
+print(result)
+
+Output:
+
+[4, 16, 36, 64, 100]
+
+
+==================================================
+13. STRING LIST
+==================================================
+
+names = ["Ashu", "Rahul", "Aman"]
+
+result = [name for name in names]
+
+print(result)
+
+
+==================================================
+14. CONVERT STRINGS TO UPPERCASE
+==================================================
+
+names = ["ashu", "rahul", "aman"]
+
+result = [name.upper() for name in names]
+
+print(result)
+
+Output:
+
+['ASHU', 'RAHUL', 'AMAN']
+
+
+==================================================
+15. CONVERT STRINGS TO LOWERCASE
+==================================================
+
+names = ["ASHU", "RAHUL", "AMAN"]
+
+result = [name.lower() for name in names]
+
+print(result)
+
+
+==================================================
+16. LENGTH OF EACH STRING
+==================================================
+
+names = ["Ashu", "Rahul", "Aman"]
+
+lengths = [len(name) for name in names]
+
+print(lengths)
+
+Output:
+
+[4, 5, 4]
+
+
+==================================================
+17. FILTER STRINGS
+==================================================
+
+Get names whose length is greater than 4:
+
+names = ["Ashu", "Rahul", "Aman", "Rohan"]
+
+result = [name for name in names if len(name) > 4]
+
+print(result)
+
+Output:
+
+['Rahul', 'Rohan']
+
+
+==================================================
+18. IF-ELSE IN LIST COMPREHENSION
+==================================================
+
+Syntax:
+
+[expression_if_true if condition else expression_if_false for item in iterable]
+
+Example:
+
+result = [
+    "Even" if i % 2 == 0 else "Odd"
+    for i in range(1, 6)
+]
+
+print(result)
+
+Output:
+
+['Odd', 'Even', 'Odd', 'Even', 'Odd']
+
+
+==================================================
+19. IF ONLY VS IF-ELSE
+==================================================
+
+IF ONLY:
+
+[i for i in range(1, 11) if i % 2 == 0]
+
+Here the if condition comes AFTER the for loop.
+
+
+IF-ELSE:
+
+["Even" if i % 2 == 0 else "Odd" for i in range(1, 11)]
+
+Here if-else comes BEFORE the for loop.
+
+
+==================================================
+20. REPLACE NEGATIVE NUMBERS WITH ZERO
+==================================================
+
+numbers = [-5, 10, -3, 20, -1]
+
+result = [0 if i < 0 else i for i in numbers]
+
+print(result)
+
+Output:
+
+[0, 10, 0, 20, 0]
+
+
+==================================================
+21. FIND EVEN AND ODD
+==================================================
+
+numbers = [1, 2, 3, 4, 5, 6]
+
+result = [
+    "Even" if i % 2 == 0 else "Odd"
+    for i in numbers
+]
+
+print(result)
+
+Output:
+
+['Odd', 'Even', 'Odd', 'Even', 'Odd', 'Even']
+
+
+==================================================
+22. MULTIPLE CONDITIONS
+==================================================
+
+Find numbers divisible by both 2 and 3:
+
+result = [
+    i
+    for i in range(1, 31)
+    if i % 2 == 0 and i % 3 == 0
+]
+
+print(result)
+
+Output:
+
+[6, 12, 18, 24, 30]
+
+
+==================================================
+23. USING OR CONDITION
+==================================================
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+
+result = [
+    i
+    for i in numbers
+    if i == 2 or i == 7
+]
+
+print(result)
+
+Output:
+
+[2, 7]
+
+
+==================================================
+24. LIST COMPREHENSION WITH STRING
+==================================================
+
+name = "Ashu"
+
+result = [char.upper() for char in name]
+
+print(result)
+
+Output:
+
+['A', 'S', 'H', 'U']
+
+
+==================================================
+25. FILTER CHARACTERS FROM STRING
+==================================================
+
+Get vowels:
+
+text = "programming"
+
+vowels = [
+    char
+    for char in text
+    if char in "aeiou"
+]
+
+print(vowels)
+
+
+==================================================
+26. REMOVE SPACES FROM STRING
+==================================================
+
+text = "hello world python"
+
+result = [char for char in text if char != " "]
+
+print(result)
+
+
+==================================================
+27. LIST COMPREHENSION WITH FUNCTIONS
+==================================================
+
+def square(x):
+    return x * x
+
+result = [square(i) for i in range(1, 6)]
+
+print(result)
+
+Output:
+
+[1, 4, 9, 16, 25]
+
+
+==================================================
+28. NESTED LIST COMPREHENSION
+==================================================
+
+Nested list comprehension is used with nested loops.
+
+Normal loop:
+
+result = []
+
+for i in range(1, 4):
+    for j in range(1, 4):
+        result.append((i, j))
+
+print(result)
+
+
+Using list comprehension:
+
+result = [
+    (i, j)
+    for i in range(1, 4)
+    for j in range(1, 4)
+]
+
+print(result)
+
+Output:
+
+[(1, 1), (1, 2), (1, 3),
+ (2, 1), (2, 2), (2, 3),
+ (3, 1), (3, 2), (3, 3)]
+
+
+==================================================
+29. NESTED LOOPS ORDER
+==================================================
+
+This:
+
+result = [
+    (i, j)
+    for i in range(1, 4)
+    for j in range(1, 4)
+]
+
+is equivalent to:
+
+result = []
+
+for i in range(1, 4):
+    for j in range(1, 4):
+        result.append((i, j))
+
+Remember:
+
+OUTER LOOP comes first.
+INNER LOOP comes second.
+
+
+==================================================
+30. MULTIPLICATION TABLE
+==================================================
+
+table = [5 * i for i in range(1, 11)]
+
+print(table)
+
+Output:
+
+[5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+
+
+==================================================
+31. 2D LIST USING LIST COMPREHENSION
+==================================================
+
+matrix = [
+    [0, 0, 0]
+    for i in range(3)
+]
+
+print(matrix)
+
+Output:
+
+[
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+]
+
+
+==================================================
+32. 3 X 3 MATRIX
+==================================================
+
+matrix = [
+    [i for i in range(1, 4)]
+    for j in range(3)
+]
+
+print(matrix)
+
+Output:
+
+[
+    [1, 2, 3],
+    [1, 2, 3],
+    [1, 2, 3]
+]
+
+
+==================================================
+33. IDENTITY MATRIX
+==================================================
+
+matrix = [
+    [1 if i == j else 0 for j in range(3)]
+    for i in range(3)
+]
+
+print(matrix)
+
+Output:
+
+[
+    [1, 0, 0],
+    [0, 1, 0],
+    [0, 0, 1]
+]
+
+
+==================================================
+34. FLATTEN A 2D LIST
+==================================================
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+result = [
+    value
+    for row in matrix
+    for value in row
+]
+
+print(result)
+
+Output:
+
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+==================================================
+35. FILTER VALUES FROM 2D LIST
+==================================================
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+even = [
+    value
+    for row in matrix
+    for value in row
+    if value % 2 == 0
+]
+
+print(even)
+
+Output:
+
+[2, 4, 6, 8]
+
+
+==================================================
+36. TRANSPOSE A MATRIX
+==================================================
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6]
+]
+
+transpose = [
+    [row[i] for row in matrix]
+    for i in range(len(matrix[0]))
+]
+
+print(transpose)
+
+Output:
+
+[
+    [1, 4],
+    [2, 5],
+    [3, 6]
+]
+
+
+==================================================
+37. LIST COMPREHENSION WITH ZIP()
+==================================================
+
+names = ["Ashu", "Rahul", "Aman"]
+marks = [90, 80, 85]
+
+result = [
+    (name, mark)
+    for name, mark in zip(names, marks)
+]
+
+print(result)
+
+Output:
+
+[('Ashu', 90), ('Rahul', 80), ('Aman', 85)]
+
+
+==================================================
+38. LIST COMPREHENSION WITH ENUMERATE()
+==================================================
+
+names = ["Ashu", "Rahul", "Aman"]
+
+result = [
+    (index, name)
+    for index, name in enumerate(names)
+]
+
+print(result)
+
+Output:
+
+[(0, 'Ashu'), (1, 'Rahul'), (2, 'Aman')]
+
+
+==================================================
+39. LIST COMPREHENSION WITH DICTIONARY
+==================================================
+
+student = {
+    "name": "Ashu",
+    "age": 20,
+    "marks": 90
+}
+
+Get all values:
+
+result = [
+    value
+    for value in student.values()
+]
+
+print(result)
+
+Output:
+
+['Ashu', 20, 90]
+
+
+Get all keys:
+
+result = [
+    key
+    for key in student
+]
+
+print(result)
+
+
+==================================================
+40. FILTER DICTIONARY DATA
+==================================================
+
+marks = {
+    "Ashu": 85,
+    "Rahul": 55,
+    "Aman": 90
+}
+
+passed = [
+    name
+    for name, mark in marks.items()
+    if mark >= 60
+]
+
+print(passed)
+
+Output:
+
+['Ashu', 'Aman']
+
+
+==================================================
+41. LIST COMPREHENSION WITH SET
+==================================================
+
+numbers = {1, 2, 3, 4, 5}
+
+result = [
+    x * x
+    for x in numbers
+]
+
+print(result)
+
+
+==================================================
+42. LIST COMPREHENSION WITH TUPLE
+==================================================
+
+numbers = (1, 2, 3, 4, 5)
+
+result = [x * 2 for x in numbers]
+
+print(result)
+
+Output:
+
+[2, 4, 6, 8, 10]
+
+
+==================================================
+43. MULTIPLE IF CONDITIONS
+==================================================
+
+numbers = range(1, 51)
+
+result = [
+    x
+    for x in numbers
+    if x % 2 == 0
+    if x % 3 == 0
+]
+
+print(result)
+
+This is equivalent to:
+
+result = [
+    x
+    for x in numbers
+    if x % 2 == 0 and x % 3 == 0
+]
+
+
+==================================================
+44. STRING METHODS
+==================================================
+
+names = ["ashu", "rahul", "aman"]
+
+result = [
+    name.capitalize()
+    for name in names
+]
+
+print(result)
+
+Output:
+
+['Ashu', 'Rahul', 'Aman']
+
+
+==================================================
+45. FILTER WORDS STARTING WITH A
+==================================================
+
+names = ["Ashu", "Rahul", "Aman", "Ravi"]
+
+result = [
+    name
+    for name in names
+    if name.startswith("A")
+]
+
+print(result)
+
+Output:
+
+['Ashu', 'Aman']
+
+
+==================================================
+46. FILTER WORDS CONTAINING A
+==================================================
+
+names = ["Ashu", "Rahul", "Aman", "Ravi"]
+
+result = [
+    name
+    for name in names
+    if "a" in name.lower()
+]
+
+print(result)
+
+
+==================================================
+47. LIST COMPREHENSION WITH RANGE()
+==================================================
+
+numbers = [x for x in range(10)]
+
+print(numbers)
+
+Output:
+
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+With step:
+
+numbers = [x for x in range(0, 11, 2)]
+
+print(numbers)
+
+Output:
+
+[0, 2, 4, 6, 8, 10]
+
+
+==================================================
+48. NESTED LIST COMPREHENSION
+==================================================
+
+result = [
+    x * y
+    for x in range(1, 4)
+    for y in range(1, 4)
+]
+
+print(result)
+
+Output:
+
+[1, 2, 3, 2, 4, 6, 3, 6, 9]
+
+
+==================================================
+49. MULTIPLE CONDITIONS WITH IF-ELSE
+==================================================
+
+result = [
+    "Even" if x % 2 == 0 else "Odd"
+    for x in range(1, 11)
+    if x != 5
+]
+
+print(result)
+
+Here:
+
+if-else -> decides the output
+
+if x != 5 -> filters the input
+
+
+==================================================
+50. LIST COMPREHENSION WITH FUNCTION CALL
+==================================================
+
+def double(x):
+    return x * 2
+
+result = [double(x) for x in range(1, 6)]
+
+print(result)
+
+Output:
+
+[2, 4, 6, 8, 10]
+
+
+==================================================
+51. COMMON MISTAKE - WRONG SYNTAX
+==================================================
+
+Wrong:
+
+[i for i in range(10) i % 2 == 0]
+
+Correct:
+
+[i for i in range(10) if i % 2 == 0]
+
+
+==================================================
+52. COMMON MISTAKE - IF ELSE POSITION
+==================================================
+
+Wrong:
+
+[i for i in range(10) if i % 2 == 0 else 0]
+
+Correct:
+
+[i if i % 2 == 0 else 0 for i in range(10)]
+
+
+==================================================
+53. LIST COMPREHENSION WITH SIDE EFFECTS
+==================================================
+
+Do NOT normally use list comprehension only for printing or modifying something.
+
+Not recommended:
+
+[print(x) for x in numbers]
+
+Use a normal loop:
+
+for x in numbers:
+    print(x)
+
+List comprehension should primarily be used to CREATE A LIST.
+
+
+==================================================
+54. LIST COMPREHENSION VS FOR LOOP
+==================================================
+
+FOR LOOP:
+
+result = []
+
+for x in range(1, 6):
+    result.append(x * 2)
+
+
+LIST COMPREHENSION:
+
+result = [x * 2 for x in range(1, 6)]
+
+
+List comprehension is useful when:
+
+- Logic is simple
+- We are creating a list
+- We want to transform data
+- We want to filter data
+
+
+Normal for loop is better when:
+
+- Logic is complicated
+- Multiple statements are needed
+- Code needs detailed debugging
+- Side effects are involved
+
+
+==================================================
+55. LIST COMPREHENSION VS GENERATOR EXPRESSION
+==================================================
+
+List comprehension:
+
+[x * x for x in range(5)]
+
+Creates a list immediately.
+
+
+Generator expression:
+
+(x * x for x in range(5))
+
+Creates a generator.
+
+List comprehension:
+
+- Uses []
+- Creates complete list
+- Uses more memory
+
+
+Generator:
+
+- Uses ()
+- Produces values lazily
+- Can save memory for large sequences
+
+
+==================================================
+56. PRACTICAL PROGRAM - SQUARES OF EVEN NUMBERS
+==================================================
+
+numbers = range(1, 11)
+
+result = [
+    x * x
+    for x in numbers
+    if x % 2 == 0
+]
+
+print(result)
+
+Output:
+
+[4, 16, 36, 64, 100]
+
+
+==================================================
+57. PRACTICAL PROGRAM - WORD LENGTH
+==================================================
+
+words = ["Python", "Java", "React", "SQL"]
+
+result = [len(word) for word in words]
+
+print(result)
+
+Output:
+
+[6, 4, 5, 3]
+
+
+==================================================
+58. PRACTICAL PROGRAM - FIND VOWELS
+==================================================
+
+text = "programming"
+
+result = [
+    char
+    for char in text
+    if char.lower() in "aeiou"
+]
+
+print(result)
+
+
+==================================================
+59. PRACTICAL PROGRAM - FILTER MARKS
+==================================================
+
+marks = [35, 80, 45, 90, 30, 75]
+
+passed = [
+    mark
+    for mark in marks
+    if mark >= 40
+]
+
+print(passed)
+
+Output:
+
+[80, 45, 90, 75]
+
+
+==================================================
+60. PRACTICAL PROGRAM - PASS/FAIL
+==================================================
+
+marks = [35, 80, 45, 90, 30, 75]
+
+result = [
+    "Pass" if mark >= 40 else "Fail"
+    for mark in marks
+]
+
+print(result)
+
+Output:
+
+['Fail', 'Pass', 'Pass', 'Pass', 'Fail', 'Pass']
+
+
+==================================================
+61. PRACTICAL PROGRAM - POSITIVE/NEGATIVE
+==================================================
+
+numbers = [-5, 10, -2, 8, -1, 20]
+
+result = [
+    "Positive" if x > 0 else "Negative"
+    for x in numbers
+]
+
+print(result)
+
+
+==================================================
+62. PRACTICAL PROGRAM - MULTIPLICATION TABLE
+==================================================
+
+n = 5
+
+table = [n * i for i in range(1, 11)]
+
+print(table)
+
+Output:
+
+[5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+
+
+==================================================
+63. PRACTICAL PROGRAM - FLATTEN MATRIX
+==================================================
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+result = [
+    value
+    for row in matrix
+    for value in row
+]
+
+print(result)
+
+Output:
+
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+==================================================
+64. PRACTICAL PROGRAM - WORDS GREATER THAN 4 CHARACTERS
+==================================================
+
+words = ["cat", "apple", "dog", "banana", "book"]
+
+result = [
+    word
+    for word in words
+    if len(word) > 4
+]
+
+print(result)
+
+Output:
+
+['apple', 'banana']
+
+
+==================================================
+65. IMPORTANT INTERVIEW QUESTIONS
+==================================================
+
+Q1. What is list comprehension?
+
+List comprehension is a concise way to create a list by applying an expression to each item of an iterable, optionally with a condition.
+
+
+Q2. Basic syntax?
+
+[expression for item in iterable]
+
+
+Q3. Can list comprehension have an if condition?
+
+Yes.
+
+[x for x in numbers if x > 0]
+
+
+Q4. Can list comprehension use if-else?
+
+Yes.
+
+["Even" if x % 2 == 0 else "Odd" for x in numbers]
+
+
+Q5. Can list comprehension use nested loops?
+
+Yes.
+
+[(x, y) for x in range(3) for y in range(3)]
+
+
+Q6. Can list comprehension work with strings?
+
+Yes.
+
+[x.upper() for x in "hello"]
+
+
+Q7. Does list comprehension create a list?
+
+Yes.
+
+
+Q8. What is the difference between list comprehension and generator expression?
+
+List comprehension creates a list immediately.
+
+Generator expression produces values lazily.
+
+
+==================================================
+66. QUICK REVISION
+==================================================
+
+Basic:
+
+[x for x in range(10)]
+
+
+Expression:
+
+[x * 2 for x in range(10)]
+
+
+Condition:
+
+[x for x in range(10) if x % 2 == 0]
+
+
+If-else:
+
+["Even" if x % 2 == 0 else "Odd" for x in range(10)]
+
+
+String:
+
+[x.upper() for x in names]
+
+
+Length:
+
+[len(x) for x in names]
+
+
+Nested loops:
+
+[(x, y) for x in range(3) for y in range(3)]
+
+
+2D list:
+
+[[0 for j in range(3)] for i in range(3)]
+
+
+Flatten:
+
+[x for row in matrix for x in row]
+
+
+Dictionary:
+
+[value for value in data.values()]
+
+
+Set:
+
+[x * x for x in my_set]
+
+
+Tuple:
+
+[x * 2 for x in my_tuple]
+
+
+==================================================
+67. MOST IMPORTANT RULES
+==================================================
+
+1. List comprehension is used to create a list.
+2. It uses square brackets [].
+3. Basic syntax:
+
+[expression for item in iterable]
+
+4. Filtering syntax:
+
+[expression for item in iterable if condition]
+
+5. If-else syntax:
+
+[expression1 if condition else expression2 for item in iterable]
+
+6. Nested loops are allowed.
+7. Multiple conditions can be used.
+8. List comprehension works with different iterables.
+9. Avoid very complicated comprehensions.
+10. Do not normally use list comprehension only for side effects.
+11. List comprehension creates the complete list in memory.
+12. Generator expressions are useful when lazy evaluation is needed.
+
+
+==================================================
+68. ONE-LINE EXAM DEFINITION
+==================================================
+
+List comprehension is a concise Python syntax used to create a new list by applying an expression to each item of an iterable, optionally with a condition.
+
+
+#startswith("element_jisko_check_karna_start_with")
+
+==================================================
+END OF LIST COMPREHENSION NOTES
+==================================================
