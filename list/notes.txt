@@ -1217,7 +1217,10 @@ Output:
 | `count()`   | Count occurrences                |
 | `sort()`    | Sort list                        |
 | `reverse()` | Reverse list                     |
-| `copy()`    | Copy list                        |
+| `copy()`    | Copy list  
+
+
+                    |
 
 ---
 
