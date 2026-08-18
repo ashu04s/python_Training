@@ -1,0 +1,202 @@
+```text
+==================================================
+ASCII AND UNICODE - SHORT NOTES
+==================================================
+
+1. ASCII
+==================================================
+
+ASCII stands for:
+
+American Standard Code for Information Interchange
+
+ASCII is a character encoding standard.
+
+Standard ASCII has:
+
+0 to 127 = 128 characters
+
+Standard ASCII uses:
+
+7 bits
+
+
+Important ASCII values:
+
+A = 65
+Z = 90
+
+a = 97
+z = 122
+
+0 = 48
+9 = 57
+
+Space = 32
+
+
+Example:
+
+print(ord("A"))
+
+Output:
+65
+
+
+print(chr(65))
+
+Output:
+A
+
+
+==================================================
+2. UNICODE
+==================================================
+
+Unicode is a universal character encoding standard.
+
+It supports characters from many languages, symbols and emojis.
+
+Examples:
+
+English:
+A
+
+Hindi:
+आ
+
+Chinese:
+中
+
+Emoji:
+😀
+
+
+Python 3 strings use Unicode by default.
+
+
+Example:
+
+print(ord("A"))
+print(ord("आ"))
+
+
+ord() -> Character to Unicode code point
+
+chr() -> Unicode code point to Character
+
+
+Example:
+
+print(chr(65))
+
+Output:
+A
+
+
+==================================================
+3. ASCII VS UNICODE
+==================================================
+
+ASCII:
+
+- Mainly supports English characters
+- 128 standard characters
+- Range: 0-127
+- Uses 7 bits for standard ASCII
+
+
+Unicode:
+
+- Supports characters from many languages
+- Supports symbols and emojis
+- Much larger character set
+- Python strings are Unicode
+
+
+==================================================
+4. IMPORTANT FUNCTIONS
+==================================================
+
+ord()
+
+Character -> Number
+
+Example:
+
+ord("A")
+
+Output:
+
+65
+
+
+chr()
+
+Number -> Character
+
+Example:
+
+chr(65)
+
+Output:
+
+A
+
+
+==================================================
+5. IMPORTANT POINT
+==================================================
+
+ASCII is a subset of Unicode.
+
+ASCII characters keep the same code points in Unicode.
+
+Example:
+
+ASCII:
+
+A = 65
+
+Unicode:
+
+A = U+0041
+
+Both represent the same character.
+
+
+==================================================
+6. QUICK REVISION
+==================================================
+
+ASCII
+-> American Standard Code for Information Interchange
+
+ASCII range
+-> 0 to 127
+
+ASCII characters
+-> 128
+
+ASCII standard size
+-> 7 bits
+
+Unicode
+-> Universal character encoding system
+
+Unicode supports
+-> Multiple languages + symbols + emojis
+
+ord()
+-> Character to number
+
+chr()
+-> Number to character
+
+ASCII is a subset of Unicode.
+
+
+==================================================
+END
+==================================================
+```

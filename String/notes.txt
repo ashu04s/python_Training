@@ -1,0 +1,1990 @@
+PYTHON STRING - COMPLETE NOTES
+BASIC TO ADVANCED
+DIRECT COPY AND PASTE FOR TXT FILE
+
+==================================================
+1. WHAT IS A STRING?
+==================================================
+
+A string is a sequence of characters enclosed inside quotes.
+immutable
+
+Python supports:
+
+1. Single quotes -> ' '
+2. Double quotes -> " "
+3. Triple single quotes -> ''' '''
+4. Triple double quotes -> """ """
+
+Examples:
+
+name = "Ashu"
+
+city = 'Hisar'
+
+message = """Hello Python"""
+
+print(name)
+print(city)
+print(message)
+
+
+==================================================
+2. CREATING A STRING
+==================================================
+
+name = "Ashu"
+
+print(name)
+
+
+String with spaces:
+
+message = "Hello World"
+
+print(message)
+
+
+Empty string:
+
+name = ""
+
+print(name)
+
+
+==================================================
+3. MULTI-LINE STRING
+==================================================
+
+Use triple quotes.
+
+message = """
+Hello
+Welcome to Python
+String Tutorial
+"""
+
+print(message)
+
+
+==================================================
+4. STRING INDEXING
+==================================================
+
+Every character in a string has an index.
+
+Example:
+
+name = "Python"
+
+Index:
+
+P -> 0
+y -> 1
+t -> 2
+h -> 3
+o -> 4
+n -> 5
+
+
+Example:
+
+name = "Python"
+
+print(name[0])
+
+Output:
+
+P
+
+
+print(name[3])
+
+Output:
+
+h
+
+
+==================================================
+5. NEGATIVE INDEXING
+==================================================
+
+Negative indexing starts from the end.
+
+Example:
+
+name = "Python"
+
+P -> -6
+y -> -5
+t -> -4
+h -> -3
+o -> -2
+n -> -1
+
+
+Example:
+
+print(name[-1])
+
+Output:
+
+n
+
+
+print(name[-3])
+
+Output:
+
+h
+
+
+==================================================
+6. STRING SLICING
+==================================================
+
+Syntax:
+
+string[start:end]
+
+Example:
+
+name = "Python"
+
+print(name[0:3])
+
+Output:
+
+Pyt
+
+
+IMPORTANT:
+
+The ending index is NOT included.
+
+
+==================================================
+7. STRING SLICING WITH START
+==================================================
+
+name = "Python"
+
+print(name[2:])
+
+Output:
+
+thon
+
+
+==================================================
+8. STRING SLICING WITH END
+==================================================
+
+name = "Python"
+
+print(name[:4])
+
+Output:
+
+Pyth
+
+
+==================================================
+9. STRING SLICING WITH STEP
+==================================================
+
+Syntax:
+
+string[start:end:step]
+
+Example:
+
+name = "Python"
+
+print(name[0:6:2])
+
+Output:
+
+Pto
+
+
+==================================================
+10. REVERSE A STRING
+==================================================
+
+name = "Python"
+
+print(name[::-1])
+
+Output:
+
+nohtyP
+
+
+==================================================
+11. STRING LENGTH
+==================================================
+
+Use len().
+
+name = "Python"
+
+print(len(name))
+
+Output:
+
+6
+
+
+Spaces are also counted.
+
+name = "Hello World"
+
+print(len(name))
+
+Output:
+
+11
+
+
+==================================================
+12. STRING CONCATENATION
+==================================================
+
+Joining strings using +.
+
+first = "Hello"
+second = "World"
+
+result = first + " " + second
+
+print(result)
+
+Output:
+
+Hello World
+
+
+==================================================
+13. STRING REPETITION
+==================================================
+
+Use *.
+
+text = "Hi "
+
+print(text * 3)
+
+Output:
+
+Hi Hi Hi
+
+
+==================================================
+14. CHECK CHARACTER IN STRING
+==================================================
+
+Use in.
+
+name = "Python"
+
+print("P" in name)
+
+Output:
+
+True
+
+
+Example:
+
+print("z" in name)
+
+Output:
+
+False
+
+
+==================================================
+15. NOT IN
+==================================================
+
+name = "Python"
+
+print("z" not in name)
+
+Output:
+
+True
+
+
+==================================================
+16. STRING IMMUTABILITY
+==================================================
+
+Strings are IMMUTABLE.
+
+This means we cannot directly change a character.
+
+Wrong:
+
+name = "Python"
+
+name[0] = "J"
+
+This gives:
+
+TypeError
+
+
+Correct:
+
+name = "Python"
+
+name = "J" + name[1:]
+
+print(name)
+
+Output:
+
+Jython
+
+
+==================================================
+17. STRING METHODS
+==================================================
+
+Important string methods:
+
+1. upper()
+2. lower()
+3. capitalize()
+4. title()
+5. swapcase()
+6. casefold()
+7. strip()
+8. lstrip()
+9. rstrip()
+10. replace()
+11. split()
+12. rsplit()
+13. splitlines()
+14. join()
+15. find()
+16. rfind()
+17. index()
+18. rindex()
+19. count()
+20. startswith()
+
+21. endswith()
+22. isalpha()
+23. isalnum()
+24. isdigit()
+25. isnumeric()
+26. isdecimal()
+27. isspace()
+28. islower()
+29. isupper()
+30. istitle()
+31. isidentifier()
+32. isascii()
+33. isprintable()
+34. zfill()
+35. center()
+36. ljust()
+37. rjust()
+38. partition()
+39. rpartition()
+40. removeprefix()
+41. removesuffix()
+
+
+==================================================
+18. upper()
+==================================================
+
+Converts all characters to uppercase.
+
+name = "python"
+
+print(name.upper())
+
+Output:
+
+PYTHON
+
+
+==================================================
+19. lower()
+==================================================
+
+Converts all characters to lowercase.
+
+name = "PYTHON"
+
+print(name.lower())
+
+Output:
+
+python
+
+
+==================================================
+20. capitalize()
+==================================================
+
+Makes the first character uppercase and the remaining characters lowercase.
+
+name = "pYTHON"
+
+print(name.capitalize())
+
+Output:
+
+Python
+
+
+==================================================
+21. title()
+==================================================
+
+Makes the first character of each word uppercase.
+
+text = "hello python world"
+
+print(text.title())
+
+Output:
+
+Hello Python World
+
+
+==================================================
+22. swapcase()
+==================================================
+
+Converts uppercase to lowercase and lowercase to uppercase.
+
+text = "Hello PYTHON"
+
+print(text.swapcase())
+
+Output:
+
+hELLO python
+
+
+==================================================
+23. casefold()
+==================================================
+
+Converts a string to a form suitable for case-insensitive comparison.
+
+text = "HELLO"
+
+print(text.casefold())
+
+Output:
+
+hello
+
+
+casefold() is generally stronger than lower() for Unicode case-insensitive comparisons.
+
+
+==================================================
+24. strip()
+==================================================
+
+Removes spaces from both ends.
+
+text = "   Hello   "
+
+print(text.strip())
+
+Output:
+
+Hello
+
+
+==================================================
+25. lstrip()
+==================================================
+
+Removes spaces from the LEFT side.
+
+text = "   Hello"
+
+print(text.lstrip())
+
+Output:
+
+Hello
+
+
+==================================================
+26. rstrip()
+==================================================
+
+Removes spaces from the RIGHT side.
+
+text = "Hello   "
+
+print(text.rstrip())
+
+Output:
+
+Hello
+
+
+==================================================
+27. strip() WITH CHARACTERS
+==================================================
+
+text = "---Hello---"
+
+print(text.strip("-"))
+
+Output:
+
+Hello
+
+
+IMPORTANT:
+
+strip() removes matching characters from the ends, not from the middle.
+
+
+==================================================
+28. replace()
+==================================================
+
+Replaces one part of a string with another.
+
+text = "I like Java"
+
+result = text.replace("Java", "Python")
+
+print(result)
+
+Output:
+
+I like Python
+
+
+==================================================
+29. replace() WITH COUNT
+==================================================
+
+text = "apple apple apple"
+
+result = text.replace("apple", "mango", 2)
+
+print(result)
+
+Output:
+
+mango mango apple
+
+
+==================================================
+30. split()
+==================================================
+
+Splits a string into a list.
+
+text = "Python Java C++"
+
+result = text.split()
+
+print(result)
+
+Output:
+
+['Python', 'Java', 'C++']
+
+
+==================================================
+31. split() USING SEPARATOR
+==================================================
+
+text = "apple,banana,mango"
+
+result = text.split(",")
+
+print(result)
+
+Output:
+
+['apple', 'banana', 'mango']
+
+
+==================================================
+32. split() WITH MAXSPLIT
+==================================================
+
+text = "one-two-three-four"
+
+result = text.split("-", 2)
+
+print(result)
+
+Output:
+
+['one', 'two', 'three-four']
+
+
+==================================================
+33. rsplit()
+==================================================
+
+rsplit() splits from the RIGHT side.
+
+text = "one-two-three-four"
+
+result = text.rsplit("-", 2)
+
+print(result)
+
+Output:
+
+['one-two', 'three', 'four']
+
+
+==================================================
+34. splitlines()
+==================================================
+
+Splits a multi-line string into a list.
+
+text = """Hello
+Python
+World"""
+
+result = text.splitlines()
+
+print(result)
+
+Output:
+
+['Hello', 'Python', 'World']
+
+
+==================================================
+35. join()
+==================================================
+
+join() joins elements of an iterable into a string.
+
+words = ["Python", "is", "easy"]
+
+result = " ".join(words)
+
+print(result)
+
+Output:
+
+Python is easy
+
+
+Another example:
+
+words = ["A", "B", "C"]
+
+result = "-".join(words)
+
+print(result)
+
+Output:
+
+A-B-C
+
+
+==================================================
+36. find()
+==================================================
+
+Returns the index of the first occurrence.
+
+text = "Hello Python"
+
+print(text.find("Python"))
+
+Output:
+
+6
+
+
+If not found:
+
+print(text.find("Java"))
+
+Output:
+
+-1
+
+
+==================================================
+37. rfind()
+==================================================
+
+Returns the index of the LAST occurrence.
+
+text = "hello hello"
+
+print(text.rfind("hello"))
+
+Output:
+
+6
+
+
+==================================================
+38. index()
+==================================================
+
+Returns the index of the first occurrence.
+
+text = "Hello Python"
+
+print(text.index("Python"))
+
+Output:
+
+6
+
+
+Difference between find() and index():
+
+find() -> returns -1 if not found
+
+index() -> raises ValueError if not found
+
+
+==================================================
+39. rindex()
+==================================================
+
+Returns the index of the last occurrence.
+
+text = "hello hello"
+
+print(text.rindex("hello"))
+
+Output:
+
+6
+
+
+==================================================
+40. count()
+==================================================
+
+Counts how many times a substring occurs.
+
+text = "banana"
+
+print(text.count("a"))
+
+Output:
+
+3
+
+
+Example:
+
+print(text.count("an"))
+
+Output:
+
+2
+
+
+==================================================
+41. startswith()
+==================================================
+
+Checks whether a string starts with a specific value.
+
+text = "Python Programming"
+
+print(text.startswith("Python"))
+
+Output:
+
+True
+
+
+==================================================
+42. endswith()
+==================================================
+
+Checks whether a string ends with a specific value.
+
+text = "Python Programming"
+
+print(text.endswith("Programming"))
+
+Output:
+
+True
+
+
+==================================================
+43. isalpha()
+==================================================
+
+Returns True if all characters are alphabetic.
+
+text = "Python"
+
+print(text.isalpha())
+
+Output:
+
+True
+
+
+With spaces:
+
+text = "Hello World"
+
+print(text.isalpha())
+
+Output:
+
+False
+
+
+==================================================
+44. isalnum()
+==================================================
+
+Returns True if all characters are letters or numbers.
+
+text = "Python123"
+
+print(text.isalnum())
+
+Output:
+
+True
+
+
+With spaces:
+
+text = "Python 123"
+
+print(text.isalnum())
+
+Output:
+
+False
+
+
+==================================================
+45. isdigit()
+==================================================
+
+Checks whether all characters are digits.
+
+text = "12345"
+
+print(text.isdigit())
+
+Output:
+
+True
+
+
+text = "123a"
+
+print(text.isdigit())
+
+Output:
+
+False
+
+
+==================================================
+46. isnumeric()
+==================================================
+
+Checks whether all characters are numeric.
+
+text = "12345"
+
+print(text.isnumeric())
+
+Output:
+
+True
+
+
+isnumeric() supports more Unicode numeric characters than isdigit().
+
+
+==================================================
+47. isdecimal()
+==================================================
+
+Checks whether all characters are decimal characters.
+
+text = "12345"
+
+print(text.isdecimal())
+
+Output:
+
+True
+
+
+==================================================
+48. isspace()
+==================================================
+
+Returns True if all characters are whitespace.
+
+text = "   "
+
+print(text.isspace())
+
+Output:
+
+True
+
+
+==================================================
+49. islower()
+==================================================
+
+Checks whether all cased characters are lowercase.
+
+text = "hello"
+
+print(text.islower())
+
+Output:
+
+True
+
+
+==================================================
+50. isupper()
+==================================================
+
+Checks whether all cased characters are uppercase.
+
+text = "HELLO"
+
+print(text.isupper())
+
+Output:
+
+True
+
+
+==================================================
+51. istitle()
+==================================================
+
+Checks whether the string is in title case.
+
+text = "Hello World"
+
+print(text.istitle())
+
+Output:
+
+True
+
+
+==================================================
+52. isidentifier()
+==================================================
+
+Checks whether a string is a valid Python identifier.
+
+name = "student_name"
+
+print(name.isidentifier())
+
+Output:
+
+True
+
+
+Example:
+
+name = "123student"
+
+print(name.isidentifier())
+
+Output:
+
+False
+
+
+==================================================
+53. isascii()
+==================================================
+
+Checks whether all characters are ASCII characters.
+
+text = "Python"
+
+print(text.isascii())
+
+Output:
+
+True
+
+
+==================================================
+54. isprintable()
+==================================================
+
+Checks whether all characters are printable.
+
+text = "Hello"
+
+print(text.isprintable())
+
+Output:
+
+True
+
+
+Example:
+
+text = "Hello\nWorld"
+
+print(text.isprintable())
+
+Output:
+
+False
+
+
+==================================================
+55. zfill()
+==================================================
+
+Adds zeros to the LEFT side of a string.
+
+num = "25"
+
+print(num.zfill(5))
+
+Output:
+
+00025
+
+
+==================================================
+56. center()
+==================================================
+
+Centers a string within a specified width.
+
+text = "Python"
+
+print(text.center(10))
+
+Output:
+
+  Python
+
+
+You can provide a fill character:
+
+print(text.center(10, "-"))
+
+Output:
+
+--Python--
+
+
+==================================================
+57. ljust()
+==================================================
+
+Left-aligns the string.
+
+text = "Python"
+
+print(text.ljust(10, "-"))
+
+Output:
+
+Python----
+
+
+==================================================
+58. rjust()
+==================================================
+
+Right-aligns the string.
+
+text = "Python"
+
+print(text.rjust(10, "-"))
+
+Output:
+
+----Python
+
+
+==================================================
+59. partition()
+==================================================
+
+Splits a string into exactly three parts:
+
+1. Before separator
+2. Separator
+3. After separator
+
+text = "Python is easy"
+
+result = text.partition("is")
+
+print(result)
+
+Output:
+
+('Python ', 'is', ' easy')
+
+
+==================================================
+60. rpartition()
+==================================================
+
+Works like partition(), but searches from the RIGHT.
+
+text = "one-two-three"
+
+result = text.rpartition("-")
+
+print(result)
+
+Output:
+
+('one-two', '-', 'three')
+
+
+==================================================
+61. removeprefix()
+==================================================
+
+Removes a prefix if it exists.
+
+text = "Mr. Ashu"
+
+result = text.removeprefix("Mr. ")
+
+print(result)
+
+Output:
+
+Ashu
+
+
+==================================================
+62. removesuffix()
+==================================================
+
+Removes a suffix if it exists.
+
+file = "photo.jpg"
+
+result = file.removesuffix(".jpg")
+
+print(result)
+
+Output:
+
+photo
+
+
+==================================================
+63. STRING FORMATTING
+==================================================
+
+There are several ways to format strings.
+
+1. Concatenation
+2. format()
+3. f-string
+
+
+==================================================
+64. format()
+==================================================
+
+name = "Ashu"
+age = 20
+
+text = "My name is {} and I am {} years old.".format(name, age)
+
+print(text)
+
+Output:
+
+My name is Ashu and I am 20 years old.
+
+
+==================================================
+65. f-STRING
+==================================================
+
+name = "Ashu"
+age = 20
+
+text = f"My name is {name} and I am {age} years old."
+
+print(text)
+
+
+f-strings are the modern and commonly preferred way of formatting strings.
+
+
+==================================================
+66. ESCAPE CHARACTERS
+==================================================
+
+Escape characters start with a backslash \.
+
+
+\n -> New line
+
+\t -> Tab
+
+\\ -> Backslash
+
+\' -> Single quote
+
+\" -> Double quote
+
+\b -> Backspace
+
+\r -> Carriage return
+
+
+Example:
+
+print("Hello\nWorld")
+
+Output:
+
+Hello
+World
+
+
+Example:
+
+print("Hello\tWorld")
+
+Output:
+
+Hello    World
+
+
+==================================================
+67. RAW STRING
+==================================================
+
+Use r before a string to treat backslashes mostly as literal characters.
+
+path = r"C:\Users\Ashu\Documents"
+
+print(path)
+
+
+Useful for Windows paths and regular expressions.
+
+
+==================================================
+68. STRING COMPARISON
+==================================================
+
+Strings can be compared using:
+
+==
+!=
+<
+>
+<=
+>=
+
+
+Example:
+
+a = "apple"
+b = "banana"
+
+print(a == b)
+
+Output:
+
+False
+
+
+Strings are compared lexicographically.
+
+
+==================================================
+69. STRING LOOP
+==================================================
+
+text = "Python"
+
+for char in text:
+    print(char)
+
+Output:
+
+P
+y
+t
+h
+o
+n
+
+
+==================================================
+70. STRING LOOP WITH INDEX
+==================================================
+
+text = "Python"
+
+for i in range(len(text)):
+    print(i, text[i])
+
+
+Output:
+
+0 P
+1 y
+2 t
+3 h
+4 o
+5 n
+
+
+==================================================
+71. STRING ENUMERATE
+==================================================
+
+text = "Python"
+
+for index, char in enumerate(text):
+    print(index, char)
+
+
+==================================================
+72. STRING COMPREHENSION
+==================================================
+
+List comprehension can be used with strings.
+
+text = "Python"
+
+result = [char for char in text]
+
+print(result)
+
+Output:
+
+['P', 'y', 't', 'h', 'o', 'n']
+
+
+==================================================
+73. GET VOWELS USING LOOP
+==================================================
+
+text = "programming"
+
+for char in text:
+    if char in "aeiou":
+        print(char)
+
+
+==================================================
+74. GET VOWELS USING LIST COMPREHENSION
+==================================================
+
+text = "programming"
+
+vowels = [
+    char
+    for char in text
+    if char in "aeiou"
+]
+
+print(vowels)
+
+
+==================================================
+75. COUNT VOWELS
+==================================================
+
+text = "programming"
+
+count = 0
+
+for char in text:
+    if char.lower() in "aeiou":
+        count += 1
+
+print(count)
+
+
+==================================================
+76. COUNT CONSONANTS
+==================================================
+
+text = "programming"
+
+count = 0
+
+for char in text:
+    if char.isalpha() and char.lower() not in "aeiou":
+        count += 1
+
+print(count)
+
+
+==================================================
+77. REVERSE STRING USING LOOP
+==================================================
+
+text = "Python"
+
+reverse = ""
+
+for char in text:
+    reverse = char + reverse
+
+print(reverse)
+
+Output:
+
+nohtyP
+
+
+==================================================
+78. CHECK PALINDROME
+==================================================
+
+A palindrome reads the same forward and backward.
+
+text = "madam"
+
+if text == text[::-1]:
+    print("Palindrome")
+else:
+    print("Not Palindrome")
+
+Output:
+
+Palindrome
+
+
+==================================================
+79. REMOVE SPACES
+==================================================
+
+text = "Hello World Python"
+
+result = text.replace(" ", "")
+
+print(result)
+
+Output:
+
+HelloWorldPython
+
+
+==================================================
+80. COUNT WORDS
+==================================================
+
+text = "Python is very easy"
+
+words = text.split()
+
+print(len(words))
+
+Output:
+
+4
+
+
+==================================================
+81. FIRST CHARACTER
+==================================================
+
+text = "Python"
+
+print(text[0])
+
+Output:
+
+P
+
+
+==================================================
+82. LAST CHARACTER
+==================================================
+
+text = "Python"
+
+print(text[-1])
+
+Output:
+
+n
+
+
+==================================================
+83. FIRST WORD
+==================================================
+
+text = "Python is easy"
+
+words = text.split()
+
+print(words[0])
+
+Output:
+
+Python
+
+
+==================================================
+84. CHECK EMPTY STRING
+==================================================
+
+text = ""
+
+if text == "":
+    print("Empty")
+
+
+Better:
+
+if not text:
+    print("Empty")
+
+
+==================================================
+85. REMOVE EXTRA SPACES
+==================================================
+
+text = "   Hello World   "
+
+result = text.strip()
+
+print(result)
+
+Output:
+
+Hello World
+
+
+==================================================
+86. FIND DUPLICATE CHARACTERS
+==================================================
+
+text = "programming"
+
+for char in text:
+    if text.count(char) > 1:
+        print(char)
+
+
+Note:
+
+This may print the same character multiple times.
+
+
+==================================================
+87. REMOVE DUPLICATE CHARACTERS
+==================================================
+
+text = "programming"
+
+result = ""
+
+for char in text:
+    if char not in result:
+        result += char
+
+print(result)
+
+
+==================================================
+88. CHARACTER FREQUENCY
+==================================================
+
+text = "hello"
+
+frequency = {}
+
+for char in text:
+    frequency[char] = frequency.get(char, 0) + 1
+
+print(frequency)
+
+Output:
+
+{'h': 1, 'e': 1, 'l': 2, 'o': 1}
+
+
+==================================================
+89. STRING METHODS QUICK TABLE
+==================================================
+
+upper()        -> Convert to uppercase
+
+lower()        -> Convert to lowercase
+
+capitalize()   -> First character uppercase
+
+title()        -> First character of each word uppercase
+
+swapcase()     -> Swap upper/lower case
+
+casefold()     -> Strong lowercase for comparisons
+
+strip()        -> Remove characters from both ends
+
+lstrip()       -> Remove from left
+
+rstrip()       -> Remove from right
+
+replace()      -> Replace substring
+
+split()        -> String to list
+
+rsplit()       -> Split from right
+
+splitlines()   -> Split lines
+
+join()         -> List/iterable to string
+
+find()         -> Find first occurrence
+
+rfind()        -> Find last occurrence
+
+index()        -> Find first occurrence
+
+rindex()       -> Find last occurrence
+
+count()        -> Count occurrences
+
+startswith()   -> Check starting text
+
+endswith()     -> Check ending text
+
+isalpha()      -> Check alphabets
+
+isalnum()      -> Check alphabets/numbers
+
+isdigit()      -> Check digits
+
+isnumeric()    -> Check numeric characters
+
+isdecimal()    -> Check decimal characters
+
+isspace()      -> Check whitespace
+
+islower()      -> Check lowercase
+
+isupper()      -> Check uppercase
+
+istitle()      -> Check title case
+
+isidentifier() -> Check valid Python identifier
+
+isascii()      -> Check ASCII
+
+isprintable()  -> Check printable characters
+
+zfill()        -> Add zeros on left
+
+center()       -> Center string
+
+ljust()        -> Left-align string
+
+rjust()        -> Right-align string
+
+partition()    -> Split into 3 parts
+
+rpartition()   -> Partition from right
+
+removeprefix() -> Remove prefix
+
+removesuffix() -> Remove suffix
+
+
+==================================================
+90. IMPORTANT STRING FUNCTIONS
+==================================================
+
+len()       -> Length of string
+
+str()       -> Convert value to string
+
+ord()       -> Character to Unicode code point
+
+chr()       -> Unicode code point to character
+
+sorted()    -> Returns sorted characters as a list
+
+enumerate() -> Gives index and value
+
+
+Example:
+
+print(ord("A"))
+
+Output:
+
+65
+
+
+Example:
+
+print(chr(65))
+
+Output:
+
+A
+
+
+==================================================
+91. STRING VS LIST
+==================================================
+
+STRING:
+
+text = "Python"
+
+LIST:
+
+items = ["P", "y", "t", "h", "o", "n"]
+
+
+String:
+
+- Immutable
+- Characters
+- Written using quotes
+
+
+List:
+
+- Mutable
+- Can contain different data types
+- Written using [ ]
+
+
+==================================================
+92. IMPORTANT STRING POINTS
+==================================================
+
+1. String is a sequence of characters.
+2. Strings are immutable.
+3. Strings support indexing.
+4. Strings support negative indexing.
+5. Strings support slicing.
+6. Strings support loops.
+7. Strings support concatenation.
+8. Strings support repetition.
+9. Strings have many built-in methods.
+10. String methods generally return a new string because strings are immutable.
+11. Spaces are characters and are counted by len().
+12. Python strings support Unicode.
+13. Use split() to convert string into a list.
+14. Use join() to convert an iterable of strings into one string.
+
+
+==================================================
+93. MOST IMPORTANT METHODS FOR BEGINNERS
+==================================================
+
+upper()
+lower()
+capitalize()
+title()
+strip()
+replace()
+split()
+join()
+find()
+count()
+startswith()
+endswith()
+isalpha()
+isalnum()
+isdigit()
+
+
+==================================================
+94. MOST IMPORTANT INTERVIEW QUESTIONS
+==================================================
+
+Q1. What is a string?
+
+A string is an immutable sequence of characters.
+
+
+Q2. Are strings mutable?
+
+No. Strings are immutable.
+
+
+Q3. How do you reverse a string?
+
+text[::-1]
+
+
+Q4. Difference between find() and index()?
+
+find() returns -1 if the substring is not found.
+
+index() raises ValueError if it is not found.
+
+
+Q5. Difference between split() and join()?
+
+split() -> String to list
+
+join() -> Iterable of strings to string
+
+
+Q6. How do you convert a string to uppercase?
+
+text.upper()
+
+
+Q7. How do you remove spaces from both ends?
+
+text.strip()
+
+
+Q8. How do you check whether a string contains a word?
+
+"word" in text
+
+
+Q9. How do you check whether a string starts with something?
+
+text.startswith("Hello")
+
+
+Q10. How do you check whether a string contains only numbers?
+
+text.isdigit()
+
+
+==================================================
+95. QUICK REVISION
+==================================================
+
+text = "Python"
+
+
+# Length
+len(text)
+
+
+# First character
+text[0]
+
+
+# Last character
+text[-1]
+
+
+# Slicing
+text[0:3]
+
+
+# Reverse
+text[::-1]
+
+
+# Uppercase
+text.upper()
+
+
+# Lowercase
+text.lower()
+
+
+# Capitalize
+text.capitalize()
+
+
+# Title
+text.title()
+
+
+# Remove spaces
+text.strip()
+
+
+# Replace
+text.replace("Python", "Java")
+
+
+# Split
+text.split()
+
+
+# Join
+" ".join(list)
+
+
+# Find
+text.find("Py")
+
+
+# Count
+text.count("o")
+
+
+# Starts with
+text.startswith("Py")
+
+
+# Ends with
+text.endswith("on")
+
+
+# Alphabet check
+text.isalpha()
+
+
+# Number check
+text.isdigit()
+
+
+# Alphanumeric check
+text.isalnum()
+
+
+# Check lowercase
+text.islower()
+
+
+# Check uppercase
+text.isupper()
+
+
+==================================================
+END OF PYTHON STRING NOTES
+==================================================
