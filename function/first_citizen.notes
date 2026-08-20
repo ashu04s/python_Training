@@ -1,0 +1,786 @@
+==================================================
+FUNCTION AS A FIRST-CLASS CITIZEN IN PYTHON
+==================================================
+
+1. WHAT DOES FIRST-CLASS CITIZEN MEAN?
+==================================================
+
+In Python, functions are FIRST-CLASS OBJECTS.
+
+This means a function can be treated like any other
+object/value.
+
+A function can be:
+
+1. Stored in a variable
+2. Passed as an argument
+3. Returned from another function
+4. Stored in a list, tuple, or dictionary
+5. Used as a value in expressions
+
+
+==================================================
+2. STORE FUNCTION IN A VARIABLE
+==================================================
+
+def greet():
+    print("Hello")
+
+
+x = greet
+
+x()
+
+Output:
+
+Hello
+
+
+IMPORTANT:
+
+x = greet      -> stores the function
+
+x = greet()    -> calls the function and stores its result
+
+
+==================================================
+3. PASS FUNCTION AS AN ARGUMENT
+==================================================
+
+A function can be passed to another function.
+
+Example:
+
+def greet():
+    print("Hello")
+
+
+def execute(func):
+    func()
+
+
+execute(greet)
+
+Output:
+
+Hello
+
+
+Here:
+
+greet -> function passed as argument
+
+execute -> function receiving another function
+
+
+==================================================
+4. FUNCTION WITH ARGUMENT + FUNCTION
+==================================================
+
+def square(x):
+    return x * x
+
+
+def calculate(func, value):
+    return func(value)
+
+
+result = calculate(square, 5)
+
+print(result)
+
+Output:
+
+25
+
+
+Flow:
+
+calculate()
+    ↓
+square()
+    ↓
+25
+
+
+==================================================
+5. RETURN A FUNCTION
+==================================================
+
+A function can return another function.
+
+Example:
+
+def outer():
+
+    def inner():
+        print("Hello")
+
+    return inner
+
+
+result = outer()
+
+result()
+
+Output:
+
+Hello
+
+
+Here:
+
+outer() -> returns inner function
+
+
+==================================================
+6. FUNCTION STORED IN A LIST
+==================================================
+
+Functions can be stored inside a list.
+
+Example:
+
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+functions = [add, subtract]
+
+
+print(functions[0](10, 5))
+print(functions[1](10, 5))
+
+
+Output:
+
+15
+5
+
+
+==================================================
+7. FUNCTION STORED IN A DICTIONARY
+==================================================
+
+Functions can also be stored as dictionary values.
+
+Example:
+
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+operations = {
+    "add": add,
+    "subtract": subtract
+}
+
+
+print(operations["add"](10, 5))
+
+Output:
+
+15
+
+
+==================================================
+8. PRACTICAL EXAMPLE - CALCULATOR
+==================================================
+
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    return a / b
+
+
+operations = {
+    "+": add,
+    "-": subtract,
+    "*": multiply,
+    "/": divide
+}
+
+
+operator = "+"
+
+result = operations[operator](10, 5)
+
+print(result)
+
+Output:
+
+15
+
+
+Here dictionary stores functions as values.
+
+
+==================================================
+9. FUNCTION AS AN ARGUMENT WITH LAMBDA
+==================================================
+
+def calculate(func, value):
+    return func(value)
+
+
+result = calculate(
+    lambda x: x * 2,
+    10
+)
+
+print(result)
+
+Output:
+
+20
+
+
+==================================================
+10. HIGHER-ORDER FUNCTION
+==================================================
+
+A function that:
+
+1. Takes another function as an argument
+OR
+2. Returns another function
+
+is called a HIGHER-ORDER FUNCTION.
+
+
+Example:
+
+def apply(func, value):
+    return func(value)
+
+
+def square(x):
+    return x * x
+
+
+print(apply(square, 5))
+
+Output:
+
+25
+
+
+==================================================
+11. FUNCTION RETURNING FUNCTION
+==================================================
+
+def multiplier(n):
+
+    def multiply(x):
+        return x * n
+
+    return multiply
+
+
+double = multiplier(2)
+
+print(double(5))
+
+Output:
+
+10
+
+
+cube = multiplier(3)
+
+print(cube(5))
+
+Output:
+
+15
+
+
+==================================================
+12. CLOSURE
+==================================================
+
+When an inner function remembers variables from its
+outer function, it is called a CLOSURE.
+
+Example:
+
+def multiplier(n):
+
+    def multiply(x):
+        return x * n
+
+    return multiply
+
+
+double = multiplier(2)
+
+print(double(10))
+
+Output:
+
+20
+
+
+Here:
+
+n = 2
+
+Even after multiplier() finishes,
+multiply() remembers n.
+
+
+==================================================
+13. map() USES FIRST-CLASS FUNCTIONS
+==================================================
+
+map() takes a function as an argument.
+
+Example:
+
+numbers = [1, 2, 3, 4]
+
+
+def square(x):
+    return x * x
+
+
+result = map(square, numbers)
+
+print(list(result))
+
+Output:
+
+[1, 4, 9, 16]
+
+
+==================================================
+14. filter() USES FIRST-CLASS FUNCTIONS
+==================================================
+
+filter() also accepts a function.
+
+Example:
+
+numbers = [1, 2, 3, 4, 5, 6]
+
+
+def even(x):
+    return x % 2 == 0
+
+
+result = filter(even, numbers)
+
+print(list(result))
+
+Output:
+
+[2, 4, 6]
+
+
+==================================================
+15. sorted() USES FUNCTIONS
+==================================================
+
+sorted() can accept a function through key.
+
+Example:
+
+names = ["Ashu", "Rahul", "Aman"]
+
+
+names.sort(key=len)
+
+print(names)
+
+
+Here:
+
+len
+
+is passed as a function.
+
+
+==================================================
+16. LAMBDA AS FIRST-CLASS OBJECT
+==================================================
+
+Lambda functions are also first-class objects.
+
+Example:
+
+square = lambda x: x * x
+
+print(square(5))
+
+Output:
+
+25
+
+
+It can also be passed:
+
+numbers = [1, 2, 3]
+
+result = map(
+    lambda x: x * 2,
+    numbers
+)
+
+print(list(result))
+
+Output:
+
+[2, 4, 6]
+
+
+==================================================
+17. FUNCTIONS IN TUPLE
+==================================================
+
+def add(a, b):
+    return a + b
+
+
+def multiply(a, b):
+    return a * b
+
+
+operations = (add, multiply)
+
+
+print(operations[0](10, 5))
+print(operations[1](10, 5))
+
+Output:
+
+15
+50
+
+
+==================================================
+18. FUNCTIONS IN SET
+==================================================
+
+Functions are objects, so they can also be stored in a set.
+
+Example:
+
+def add(a, b):
+    return a + b
+
+
+def multiply(a, b):
+    return a * b
+
+
+functions = {add, multiply}
+
+print(functions)
+
+
+==================================================
+19. CHECK FUNCTION TYPE
+==================================================
+
+def greet():
+    print("Hello")
+
+
+print(type(greet))
+
+Output:
+
+<class 'function'>
+
+
+==================================================
+20. FUNCTION IDENTITY
+==================================================
+
+def greet():
+    print("Hello")
+
+
+x = greet
+
+print(x is greet)
+
+Output:
+
+True
+
+
+Both names refer to the same function object.
+
+
+==================================================
+21. IMPORTANT DIFFERENCE
+==================================================
+
+Function reference:
+
+x = greet
+
+Function call:
+
+x = greet()
+
+
+Example:
+
+def greet():
+    return "Hello"
+
+
+x = greet
+
+print(x)
+
+Output:
+
+<function greet ...>
+
+
+x = greet()
+
+print(x)
+
+Output:
+
+Hello
+
+
+==================================================
+22. REAL-WORLD USES
+==================================================
+
+First-class functions are commonly used in:
+
+1. map()
+2. filter()
+3. sorted()
+4. Decorators
+5. Callbacks
+6. Closures
+7. Functional programming
+8. Event handling
+9. Frameworks
+10. APIs
+
+
+==================================================
+23. CALLBACK FUNCTION
+==================================================
+
+A callback is a function passed to another function
+to be called later.
+
+Example:
+
+def success():
+    print("Task completed")
+
+
+def process(callback):
+    print("Processing...")
+    callback()
+
+
+process(success)
+
+Output:
+
+Processing...
+Task completed
+
+
+==================================================
+24. DECORATOR AND FIRST-CLASS FUNCTIONS
+==================================================
+
+Decorators depend heavily on first-class functions.
+
+Example:
+
+def decorator(func):
+
+    def wrapper():
+        print("Before")
+        func()
+        print("After")
+
+    return wrapper
+
+
+@decorator
+def greet():
+    print("Hello")
+
+
+greet()
+
+
+Here:
+
+func -> receives a function
+
+decorator -> returns a function
+
+
+==================================================
+25. IMPORTANT FEATURES
+==================================================
+
+Functions as first-class citizens means:
+
+FUNCTION
+   |
+   +-- Store in variable
+   |
+   +-- Pass as argument
+   |
+   +-- Return from function
+   |
+   +-- Store in list
+   |
+   +-- Store in tuple
+   |
+   +-- Store in dictionary
+   |
+   +-- Store in set
+
+
+==================================================
+26. INTERVIEW QUESTIONS
+==================================================
+
+Q1. What are first-class functions?
+
+Functions that can be treated like normal objects/values
+are called first-class functions.
+
+
+Q2. Can a function be stored in a variable?
+
+Yes.
+
+x = greet
+
+
+Q3. Can a function be passed as an argument?
+
+Yes.
+
+execute(greet)
+
+
+Q4. Can a function return another function?
+
+Yes.
+
+return inner
+
+
+Q5. What is a higher-order function?
+
+A function that accepts another function as an argument
+or returns another function.
+
+
+Q6. Which Python functions commonly use functions as
+arguments?
+
+map()
+filter()
+sorted()
+
+and many user-defined functions.
+
+
+==================================================
+27. QUICK REVISION
+==================================================
+
+First-class function:
+
+Function can be treated like an object.
+
+
+Store:
+
+x = greet
+
+
+Pass:
+
+execute(greet)
+
+
+Return:
+
+return inner
+
+
+List:
+
+functions = [add, subtract]
+
+
+Dictionary:
+
+operations = {
+    "add": add
+}
+
+
+Higher-order function:
+
+def execute(func):
+    func()
+
+
+Lambda:
+
+square = lambda x: x * x
+
+
+Callback:
+
+process(success)
+
+
+Decorator:
+
+@decorator
+
+
+==================================================
+28. ONE-LINE DEFINITION
+==================================================
+
+In Python, functions are first-class objects, meaning
+they can be stored in variables, passed as arguments,
+returned from functions, and stored in data structures.
+
+
+==================================================
+END OF FIRST-CLASS FUNCTIONS NOTES
+==================================================

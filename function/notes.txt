@@ -1,0 +1,1620 @@
+==================================================
+PYTHON FUNCTIONS - COMPLETE NOTES
+BASIC TO ADVANCED
+DIRECT COPY AND PASTE FOR TXT FILE
+==================================================
+
+
+1. WHAT IS A FUNCTION?
+==================================================
+
+A function is a reusable block of code that performs a specific task.
+
+Instead of writing the same code again and again, we create a function once and call it whenever needed.
+
+we use snake case
+
+Example:
+
+def greet():
+    print("Hello")
+
+greet()
+
+Output:
+
+Hello
+
+
+==================================================
+2. WHY USE FUNCTIONS?
+==================================================
+
+Functions help to:
+
+1. Reuse code
+2. Reduce code repetition
+3. Make code organized
+4. Make code easier to understand
+5. Make debugging easier
+6. Divide a large program into smaller parts
+7. Improve maintainability
+
+
+==================================================
+3. BASIC SYNTAX
+==================================================
+
+def function_name():
+    # function body
+
+
+Example:
+
+def hello():
+    print("Hello Python")
+
+
+To call:
+
+hello()
+
+
+==================================================
+4. FUNCTION CALL
+==================================================
+
+Creating a function:
+
+def greet():
+    print("Hello")
+
+
+Calling a function:
+
+greet()
+
+
+IMPORTANT:
+
+Defining a function does not execute it.
+
+The function executes when it is called.
+
+
+==================================================
+5. FUNCTION WITH PARAMETERS(function definition)
+==================================================
+
+Parameters are variables written inside the function definition.
+
+Example:
+
+def greet(name):
+    print("Hello", name)
+
+greet("Ashu")
+
+Output:
+
+Hello Ashu
+
+
+Here:
+
+name = parameter
+"Ashu" = argument
+
+
+==================================================
+6. PARAMETER VS ARGUMENT
+==================================================
+
+PARAMETER:
+
+Variable defined in the function.
+
+def greet(name):
+    print(name)
+
+
+ARGUMENT:
+
+Actual value passed to the function.
+
+greet("Ashu")
+
+
+So:
+
+name -> parameter
+"Ashu" -> argument
+
+
+==================================================
+7. MULTIPLE PARAMETERS
+==================================================
+
+def add(a, b):
+    print(a + b)
+
+add(10, 20)
+
+Output:
+
+30
+
+
+==================================================
+8. RETURN STATEMENT
+==================================================
+
+return sends a value back from the function.
+
+Example:
+
+def add(a, b):
+    return a + b
+
+result = add(10, 20)
+
+print(result)
+
+Output:
+
+30
+
+
+==================================================
+9. print() VS return
+==================================================
+
+print():
+
+Displays the result.
+
+def add(a, b):
+    print(a + b)
+
+
+return:
+
+Sends the result back to the caller.
+
+def add(a, b):
+    return a + b
+
+
+Example:
+
+def add(a, b):
+    return a + b
+
+result = add(10, 20)
+
+print(result)
+
+
+IMPORTANT:
+
+return is generally used when the result needs to be stored,
+used in another calculation, or passed elsewhere.
+
+
+==================================================
+10. FUNCTION WITHOUT RETURN
+==================================================
+
+def greet():
+    print("Hello")
+
+result = greet()
+
+print(result)
+
+Output:
+
+Hello
+None
+
+
+If a function does not explicitly return a value,
+it returns None.
+
+
+==================================================
+11. RETURN MULTIPLE VALUES
+==================================================
+
+A function can return multiple values.
+
+Example:
+
+def calculate(a, b):
+    return a + b, a - b, a * b
+
+result = calculate(10, 5)
+
+print(result)
+
+Output:
+
+(15, 5, 50)
+
+
+Python actually returns them as a tuple.
+
+
+==================================================
+12. UNPACKING RETURN VALUES
+==================================================
+
+def calculate(a, b):
+    return a + b, a - b
+
+add, subtract = calculate(10, 5)
+
+print(add)
+print(subtract)
+
+Output:
+
+15
+5
+
+
+==================================================
+13. DEFAULT PARAMETERS
+==================================================
+
+A default parameter has a default value.
+
+Example:
+
+def greet(name="Guest"):
+    print("Hello", name)
+
+greet()
+
+Output:
+
+Hello Guest
+
+
+greet("Ashu")
+
+Output:
+
+Hello Ashu
+
+
+==================================================
+14. MULTIPLE DEFAULT PARAMETERS
+==================================================
+
+def student(name="Unknown", age=0):
+    print(name, age)
+
+student()
+
+Output:
+
+Unknown 0
+
+
+student("Ashu", 20)
+
+Output:
+
+Ashu 20
+
+
+==================================================
+15. POSITIONAL ARGUMENTS
+==================================================
+
+Arguments are matched according to their position.
+
+Example:
+
+def student(name, age):
+    print(name, age)
+
+student("Ashu", 20)
+
+name = Ashu
+age = 20
+
+
+==================================================
+16. KEYWORD ARGUMENTS
+==================================================
+
+Arguments can be passed using parameter names.
+
+Example:
+
+def student(name, age):
+    print(name, age)
+
+student(age=20, name="Ashu")
+
+Output:
+
+Ashu 20
+
+
+Order does not matter when using keyword arguments.
+
+
+==================================================
+17. POSITIONAL + KEYWORD ARGUMENTS
+==================================================
+
+Example:
+
+def student(name, age, city):
+    print(name, age, city)
+
+student("Ashu", age=20, city="Hisar")
+
+
+IMPORTANT:
+
+Positional arguments must generally come before
+keyword arguments.
+
+
+Correct:
+
+student("Ashu", age=20)
+
+
+Wrong:
+
+student(name="Ashu", 20)
+
+
+==================================================
+18. *args
+==================================================
+
+*args allows a function to accept any number of
+positional arguments.
+
+Example:
+
+def add(*args):
+    print(args)
+
+add(10, 20, 30)
+
+Output:
+
+(10, 20, 30)
+
+
+args is a tuple.
+
+
+==================================================
+19. *args EXAMPLE
+==================================================
+
+def add(*args):
+    total = 0
+
+    for i in args:
+        total += i
+
+    return total
+
+print(add(10, 20, 30))
+
+Output:
+
+60
+
+
+==================================================
+20. **kwargs
+==================================================
+
+**kwargs allows a function to accept any number of
+keyword arguments.
+
+Example:
+
+def student(**kwargs):
+    print(kwargs)
+
+student(name="Ashu", age=20, city="Hisar")
+
+Output:
+
+{
+    'name': 'Ashu',
+    'age': 20,
+    'city': 'Hisar'
+}
+
+
+kwargs is a dictionary.
+
+
+==================================================
+21. *args VS **kwargs
+==================================================
+
+*args:
+
+Accepts multiple positional arguments.
+
+Example:
+
+function(10, 20, 30)
+
+
+**kwargs:
+
+Accepts multiple keyword arguments.
+
+Example:
+
+function(name="Ashu", age=20)
+
+
+*args -> tuple
+
+**kwargs -> dictionary
+
+
+==================================================
+22. *args AND **kwargs TOGETHER
+==================================================
+
+def student(*args, **kwargs):
+
+    print(args)
+    print(kwargs)
+
+student(
+    "Ashu",
+    20,
+    city="Hisar",
+    marks=90
+)
+
+
+Output:
+
+('Ashu', 20)
+
+{'city': 'Hisar', 'marks': 90}
+
+
+==================================================
+23. UNPACKING WITH *
+==================================================
+
+A list can be unpacked into function arguments.
+
+Example:
+
+numbers = [10, 20, 30]
+
+def add(a, b, c):
+    return a + b + c
+
+print(add(*numbers))
+
+Output:
+
+60
+
+
+==================================================
+24. UNPACKING WITH **
+==================================================
+
+A dictionary can be unpacked into keyword arguments.
+
+Example:
+
+data = {
+    "name": "Ashu",
+    "age": 20
+}
+
+def student(name, age):
+    print(name, age)
+
+student(**data)
+
+
+==================================================
+25. LOCAL VARIABLE
+==================================================
+
+A variable created inside a function is usually local
+to that function.
+
+Example:
+
+def test():
+    x = 10
+    print(x)
+
+test()
+
+
+Trying to use x outside the function:
+
+print(x)
+
+will cause NameError.
+
+
+==================================================
+26. GLOBAL VARIABLE
+==================================================
+
+A variable created outside a function is global.
+
+Example:
+
+x = 10
+
+def test():
+    print(x)
+
+test()
+
+Output:
+
+10
+
+
+==================================================
+27. GLOBAL KEYWORD
+==================================================
+
+global allows a function to modify a global variable.
+
+Example:
+
+x = 10
+
+def change():
+    global x
+    x = 20
+
+change()
+
+print(x)
+
+Output:
+
+20
+
+
+Use global carefully.
+
+
+==================================================
+28. LOCAL VS GLOBAL
+==================================================
+
+Global:
+
+x = 10
+
+def test():
+    x = 20
+    print(x)
+
+test()
+
+print(x)
+
+
+Output:
+
+20
+10
+
+
+The x inside the function is local and does not change
+the global x.
+
+
+==================================================
+29. NONLOCAL KEYWORD
+==================================================
+
+nonlocal is used in nested functions to modify a variable
+from the nearest enclosing function scope.
+
+Example:
+
+def outer():
+
+    x = 10
+
+    def inner():
+
+        nonlocal x
+        x = 20
+
+    inner()
+
+    print(x)
+
+outer()
+
+Output:
+
+20
+
+
+==================================================
+30. SCOPE
+==================================================
+
+Python follows the LEGB rule.
+
+L = Local
+E = Enclosing
+G = Global
+B = Built-in
+
+
+Python searches for a variable in this order:
+
+Local
+↓
+Enclosing
+↓
+Global
+↓
+Built-in
+
+
+==================================================
+31. NESTED FUNCTION
+==================================================
+
+A function defined inside another function is called
+a nested function.
+
+Example:
+
+def outer():
+
+    def inner():
+        print("Inner function")
+
+    inner()
+
+outer()
+
+
+==================================================
+32. FUNCTION AS AN OBJECT
+==================================================
+
+Functions are first-class objects in Python.
+
+A function can be:
+
+1. Stored in a variable
+2. Passed as an argument
+3. Returned from another function
+4. Stored in a list/dictionary
+
+
+Example:
+
+def greet():
+    print("Hello")
+
+x = greet
+
+x()
+
+Output:
+
+Hello
+
+
+==================================================
+33. PASS FUNCTION AS ARGUMENT
+==================================================
+
+def greet():
+    return "Hello"
+
+def display(func):
+    print(func())
+
+display(greet)
+
+Output:
+
+Hello
+
+
+==================================================
+34. RETURN A FUNCTION
+==================================================
+
+def outer():
+
+    def inner():
+        print("Hello")
+
+    return inner
+
+function = outer()
+
+function()
+
+Output:
+
+Hello
+
+
+==================================================
+35. LAMBDA FUNCTION
+==================================================
+
+A lambda is a small anonymous function.
+
+Syntax:
+
+lambda arguments: expression
+
+
+Example:
+
+square = lambda x: x * x
+
+print(square(5))
+
+Output:
+
+25
+
+
+==================================================
+36. LAMBDA WITH MULTIPLE PARAMETERS
+==================================================
+
+add = lambda a, b: a + b
+
+print(add(10, 20))
+
+Output:
+
+30
+
+
+==================================================
+37. LAMBDA WITH CONDITION
+==================================================
+
+check = lambda x: "Even" if x % 2 == 0 else "Odd"
+
+print(check(10))
+
+Output:
+
+Even
+
+
+==================================================
+38. map()
+==================================================
+
+map() applies a function to every item of an iterable.
+
+Syntax:
+
+map(function, iterable)
+
+
+Example:
+
+numbers = [1, 2, 3, 4]
+
+result = map(lambda x: x * 2, numbers)
+
+print(list(result))
+
+Output:
+
+[2, 4, 6, 8]
+
+
+==================================================
+39. filter()
+==================================================
+
+filter() selects items according to a condition.
+
+Example:
+
+numbers = [1, 2, 3, 4, 5, 6]
+
+result = filter(
+    lambda x: x % 2 == 0,
+    numbers
+)
+
+print(list(result))
+
+Output:
+
+[2, 4, 6]
+
+
+==================================================
+40. reduce()
+==================================================
+
+reduce() repeatedly applies a function to the items
+to produce a single result.
+
+Need:
+
+from functools import reduce
+
+
+Example:
+
+from functools import reduce
+
+numbers = [1, 2, 3, 4]
+
+result = reduce(
+    lambda a, b: a + b,
+    numbers
+)
+
+print(result)
+
+Output:
+
+10
+
+
+==================================================
+41. map() VS filter() VS reduce()
+==================================================
+
+map():
+
+Transforms each item.
+
+[1,2,3] -> [2,4,6]
+
+
+filter():
+
+Selects items.
+
+[1,2,3,4] -> [2,4]
+
+
+reduce():
+
+Combines items into one result.
+
+[1,2,3,4] -> 10
+
+
+==================================================
+42. RECURSION
+==================================================
+
+A function calling itself is called recursion.
+
+Example:
+
+def count(n):
+
+    if n == 0:
+        return
+
+    print(n)
+
+    count(n - 1)
+
+count(5)
+
+Output:
+
+5
+4
+3
+2
+1
+
+
+==================================================
+43. BASE CASE IN RECURSION
+==================================================
+
+A recursive function must normally have a base case.
+
+Example:
+
+def factorial(n):
+
+    if n == 0:
+        return 1
+
+    return n * factorial(n - 1)
+
+
+Without a proper stopping condition,
+recursion can continue until Python raises a recursion error.
+
+
+==================================================
+44. FACTORIAL USING RECURSION
+==================================================
+
+def factorial(n):
+
+    if n == 0:
+        return 1
+
+    return n * factorial(n - 1)
+
+print(factorial(5))
+
+Output:
+
+120
+
+
+==================================================
+45. FIBONACCI USING RECURSION
+==================================================
+
+def fibonacci(n):
+
+    if n <= 1:
+        return n
+
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(6))
+
+Output:
+
+8
+
+
+==================================================
+46. DOCSTRING
+==================================================
+
+A docstring describes what a function does.
+
+Example:
+
+def add(a, b):
+    """Return the sum of two numbers."""
+    return a + b
+
+
+You can access it using:
+
+print(add.__doc__)
+
+
+==================================================
+47. TYPE HINTS
+==================================================
+
+Type hints describe expected parameter and return types.
+
+Example:
+
+def add(a: int, b: int) -> int:
+    return a + b
+
+
+IMPORTANT:
+
+Type hints generally do not automatically enforce types
+at runtime.
+
+
+==================================================
+48. DEFAULT RETURN TYPE
+==================================================
+
+Example:
+
+def greet(name: str) -> str:
+    return "Hello " + name
+
+
+==================================================
+49. POSITION-ONLY PARAMETERS
+==================================================
+
+Use / to specify parameters that must be passed
+positionally.
+
+Example:
+
+def add(a, b, /):
+    return a + b
+
+add(10, 20)
+
+
+This is valid.
+
+But:
+
+add(a=10, b=20)
+
+is not valid because a and b are positional-only.
+
+
+==================================================
+50. KEYWORD-ONLY PARAMETERS
+==================================================
+
+Use * to make parameters keyword-only.
+
+Example:
+
+def student(name, *, age, city):
+    print(name, age, city)
+
+
+Valid:
+
+student("Ashu", age=20, city="Hisar")
+
+
+Invalid:
+
+student("Ashu", 20, "Hisar")
+
+
+==================================================
+51. POSITION-ONLY + KEYWORD-ONLY
+==================================================
+
+Example:
+
+def function(a, b, /, c, *, d, e):
+    pass
+
+
+a, b -> positional-only
+
+c -> positional or keyword
+
+d, e -> keyword-only
+
+
+==================================================
+52. FUNCTION ANNOTATIONS
+==================================================
+
+Annotations provide information about parameters and
+return values.
+
+Example:
+
+def multiply(
+    a: int,
+    b: int
+) -> int:
+
+    return a * b
+
+
+==================================================
+53. CALLING FUNCTION FROM ANOTHER FUNCTION
+==================================================
+
+Functions can call other functions.
+
+Example:
+
+def square(x):
+    return x * x
+
+def display(x):
+    print(square(x))
+
+display(5)
+
+Output:
+
+25
+
+
+==================================================
+54. FUNCTION WITH LIST
+==================================================
+
+def total(numbers):
+    return sum(numbers)
+
+numbers = [10, 20, 30]
+
+print(total(numbers))
+
+Output:
+
+60
+
+
+==================================================
+55. FUNCTION WITH DICTIONARY
+==================================================
+
+def show_student(student):
+    print(student["name"])
+    print(student["marks"])
+
+data = {
+    "name": "Ashu",
+    "marks": 90
+}
+
+show_student(data)
+
+
+==================================================
+56. FUNCTION WITH STRING
+==================================================
+
+def reverse_string(text):
+    return text[::-1]
+
+print(reverse_string("Python"))
+
+Output:
+
+nohtyP
+
+
+==================================================
+57. FUNCTION WITH LIST COMPREHENSION
+==================================================
+
+def squares(numbers):
+
+    return [
+        x * x
+        for x in numbers
+    ]
+
+print(squares([1, 2, 3, 4]))
+
+Output:
+
+[1, 4, 9, 16]
+
+
+==================================================
+58. FUNCTION WITH DICTIONARY COMPREHENSION
+==================================================
+
+def create_square_dict(numbers):
+
+    return {
+        x: x * x
+        for x in numbers
+    }
+
+print(create_square_dict([1, 2, 3]))
+
+
+==================================================
+59. FUNCTION WITH *args
+==================================================
+
+def largest(*numbers):
+
+    return max(numbers)
+
+print(largest(10, 50, 20, 40))
+
+Output:
+
+50
+
+
+==================================================
+60. FUNCTION WITH **kwargs
+==================================================
+
+def student(**details):
+
+    for key, value in details.items():
+        print(key, value)
+
+student(
+    name="Ashu",
+    age=20,
+    marks=90
+)
+
+
+==================================================
+61. ARBITRARY ARGUMENTS
+==================================================
+
+Arbitrary arguments means the function can accept
+a variable number of arguments.
+
+Positional:
+
+*args
+
+
+Keyword:
+
+**kwargs
+
+
+==================================================
+62. HIGHER-ORDER FUNCTION
+==================================================
+
+A higher-order function is a function that:
+
+1. Accepts another function as an argument
+OR
+2. Returns another function
+
+
+Example:
+
+def apply(func, value):
+    return func(value)
+
+square = lambda x: x * x
+
+print(apply(square, 5))
+
+Output:
+
+25
+
+
+==================================================
+63. CLOSURE
+==================================================
+
+A closure occurs when an inner function remembers and
+uses variables from its enclosing function even after
+the outer function has finished.
+
+Example:
+
+def multiplier(n):
+
+    def multiply(x):
+        return x * n
+
+    return multiply
+
+
+double = multiplier(2)
+
+print(double(5))
+
+Output:
+
+10
+
+
+Here inner function remembers n = 2.
+
+
+==================================================
+64. DECORATOR
+==================================================
+
+A decorator is a function that modifies or extends
+the behavior of another function without changing
+its original code.
+
+Basic example:
+
+def decorator(func):
+
+    def wrapper():
+        print("Before")
+        func()
+        print("After")
+
+    return wrapper
+
+
+@decorator
+def greet():
+    print("Hello")
+
+
+greet()
+
+
+Output:
+
+Before
+Hello
+After
+
+
+==================================================
+65. DECORATOR WITH ARGUMENTS
+==================================================
+
+def decorator(func):
+
+    def wrapper(*args, **kwargs):
+
+        print("Before")
+
+        result = func(*args, **kwargs)
+
+        print("After")
+
+        return result
+
+    return wrapper
+
+
+@decorator
+def add(a, b):
+
+    return a + b
+
+
+print(add(10, 20))
+
+
+==================================================
+66. MULTIPLE DECORATORS
+==================================================
+
+Multiple decorators can be applied.
+
+Example:
+
+@decorator1
+@decorator2
+def greet():
+    pass
+
+
+The decorators are applied from the bottom upward.
+
+
+==================================================
+67. functools.wraps
+==================================================
+
+When writing decorators, functools.wraps helps preserve
+the original function's metadata.
+
+Example:
+
+from functools import wraps
+
+def decorator(func):
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
+==================================================
+68. GENERATOR FUNCTION
+==================================================
+
+A function containing yield is called a generator function.
+
+Example:
+
+def numbers():
+
+    yield 1
+    yield 2
+    yield 3
+
+
+for x in numbers():
+    print(x)
+
+
+Output:
+
+1
+2
+3
+
+
+==================================================
+69. yield VS return
+==================================================
+
+return:
+
+- Ends the function
+- Returns a result
+- Function execution finishes
+
+
+yield:
+
+- Produces a value
+- Pauses the function
+- Can continue later
+- Used for generators
+
+
+==================================================
+70. GENERATOR WITH LOOP
+==================================================
+
+def numbers(n):
+
+    for i in range(n):
+        yield i
+
+
+for x in numbers(5):
+    print(x)
+
+
+==================================================
+71. FUNCTION ATTRIBUTES
+==================================================
+
+Functions are objects and can have attributes.
+
+Example:
+
+def greet():
+    pass
+
+greet.description = "Greeting function"
+
+print(greet.description)
+
+
+==================================================
+72. FUNCTION __name__
+==================================================
+
+def greet():
+    pass
+
+print(greet.__name__)
+
+Output:
+
+greet
+
+
+==================================================
+73. FUNCTION __doc__
+==================================================
+
+def greet():
+    """This function greets the user."""
+    pass
+
+print(greet.__doc__)
+
+
+==================================================
+74. FUNCTION __annotations__
+==================================================
+
+def add(a: int, b: int) -> int:
+    return a + b
+
+print(add.__annotations__)
+
+
+==================================================
+75. PASS STATEMENT IN FUNCTION
+==================================================
+
+pass is used when a function body is not implemented yet.
+
+Example:
+
+def future_function():
+    pass
+
+
+==================================================
+76. FUNCTION ALIAS
+==================================================
+
+A function can be assigned to another variable.
+
+Example:
+
+def greet():
+    print("Hello")
+
+hello = greet
+
+hello()
+
+Output:
+
+Hello
+
+
+Both names refer to the same function object.
+
+
+==================================================
+77. NESTED FUNCTION + CLOSURE
+==================================================
+
+def power(n):
+
+    def calculate(x):
+        return x ** n
+
+    return calculate
+
+
+square = power(2)
+cube = power(3)
+
+print(square(5))
+print(cube(5))
+
+Output:
+
+25
+125
+
+
+==================================================
+78. RECURSION VS LOOP
+==================================================
+
+Recursion:
+
+Function calls itself.
+
+
+Loop:
+
+Repeats code using:
+
+for
+while
+
+
+Recursion is useful for problems that naturally have
+recursive structures, but loops are often simpler and
+more memory-efficient for straightforward repetition.
+
+
+==================================================
+79. FUNCTION OVERLO
