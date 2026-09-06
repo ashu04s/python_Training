@@ -1,0 +1,1989 @@
+==================================================
+PYTHON MODULES - COMPLETE NOTES
+BASIC TO ADVANCED
+DIRECT COPY AND PASTE FOR TXT FILE
+==================================================
+
+
+1. WHAT IS A MODULE?
+==================================================
+
+A module is a Python file containing Python code.
+
+A module can contain:
+
+1. Variables
+2. Functions
+3. Classes
+4. Statements
+5. Constants
+
+A Python module normally has a .py extension.
+
+Example:
+
+math_utils.py
+
+def add(a, b):
+    return a + b
+
+
+==================================================
+2. WHY USE MODULES?
+==================================================
+
+Modules are used to:
+
+1. Reuse code
+2. Organize large programs
+3. Avoid code repetition
+4. Make code easier to maintain
+5. Separate different parts of a project
+6. Use Python's built-in functionality
+7. Create reusable libraries
+
+
+==================================================
+3. TYPES OF MODULES
+==================================================
+
+Python modules can mainly be divided into:
+
+1. Built-in / Standard Library Modules
+2. User-Defined Modules
+3. Third-Party Modules
+
+
+==================================================
+4. BUILT-IN / STANDARD LIBRARY MODULES
+==================================================
+
+Python provides many modules with its standard library.
+
+Examples:
+
+math
+random
+datetime
+os
+sys
+json
+re
+statistics
+time
+calendar
+collections
+itertools
+functools
+
+
+Example:
+
+import math
+
+print(math.sqrt(25))
+
+Output:
+
+5.0
+
+
+==================================================
+5. USER-DEFINED MODULE
+==================================================
+
+A module created by the programmer is called a
+user-defined module.
+
+Suppose we create:
+
+calculator.py
+
+Code:
+
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+
+Another file:
+
+main.py
+
+import calculator
+
+print(calculator.add(10, 5))
+
+print(calculator.subtract(10, 5))
+
+
+==================================================
+6. import STATEMENT
+==================================================
+
+The import statement is used to import a module.
+
+Syntax:
+
+import module_name
+
+
+Example:
+
+import math
+
+print(math.sqrt(16))
+
+
+==================================================
+7. ACCESSING MODULE MEMBERS
+==================================================
+
+Use dot operator:
+
+module_name.member_name
+
+
+Example:
+
+import math
+
+print(math.pi)
+
+print(math.sqrt(25))
+
+
+Here:
+
+math -> module
+
+pi -> variable/constant
+
+sqrt -> function
+
+
+==================================================
+8. IMPORT MULTIPLE MODULES
+==================================================
+
+You can import multiple modules.
+
+Example:
+
+import math
+import random
+import datetime
+
+
+Or:
+
+import math, random
+
+
+Better style:
+
+import math
+import random
+
+
+==================================================
+9. IMPORT SPECIFIC FUNCTION
+==================================================
+
+Use:
+
+from module import function
+
+
+Example:
+
+from math import sqrt
+
+print(sqrt(25))
+
+Output:
+
+5.0
+
+
+Now we don't need:
+
+math.sqrt()
+
+
+==================================================
+10. IMPORT MULTIPLE MEMBERS
+==================================================
+
+Example:
+
+from math import sqrt, pi
+
+print(sqrt(25))
+print(pi)
+
+
+==================================================
+11. from module import *
+==================================================
+
+You can import all names from a module.
+
+Example:
+
+from math import *
+
+print(sqrt(25))
+print(pi)
+
+
+IMPORTANT:
+
+Using * is generally discouraged in larger programs
+because it can make it unclear where names came from
+and can cause naming conflicts.
+
+
+==================================================
+12. IMPORT WITH ALIAS
+==================================================
+
+Use "as" to create an alias.
+
+Example:
+
+import math as m
+
+print(m.sqrt(25))
+
+
+Here:
+
+math -> original module name
+
+m -> alias
+
+
+==================================================
+13. ALIAS FOR FUNCTION
+==================================================
+
+Example:
+
+from math import sqrt as s
+
+print(s(25))
+
+
+==================================================
+14. __name__ IN MODULE
+==================================================
+
+Every Python module has a special variable:
+
+__name__
+
+
+When a file is run directly:
+
+__name__ == "__main__"
+
+
+When the file is imported:
+
+__name__ == module_name
+
+
+==================================================
+15. if __name__ == "__main__"
+==================================================
+
+This is commonly used to prevent some code from
+running automatically when the module is imported.
+
+Example:
+
+def add(a, b):
+    return a + b
+
+
+if __name__ == "__main__":
+    print(add(10, 20))
+
+
+If the file is run directly:
+
+The print statement executes.
+
+
+If imported:
+
+The print statement does not execute.
+
+
+==================================================
+16. MODULE WITH VARIABLES
+==================================================
+
+Example:
+
+student.py
+
+name = "Ashu"
+age = 20
+
+
+main.py
+
+import student
+
+print(student.name)
+print(student.age)
+
+
+==================================================
+17. MODULE WITH FUNCTIONS
+==================================================
+
+Example:
+
+calculator.py
+
+def add(a, b):
+    return a + b
+
+
+def multiply(a, b):
+    return a * b
+
+
+main.py
+
+import calculator
+
+print(calculator.add(10, 20))
+
+print(calculator.multiply(5, 4))
+
+
+==================================================
+18. MODULE WITH CLASS
+==================================================
+
+Example:
+
+student.py
+
+class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def show(self):
+        print(self.name)
+
+
+main.py
+
+from student import Student
+
+s = Student("Ashu")
+
+s.show()
+
+
+==================================================
+19. MODULE WITH CONSTANTS
+==================================================
+
+Example:
+
+config.py
+
+PI = 3.14159
+MAX_USERS = 100
+
+
+main.py
+
+import config
+
+print(config.PI)
+print(config.MAX_USERS)
+
+
+Python does not enforce constants, but uppercase names
+are commonly used to indicate values intended to remain
+unchanged.
+
+
+==================================================
+20. STANDARD LIBRARY MODULE: math
+==================================================
+
+math provides mathematical functions.
+
+Example:
+
+import math
+
+print(math.sqrt(25))
+print(math.pow(2, 3))
+print(math.ceil(4.2))
+print(math.floor(4.8))
+print(math.pi)
+
+
+Common functions/constants:
+
+sqrt()
+pow()
+ceil()
+floor()
+factorial()
+gcd()
+pi
+e
+
+
+==================================================
+21. STANDARD LIBRARY MODULE: random
+==================================================
+
+Used for pseudo-random values.
+
+Example:
+
+import random
+
+print(random.randint(1, 10))
+
+
+Common functions:
+
+random()
+randint()
+randrange()
+choice()
+choices()
+sample()
+shuffle()
+
+
+Example:
+
+numbers = [1, 2, 3, 4, 5]
+
+random.shuffle(numbers)
+
+print(numbers)
+
+
+==================================================
+22. STANDARD LIBRARY MODULE: datetime
+==================================================
+
+Used for dates and times.
+
+Example:
+
+from datetime import datetime
+
+now = datetime.now()
+
+print(now)
+
+
+Common classes:
+
+date
+time
+datetime
+timedelta
+
+
+==================================================
+23. STANDARD LIBRARY MODULE: os
+==================================================
+
+os provides operating-system related functionality.
+
+Example:
+
+import os
+
+print(os.getcwd())
+
+
+Common functions:
+
+getcwd()
+listdir()
+mkdir()
+makedirs()
+remove()
+rename()
+
+
+==================================================
+24. STANDARD LIBRARY MODULE: sys
+==================================================
+
+sys provides access to Python runtime/system information.
+
+Example:
+
+import sys
+
+print(sys.version)
+
+print(sys.platform)
+
+
+Common:
+
+sys.argv
+sys.path
+sys.version
+sys.exit()
+
+
+==================================================
+25. STANDARD LIBRARY MODULE: json
+==================================================
+
+json is used to work with JSON data.
+
+Example:
+
+import json
+
+data = {
+    "name": "Ashu",
+    "age": 20
+}
+
+text = json.dumps(data)
+
+print(text)
+
+
+==================================================
+26. JSON SERIALIZATION
+==================================================
+
+Python object -> JSON string
+
+Use:
+
+json.dumps()
+
+
+Example:
+
+data = {"name": "Ashu"}
+
+result = json.dumps(data)
+
+
+==================================================
+27. JSON DESERIALIZATION
+==================================================
+
+JSON string -> Python object
+
+Use:
+
+json.loads()
+
+
+Example:
+
+text = '{"name": "Ashu"}'
+
+data = json.loads(text)
+
+print(data)
+
+
+==================================================
+28. STANDARD LIBRARY MODULE: statistics
+==================================================
+
+Used for statistical calculations.
+
+Example:
+
+import statistics
+
+numbers = [10, 20, 30, 40]
+
+print(statistics.mean(numbers))
+
+
+Common:
+
+mean()
+median()
+mode()
+stdev()
+variance()
+
+
+==================================================
+29. STANDARD LIBRARY MODULE: re
+==================================================
+
+re stands for Regular Expressions.
+
+Used for pattern matching.
+
+Example:
+
+import re
+
+text = "My phone is 9876543210"
+
+result = re.search(r"\d+", text)
+
+print(result.group())
+
+
+Common:
+
+search()
+match()
+findall()
+finditer()
+sub()
+split()
+
+
+==================================================
+30. STANDARD LIBRARY MODULE: collections
+==================================================
+
+Provides specialized container data types.
+
+Important:
+
+Counter
+defaultdict
+deque
+namedtuple
+
+
+Example:
+
+from collections import Counter
+
+text = "hello"
+
+result = Counter(text)
+
+print(result)
+
+
+==================================================
+31. STANDARD LIBRARY MODULE: functools
+==================================================
+
+Provides higher-order function utilities.
+
+Important:
+
+reduce()
+partial()
+lru_cache()
+wraps()
+
+
+Example:
+
+from functools import reduce
+
+numbers = [1, 2, 3, 4]
+
+result = reduce(
+    lambda a, b: a + b,
+    numbers
+)
+
+print(result)
+
+
+==================================================
+32. STANDARD LIBRARY MODULE: itertools
+==================================================
+
+Provides tools for working with iterators.
+
+Important:
+
+count()
+cycle()
+repeat()
+chain()
+combinations()
+permutations()
+product()
+
+
+Example:
+
+from itertools import combinations
+
+data = [1, 2, 3]
+
+print(list(combinations(data, 2)))
+
+
+==================================================
+33. THIRD-PARTY MODULES
+==================================================
+
+Third-party modules are created by external developers
+and are usually installed separately.
+
+Examples:
+
+requests
+numpy
+pandas
+matplotlib
+flask
+django
+beautifulsoup4
+
+
+They are commonly installed using pip.
+
+
+==================================================
+34. WHAT IS pip?
+==================================================
+
+pip is Python's package installer.
+
+It is commonly used to install third-party packages.
+
+Example:
+
+pip install requests
+
+
+Another example:
+
+pip install numpy
+
+
+==================================================
+35. INSTALLING A MODULE
+==================================================
+
+Command:
+
+pip install package_name
+
+
+Example:
+
+pip install requests
+
+
+Upgrade:
+
+pip install --upgrade requests
+
+
+Uninstall:
+
+pip uninstall requests
+
+
+Show package information:
+
+pip show requests
+
+
+List installed packages:
+
+pip list
+
+
+==================================================
+36. IMPORT THIRD-PARTY MODULE
+==================================================
+
+After installation:
+
+import requests
+
+response = requests.get("https://example.com")
+
+print(response.status_code)
+
+
+==================================================
+37. MODULE SEARCH PATH
+==================================================
+
+Python searches for modules using paths stored in:
+
+sys.path
+
+
+Example:
+
+import sys
+
+print(sys.path)
+
+
+Python checks locations such as:
+
+1. Current project directory
+2. Standard library locations
+3. Installed package locations
+4. Other configured paths
+
+
+==================================================
+38. PYTHON MODULE CACHE
+==================================================
+
+Python caches imported modules in:
+
+sys.modules
+
+
+Example:
+
+import sys
+
+print(sys.modules)
+
+
+When a module is imported, Python generally does not
+execute its top-level code from scratch every time it is
+imported in the same Python process.
+
+
+==================================================
+39. MODULE RE-IMPORT
+==================================================
+
+Example:
+
+import math
+import math
+
+
+Python does not normally load and execute the module
+again from scratch.
+
+
+==================================================
+40. RELOAD MODULE
+==================================================
+
+Use importlib.reload() to reload an already imported module.
+
+Example:
+
+import importlib
+import mymodule
+
+importlib.reload(mymodule)
+
+
+This is mainly useful during development.
+
+
+==================================================
+41. PACKAGE
+==================================================
+
+A package is a way to organize related Python modules
+into a directory structure.
+
+Example:
+
+project/
+|
+|-- main.py
+|
+|-- calculator/
+    |
+    |-- __init__.py
+    |-- add.py
+    |-- subtract.py
+
+
+calculator is a package.
+
+add.py and subtract.py are modules.
+
+
+==================================================
+42. MODULE VS PACKAGE
+==================================================
+
+MODULE:
+
+Usually one .py file containing Python code.
+
+
+PACKAGE:
+
+A directory used to organize related modules.
+
+
+Example:
+
+calculator.py
+
+-> Module
+
+
+calculator/
+
+    add.py
+    subtract.py
+
+-> Package
+
+
+==================================================
+43. __init__.py
+==================================================
+
+__init__.py is commonly used in Python packages.
+
+Example:
+
+calculator/
+|
+|-- __init__.py
+|-- add.py
+|-- subtract.py
+
+
+It can contain package initialization code and can
+control what is exposed by package-level imports.
+
+
+Modern Python also supports namespace packages that do
+not require __init__.py, but regular packages commonly
+use it.
+
+
+==================================================
+44. IMPORT FROM PACKAGE
+==================================================
+
+Suppose:
+
+calculator/
+|
+|-- __init__.py
+|-- add.py
+
+
+add.py:
+
+def add(a, b):
+    return a + b
+
+
+main.py:
+
+from calculator.add import add
+
+print(add(10, 20))
+
+
+==================================================
+45. IMPORT MODULE FROM PACKAGE
+==================================================
+
+Example:
+
+from calculator import add
+
+If add is a module, you can use:
+
+add.add(10, 20)
+
+
+The exact behavior depends on the package structure
+and what is exposed through __init__.py.
+
+
+==================================================
+46. SUBMODULE
+==================================================
+
+A module inside a package is called a submodule.
+
+Example:
+
+mypackage/
+|
+|-- module1.py
+|-- module2.py
+
+
+module1 and module2 are submodules of mypackage.
+
+
+==================================================
+47. MODULE NAMING
+==================================================
+
+Good module names:
+
+calculator.py
+student.py
+database.py
+file_utils.py
+
+
+Avoid:
+
+my-file.py
+class.py
+def.py
+
+
+Avoid names that conflict with Python keywords or
+important standard library module names.
+
+
+==================================================
+48. MODULE DOCUMENTATION
+==================================================
+
+A module can have a module-level docstring.
+
+Example:
+
+"""
+This module contains calculator functions.
+"""
+
+
+def add(a, b):
+    return a + b
+
+
+==================================================
+49. __doc__
+==================================================
+
+Module documentation can be accessed using:
+
+module.__doc__
+
+
+Example:
+
+import math
+
+print(math.__doc__)
+
+
+==================================================
+50. __file__
+==================================================
+
+__file__ contains the path of the imported module file
+when available.
+
+Example:
+
+import math
+
+print(math.__file__)
+
+
+Some built-in modules may not have a normal file path.
+
+
+==================================================
+51. __package__
+==================================================
+
+__package__ contains package information associated with
+a module.
+
+It is especially relevant for package imports and
+relative imports.
+
+
+==================================================
+52. RELATIVE IMPORT
+==================================================
+
+Relative imports are mainly used inside packages.
+
+Example:
+
+from .add import add
+
+
+Here:
+
+. means the current package.
+
+
+Another example:
+
+from .utils.helper import function
+
+
+==================================================
+53. ABSOLUTE IMPORT
+==================================================
+
+Absolute import specifies the complete package/module path.
+
+Example:
+
+from calculator.add import add
+
+
+==================================================
+54. ABSOLUTE VS RELATIVE IMPORT
+==================================================
+
+Absolute:
+
+from calculator.add import add
+
+
+Relative:
+
+from .add import add
+
+
+Absolute imports are often easier to understand in larger
+projects.
+
+
+==================================================
+55. MODULE NAME CONFLICT
+==================================================
+
+Suppose your file is named:
+
+math.py
+
+
+Then:
+
+import math
+
+may import your local math.py instead of the standard
+library math module depending on the import search path.
+
+Therefore, avoid naming your files after standard library
+modules.
+
+
+Examples to avoid:
+
+math.py
+random.py
+json.py
+os.py
+sys.py
+
+
+==================================================
+56. CIRCULAR IMPORT
+==================================================
+
+A circular import occurs when modules depend on each other
+directly or indirectly.
+
+Example:
+
+module_a imports module_b
+
+module_b imports module_a
+
+
+This can cause import errors or partially initialized
+modules.
+
+Better solution:
+
+1. Rearrange code
+2. Move shared code to another module
+3. Use local imports only when appropriate
+
+
+==================================================
+57. MODULE DESIGN
+==================================================
+
+A good module should generally:
+
+1. Have one clear purpose
+2. Use meaningful names
+3. Avoid unnecessary global state
+4. Keep reusable functions/classes separate
+5. Include documentation where useful
+6. Avoid circular dependencies
+
+
+==================================================
+58. __all__
+==================================================
+
+__all__ can define names intended for wildcard imports.
+
+Example:
+
+__all__ = ["add", "subtract"]
+
+
+Then:
+
+from calculator import *
+
+
+will expose the names listed in __all__.
+
+IMPORTANT:
+
+Explicit imports are generally clearer than wildcard imports.
+
+
+==================================================
+59. MODULE LEVEL CODE
+==================================================
+
+Code written directly in a module is executed when the
+module is imported.
+
+Example:
+
+print("Module loaded")
+
+
+If another file runs:
+
+import mymodule
+
+
+The message can be printed during import.
+
+
+Use:
+
+if __name__ == "__main__":
+
+to separate script-only code from importable code.
+
+
+==================================================
+60. MODULE WITH MAIN FUNCTION
+==================================================
+
+Good structure:
+
+def add(a, b):
+    return a + b
+
+
+def main():
+    print(add(10, 20))
+
+
+if __name__ == "__main__":
+    main()
+
+
+This allows the file to be:
+
+1. Run directly
+2. Imported safely
+
+
+==================================================
+61. MODULE EXECUTION FLOW
+==================================================
+
+When Python imports a module:
+
+1. Python finds the module
+2. Creates/initializes the module
+3. Executes its top-level code
+4. Stores the module in sys.modules
+5. Makes the module available to the importer
+
+
+==================================================
+62. IMPORT ERROR
+==================================================
+
+If Python cannot find a module:
+
+ModuleNotFoundError
+
+Example:
+
+import abcxyz
+
+
+Possible error:
+
+ModuleNotFoundError:
+No module named 'abcxyz'
+
+
+Solutions:
+
+1. Check module name
+2. Check installation
+3. Check project path
+4. Check virtual environment
+5. Check spelling
+
+
+==================================================
+63. ATTRIBUTE ERROR
+==================================================
+
+Example:
+
+import math
+
+print(math.hello())
+
+
+If hello does not exist:
+
+AttributeError
+
+
+Meaning:
+
+The module exists, but the requested attribute/function
+does not exist.
+
+
+==================================================
+64. ALIASING MODULES
+==================================================
+
+Example:
+
+import numpy as np
+
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+
+Common aliases:
+
+numpy -> np
+
+pandas -> pd
+
+matplotlib.pyplot -> plt
+
+
+==================================================
+65. MODULE VS LIBRARY VS PACKAGE
+==================================================
+
+MODULE:
+
+Usually a single Python file.
+
+
+PACKAGE:
+
+A collection/organization of modules.
+
+
+LIBRARY:
+
+A broader collection of reusable code, which can contain
+modules and packages.
+
+
+PACKAGE/PROJECT:
+
+May contain multiple packages and modules.
+
+
+==================================================
+66. VIRTUAL ENVIRONMENT
+==================================================
+
+A virtual environment creates an isolated Python
+environment for a project.
+
+Common command:
+
+python -m venv venv
+
+
+Activate on Windows:
+
+venv\Scripts\activate
+
+
+Activate on Linux/macOS:
+
+source venv/bin/activate
+
+
+Then install packages:
+
+pip install requests
+
+
+==================================================
+67. requirements.txt
+==================================================
+
+requirements.txt stores project dependencies.
+
+Example:
+
+requests==2.32.0
+numpy==2.0.0
+pandas==2.2.0
+
+
+Install all dependencies:
+
+pip install -r requirements.txt
+
+
+==================================================
+68. MODULE SEARCH USING sys.path
+==================================================
+
+Example:
+
+import sys
+
+for path in sys.path:
+    print(path)
+
+
+This shows locations Python searches for imports.
+
+
+==================================================
+69. PYTHON PACKAGE MANAGER CONCEPT
+==================================================
+
+pip is commonly used to:
+
+Install packages
+Upgrade packages
+Remove packages
+List packages
+Show package information
+
+
+Commands:
+
+pip install package
+pip uninstall package
+pip list
+pip show package
+pip freeze
+
+
+==================================================
+70. pip freeze
+==================================================
+
+Shows installed packages in a format useful for
+requirements files.
+
+Example:
+
+pip freeze
+
+
+Save:
+
+pip freeze > requirements.txt
+
+
+==================================================
+71. IMPORT BEST PRACTICE
+==================================================
+
+Prefer:
+
+import math
+
+math.sqrt(25)
+
+
+or:
+
+from math import sqrt
+
+sqrt(25)
+
+
+Avoid unnecessary:
+
+from math import *
+
+
+==================================================
+72. MODULE EXAMPLE - COMPLETE
+==================================================
+
+File:
+
+calculator.py
+
+
+"""
+Calculator module.
+"""
+
+
+PI = 3.14159
+
+
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def main():
+    print(add(10, 20))
+    print(subtract(20, 10))
+
+
+if __name__ == "__main__":
+    main()
+
+
+Another file:
+
+main.py
+
+
+import calculator
+
+
+print(calculator.add(5, 10))
+
+
+==================================================
+73. CUSTOM MODULE PROJECT STRUCTURE
+==================================================
+
+project/
+|
+|-- main.py
+|
+|-- calculator.py
+|
+|-- student.py
+|
+|-- utility.py
+
+
+main.py can import:
+
+import calculator
+import student
+import utility
+
+
+==================================================
+74. PACKAGE PROJECT STRUCTURE
+==================================================
+
+project/
+|
+|-- main.py
+|
+|-- utils/
+|   |
+|   |-- __init__.py
+|   |-- calculator.py
+|   |-- string_utils.py
+|
+|-- database/
+    |
+    |-- __init__.py
+    |-- connection.py
+
+
+This structure is useful for larger applications.
+
+
+==================================================
+75. MODULE BEST PRACTICES
+==================================================
+
+1. Use meaningful module names.
+2. Keep modules focused.
+3. Avoid wildcard imports.
+4. Avoid circular imports.
+5. Use functions/classes for reusable code.
+6. Use docstrings.
+7. Use if __name__ == "__main__" for script entry points.
+8. Keep dependencies clear.
+9. Use virtual environments for projects.
+10. Store dependencies in requirements.txt when appropriate.
+
+
+==================================================
+76. IMPORTANT MODULE KEYWORDS
+==================================================
+
+import
+
+from
+
+as
+
+__name__
+
+__main__
+
+__file__
+
+__package__
+
+__all__
+
+
+==================================================
+77. IMPORTANT MODULE FUNCTIONS/TOOLS
+==================================================
+
+importlib.import_module()
+-> Dynamically import a module
+
+
+importlib.reload()
+-> Reload an imported module
+
+
+help()
+-> Get documentation
+
+
+dir()
+-> List names/attributes
+
+
+Example:
+
+import math
+
+print(dir(math))
+
+
+==================================================
+78. DYNAMIC IMPORT
+==================================================
+
+A module can be imported dynamically.
+
+Example:
+
+import importlib
+
+module = importlib.import_module("math")
+
+print(module.sqrt(25))
+
+
+Useful when the module name is determined at runtime.
+
+
+==================================================
+79. dir() WITH MODULE
+==================================================
+
+Example:
+
+import math
+
+print(dir(math))
+
+
+It shows names available in the module.
+
+
+==================================================
+80. help() WITH MODULE
+==================================================
+
+Example:
+
+import math
+
+help(math)
+
+
+Shows documentation about the module.
+
+
+==================================================
+81. MODULE SECURITY / SAFETY POINT
+==================================================
+
+Importing a module executes its top-level code.
+
+Therefore:
+
+Do not import untrusted Python files.
+
+Be careful with third-party packages and package sources.
+
+
+==================================================
+82. IMPORTANT INTERVIEW QUESTIONS
+==================================================
+
+Q1. What is a module?
+
+A Python file containing reusable Python code.
+
+
+Q2. What is the extension of a Python module?
+
+.py
+
+
+Q3. How do you import a module?
+
+import module_name
+
+
+Q4. How do you import a specific function?
+
+from module import function
+
+
+Q5. What is an alias?
+
+A different name given to an imported module/member.
+
+Example:
+
+import math as m
+
+
+Q6. What is __name__?
+
+A special module attribute containing the module's name
+in its current execution context.
+
+
+Q7. What is __main__?
+
+When a Python file is executed directly, its __name__
+is normally "__main__".
+
+
+Q8. What is a package?
+
+A way to organize related Python modules in a directory.
+
+
+Q9. What is pip?
+
+Python's package installer.
+
+
+Q10. What is a third-party module?
+
+A package/module provided outside Python's standard library.
+
+
+Q11. What is sys.path?
+
+The list of locations Python searches for modules.
+
+
+Q12. What is sys.modules?
+
+A dictionary-like cache of modules already loaded in
+the current Python process.
+
+
+Q13. What is circular import?
+
+When modules directly or indirectly import each other.
+
+
+==================================================
+83. QUICK REVISION
+==================================================
+
+MODULE:
+
+Python file containing reusable code.
+
+
+IMPORT:
+
+import math
+
+
+SPECIFIC IMPORT:
+
+from math import sqrt
+
+
+ALIAS:
+
+import math as m
+
+
+USER-DEFINED MODULE:
+
+calculator.py
+
+
+STANDARD LIBRARY:
+
+math
+random
+os
+sys
+datetime
+json
+re
+collections
+itertools
+functools
+
+
+THIRD-PARTY:
+
+requests
+numpy
+pandas
+flask
+django
+
+
+PACKAGE:
+
+Collection/organization of related modules.
+
+
+pip:
+
+Package installer.
+
+
+__name__:
+
+Module's execution name.
+
+
+__main__:
+
+Used when file is run directly.
+
+
+sys.path:
+
+Module search locations.
+
+
+sys.modules:
+
+Loaded module cache.
+
+
+__init__.py:
+
+Common package initialization file.
+
+
+==================================================
+84. MOST IMPORTANT DIFFERENCE
+==================================================
+
+MODULE:
+
+One Python file.
+
+
+PACKAGE:
+
+Directory that organizes modules.
+
+
+LIBRARY:
+
+Collection of reusable code.
+
+
+pip:
+
+Tool used to install packages.
+
+
+==================================================
+85. FINAL MODULE FLOW
+==================================================
+
+Python File
+     |
+     ↓
+Module
+     |
+     ↓
+import
+     |
+     ↓
+Use functions/classes/variables
+     |
+     ↓
+Reusable Code
+
+
+For larger projects:
+
+Project
+   |
+   +-- Package
+   |     |
+   |     +-- Module
+   |     +-- Module
+   |
+   +-- Package
+         |
+         +-- Module
+         +-- Module
+
+
+==================================================
+END OF PYTHON MODULE NOTES
+==================================================

@@ -1,0 +1,2125 @@
+PYTHON FILE HANDLING — COMPLETE NOTES
+======================================
+
+1. WHAT IS FILE HANDLING?
+--------------------------
+
+File handling means creating, opening, reading, writing, updating and deleting files using Python.
+
+Normally, Python program ka data program close hone ke baad memory se remove ho jata hai.
+
+File ka use karke hum data permanently store kar sakte hain.
+
+Example:
+
+Student data
+Employee data
+Login information
+Logs
+Reports
+Configuration
+CSV/Text data
+
+
+2. WHY DO WE NEED FILE HANDLING?
+--------------------------------
+
+File handling ke main purposes:
+
+1. Data ko permanently store karna
+2. Existing data ko read karna
+3. New data write karna
+4. Existing data update karna
+5. Files create karna
+6. Files delete karna
+7. Large amount of data ko manage karna
+
+
+3. TYPES OF FILES
+-----------------
+
+Python me mainly 2 types ki files hoti hain:
+
+1. Text Files
+2. Binary Files
+
+
+TEXT FILE
+---------
+
+Text files human-readable data store karti hain.
+
+Examples:
+
+.txt
+.csv
+.py
+.html
+.json
+
+
+Example:
+
+Hello
+Ashu
+Python
+
+
+BINARY FILE
+-----------
+
+Binary files data ko binary format me store karti hain.
+
+Examples:
+
+.jpg
+.png
+.mp3
+.mp4
+.pdf
+.exe
+
+
+4. OPENING A FILE
+-----------------
+
+Python me file open karne ke liye open() function use hota hai.
+
+Syntax:
+
+file_object = open("filename", "mode")
+
+
+Example:
+
+file = open("data.txt", "r")
+
+
+Yahan:
+
+data.txt = file ka naam
+
+"r" = read mode
+
+file = file object
+
+
+5. FILE MODES
+-------------
+
+Python me commonly ye modes use hote hain:
+
+r
+w
+a
+x
+r+
+w+
+a+
+rb
+wb
+ab
+rb+
+wb+
+ab+
+
+
+6. READ MODE — "r"
+------------------
+
+"r" ka matlab Read.
+
+Is mode me hum file ke existing data ko read karte hain.
+
+Example:
+
+file = open("data.txt", "r")
+
+data = file.read()
+
+print(data)
+
+file.close()
+
+
+Important:
+
+"r" mode me file exist karni chahiye.
+
+Agar file exist nahi karti to FileNotFoundError aayega.
+
+
+Example:
+
+file = open("abc.txt", "r")
+
+
+Agar abc.txt exist nahi karti:
+
+FileNotFoundError
+
+
+7. WRITE MODE — "w"
+-------------------
+
+"w" ka matlab Write.
+
+Is mode me file me new data write kar sakte hain.
+
+Example:
+
+file = open("data.txt", "w")
+
+file.write("Hello Python")
+
+file.close()
+
+
+IMPORTANT:
+
+Agar file already exist karti hai, to "w" mode purana data DELETE karke new data likhta hai.
+
+Example:
+
+Existing file:
+
+Hello
+World
+
+
+Code:
+
+file = open("data.txt", "w")
+file.write("Python")
+file.close()
+
+
+New file:
+
+Python
+
+
+Agar file exist nahi karti, "w" mode automatically new file create kar deta hai.
+
+
+8. APPEND MODE — "a"
+--------------------
+
+"a" ka matlab Append.
+
+Is mode ka use existing data ke END me new data add karne ke liye hota hai.
+
+Example:
+
+file = open("data.txt", "a")
+
+file.write("\nNew Data")
+
+file.close()
+
+
+Existing:
+
+Hello
+Python
+
+
+After append:
+
+Hello
+Python
+New Data
+
+
+IMPORTANT:
+
+"a" mode existing data ko delete nahi karta.
+
+
+9. CREATE MODE — "x"
+--------------------
+
+"x" mode new file create karne ke liye use hota hai.
+
+Example:
+
+file = open("newfile.txt", "x")
+
+file.write("Hello")
+
+file.close()
+
+
+IMPORTANT:
+
+Agar file already exist karti hai to FileExistsError aayega.
+
+
+Example:
+
+file = open("data.txt", "x")
+
+
+If data.txt already exists:
+
+FileExistsError
+
+
+10. READ + WRITE MODE — "r+"
+----------------------------
+
+"r+" ka matlab:
+
+Read + Write
+
+
+Example:
+
+file = open("data.txt", "r+")
+
+data = file.read()
+
+print(data)
+
+file.write("\nNew Data")
+
+file.close()
+
+
+IMPORTANT:
+
+"r+" me file already exist karni chahiye.
+
+Agar file exist nahi karti:
+
+FileNotFoundError
+
+
+11. WRITE + READ MODE — "w+"
+----------------------------
+
+"w+" = Write + Read
+
+Example:
+
+file = open("data.txt", "w+")
+
+file.write("Hello Python")
+
+file.seek(0)
+
+data = file.read()
+
+print(data)
+
+file.close()
+
+
+IMPORTANT:
+
+"w+" existing data ko delete karta hai.
+
+Agar file exist nahi karti, new file create hoti hai.
+
+
+12. APPEND + READ MODE — "a+"
+-----------------------------
+
+"a+" = Append + Read
+
+
+Example:
+
+file = open("data.txt", "a+")
+
+file.write("\nNew Data")
+
+file.seek(0)
+
+data = file.read()
+
+print(data)
+
+file.close()
+
+
+IMPORTANT:
+
+"a+" existing data ko preserve karta hai aur end me new data add karta hai.
+
+Read karne ke liye generally seek(0) use karna padta hai.
+
+
+13. BINARY READ MODE — "rb"
+---------------------------
+
+"rb" = Read Binary
+
+Binary files ke liye use hota hai.
+
+Example:
+
+file = open("image.jpg", "rb")
+
+data = file.read()
+
+print(data)
+
+file.close()
+
+
+14. BINARY WRITE MODE — "wb"
+----------------------------
+
+"wb" = Write Binary
+
+Binary data write karne ke liye use hota hai.
+
+Example:
+
+file = open("image.jpg", "wb")
+
+file.write(binary_data)
+
+file.close()
+
+
+15. BINARY APPEND MODE — "ab"
+-----------------------------
+
+"ab" = Append Binary
+
+Binary file ke end me data add karne ke liye use hota hai.
+
+Example:
+
+file = open("data.bin", "ab")
+
+file.write(binary_data)
+
+file.close()
+
+
+16. BINARY READ + WRITE — "rb+"
+------------------------------
+
+"rb+" = Binary Read + Write
+
+
+Example:
+
+file = open("data.bin", "rb+")
+
+data = file.read()
+
+print(data)
+
+file.close()
+
+
+File ko already exist karna chahiye.
+
+
+17. BINARY WRITE + READ — "wb+"
+------------------------------
+
+"wb+" = Binary Write + Read
+
+IMPORTANT:
+
+Existing binary data overwrite ho jayega.
+
+
+Example:
+
+file = open("data.bin", "wb+")
+
+file.write(b"Hello")
+
+file.seek(0)
+
+print(file.read())
+
+file.close()
+
+
+18. BINARY APPEND + READ — "ab+"
+--------------------------------
+
+"ab+" = Binary Append + Read
+
+
+Example:
+
+file = open("data.bin", "ab+")
+
+file.write(b"Hello")
+
+file.seek(0)
+
+print(file.read())
+
+file.close()
+
+
+19. FILE MODES QUICK TABLE
+--------------------------
+
+Mode     Meaning                 File Exists?       Old Data
+------------------------------------------------------------
+
+r        Read                    Must exist          Safe
+w        Write                   Create if absent    Deleted
+a        Append                  Create if absent    Safe
+x        Create                  Must not exist      -
+r+       Read + Write            Must exist          Safe
+w+       Write + Read            Create if absent    Deleted
+a+       Append + Read           Create if absent    Safe
+
+rb       Read Binary             Must exist          Safe
+wb       Write Binary            Create if absent    Deleted
+ab       Append Binary           Create if absent    Safe
+rb+      Binary Read + Write     Must exist          Safe
+wb+      Binary Write + Read     Create if absent    Deleted
+ab+      Binary Append + Read    Create if absent    Safe
+
+
+20. CLOSING A FILE
+------------------
+
+File ko use karne ke baad close() karna important hai.
+
+Example:
+
+file = open("data.txt", "r")
+
+data = file.read()
+
+print(data)
+
+file.close()
+
+
+Why close?
+
+1. Resources release hote hain
+2. File properly save hoti hai
+3. File lock issues avoid hote hain
+4. System resources free hote hain
+
+
+21. WITH STATEMENT
+------------------
+
+Python me recommended way hai:
+
+with open()
+
+
+Example:
+
+with open("data.txt", "r") as file:
+
+    data = file.read()
+
+    print(data)
+
+
+Yahan manually:
+
+file.close()
+
+likhne ki zarurat nahi hai.
+
+
+Python automatically file close kar deta hai.
+
+
+22. WHY with open() IS BETTER?
+------------------------------
+
+Without with:
+
+file = open("data.txt", "r")
+
+data = file.read()
+
+file.close()
+
+
+With:
+
+with open("data.txt", "r") as file:
+
+    data = file.read()
+
+
+Second method better hai because:
+
+1. File automatically close hoti hai
+2. Exception hone par bhi file close ho sakti hai
+3. Code clean hota hai
+4. Recommended Python practice hai
+
+
+23. READ() METHOD
+----------------
+
+read() complete file ko read karta hai.
+
+
+Example:
+
+with open("data.txt", "r") as file:
+
+    data = file.read()
+
+    print(data)
+
+
+Suppose file:
+
+Hello
+Python
+World
+
+
+Output:
+
+Hello
+Python
+World
+
+
+24. READ(size)
+--------------
+
+read() me number pass karke specific number of characters read kar sakte hain.
+
+
+Example:
+
+with open("data.txt", "r") as file:
+
+    data = file.read(5)
+
+    print(data)
+
+
+Agar file:
+
+Hello Python
+
+
+Output:
+
+Hello
+
+
+25. READLINE()
+--------------
+
+readline() ek time par ek line read karta hai.
+
+
+Example:
+
+with open("data.txt", "r") as file:
+
+    line = file.readline()
+
+    print(line)
+
+
+Agar file:
+
+Hello
+Python
+Java
+
+
+Output:
+
+Hello
+
+
+26. MULTIPLE readline()
+-----------------------
+
+Example:
+
+with open("data.txt", "r") as file:
+
+    print(file.readline())
+
+    print(file.readline())
+
+    print(file.readline())
+
+
+Output:
+
+Hello
+Python
+Java
+
+
+27. READLINES()
+---------------
+
+readlines() file ki saari lines ko list me return karta hai.
+
+
+Example:
+
+with open("data.txt", "r") as file:
+
+    lines = file.readlines()
+
+    print(lines)
+
+
+Output:
+
+['Hello\n', 'Python\n', 'Java\n']
+
+
+28. read() vs readline() vs readlines()
+---------------------------------------
+
+read()
+
+Complete file ko ek string ke form me return karta hai.
+
+
+readline()
+
+Ek line return karta hai.
+
+
+readlines()
+
+Saari lines ko list ke form me return karta hai.
+
+
+29. ITERATING OVER FILE
+-----------------------
+
+File object ko directly loop me use kar sakte hain.
+
+
+Example:
+
+with open("data.txt", "r") as file:
+
+    for line in file:
+
+        print(line)
+
+
+Ye large files ke liye useful hai because poori file ek saath memory me load nahi hoti.
+
+
+30. WRITE() METHOD
+------------------
+
+write() file me string write karta hai.
+
+
+Example:
+
+with open("data.txt", "w") as file:
+
+    file.write("Hello Python")
+
+
+IMPORTANT:
+
+write() sirf string accept karta hai.
+
+
+Correct:
+
+file.write("Hello")
+
+
+Incorrect:
+
+file.write(100)
+
+
+Number ko string me convert karo:
+
+file.write(str(100))
+
+
+31. WRITELINES()
+----------------
+
+writelines() multiple strings ko file me write karta hai.
+
+
+Example:
+
+lines = [
+    "Python\n",
+    "Java\n",
+    "C++\n"
+]
+
+with open("data.txt", "w") as file:
+
+    file.writelines(lines)
+
+
+Output:
+
+Python
+Java
+C++
+
+
+IMPORTANT:
+
+writelines() automatically newline add nahi karta.
+
+Isliye "\n" manually dena padta hai.
+
+
+32. NEWLINE
+-----------
+
+Example:
+
+with open("data.txt", "w") as file:
+
+    file.write("Hello\n")
+    file.write("Python\n")
+    file.write("Java\n")
+
+
+Output:
+
+Hello
+Python
+Java
+
+
+33. FILE POINTER / CURSOR
+-------------------------
+
+File pointer ek position ko represent karta hai jahan se next read/write operation hoga.
+
+
+Example:
+
+file:
+
+Hello Python
+
+
+Initially pointer:
+
+H
+
+
+Agar:
+
+file.read(5)
+
+
+then pointer 5th position ke baad chala jayega.
+
+
+34. tell()
+----------
+
+tell() current file pointer ki position batata hai.
+
+
+Example:
+
+with open("data.txt", "r") as file:
+
+    print(file.tell())
+
+    file.read(5)
+
+    print(file.tell())
+
+
+Output:
+
+0
+5
+
+
+35. seek()
+----------
+
+seek() file pointer ko kisi specific position par move karta hai.
+
+
+Syntax:
+
+file.seek(position)
+
+
+Example:
+
+with open("data.txt", "r") as file:
+
+    file.seek(5)
+
+    print(file.read())
+
+
+36. seek(0)
+----------
+
+seek(0) pointer ko file ke beginning par le jata hai.
+
+
+Example:
+
+with open("data.txt", "r+") as file:
+
+    print(file.read())
+
+    file.seek(0)
+
+    print(file.read())
+
+
+37. IMPORTANT: r+ POINTER CONCEPT
+--------------------------------
+
+Example:
+
+File:
+
+Hello Python
+
+
+Code:
+
+with open("data.txt", "r+") as file:
+
+    file.read()
+
+    file.write("ABC")
+
+
+Pehle read() pointer ko end par le gaya.
+
+Isliye "ABC" end me write hoga.
+
+
+38. READING AFTER WRITING
+-------------------------
+
+Example:
+
+with open("data.txt", "w+") as file:
+
+    file.write("Hello Python")
+
+    file.seek(0)
+
+    print(file.read())
+
+
+Why seek(0)?
+
+Because write ke baad pointer file ke end par hota hai.
+
+seek(0) pointer ko beginning par lekar aata hai.
+
+
+39. CHECK FILE EXISTENCE
+-----------------------
+
+os module ka use karke check kar sakte hain.
+
+
+Example:
+
+import os
+
+if os.path.exists("data.txt"):
+
+    print("File exists")
+
+else:
+
+    print("File does not exist")
+
+
+40. DELETE A FILE
+-----------------
+
+os.remove() ka use file delete karne ke liye hota hai.
+
+
+Example:
+
+import os
+
+os.remove("data.txt")
+
+
+IMPORTANT:
+
+Agar file exist nahi karti to FileNotFoundError aa sakta hai.
+
+
+Safe version:
+
+import os
+
+if os.path.exists("data.txt"):
+
+    os.remove("data.txt")
+
+    print("File deleted")
+
+else:
+
+    print("File not found")
+
+
+41. CREATE DIRECTORY
+--------------------
+
+Folder create karne ke liye os.mkdir() use kar sakte hain.
+
+
+Example:
+
+import os
+
+os.mkdir("myfolder")
+
+
+42. CHECK DIRECTORY
+-------------------
+
+Example:
+
+import os
+
+if os.path.exists("myfolder"):
+
+    print("Folder exists")
+
+
+43. CURRENT DIRECTORY
+--------------------
+
+Current working directory check karne ke liye:
+
+import os
+
+print(os.getcwd())
+
+
+44. CHANGE DIRECTORY
+--------------------
+
+os.chdir() se directory change kar sakte hain.
+
+
+Example:
+
+import os
+
+os.chdir("C:\\Users\\Ashu\\Desktop")
+
+
+45. FILE PATH
+-------------
+
+Relative path:
+
+data.txt
+
+
+Folder ke andar:
+
+data/data.txt
+
+
+Absolute path:
+
+C:\\Users\\Ashu\\Desktop\\data.txt
+
+
+Recommended:
+
+raw string use kar sakte hain:
+
+file = open(r"C:\Users\Ashu\Desktop\data.txt", "r")
+
+
+46. EXCEPTION HANDLING WITH FILE HANDLING
+-----------------------------------------
+
+File handling me errors aa sakte hain.
+
+Common errors:
+
+FileNotFoundError
+FileExistsError
+PermissionError
+IsADirectoryError
+UnicodeDecodeError
+OSError
+
+
+Exception handling se program crash hone se bach sakta hai.
+
+
+47. BASIC try-except
+--------------------
+
+Example:
+
+try:
+
+    file = open("data.txt", "r")
+
+    print(file.read())
+
+    file.close()
+
+except FileNotFoundError:
+
+    print("File not found")
+
+
+Agar file missing hai:
+
+File not found
+
+
+Program crash nahi karega.
+
+
+48. USING with + EXCEPTION HANDLING
+-----------------------------------
+
+Recommended approach:
+
+try:
+
+    with open("data.txt", "r") as file:
+
+        data = file.read()
+
+        print(data)
+
+except FileNotFoundError:
+
+    print("File not found")
+
+
+Yahan:
+
+with -> file automatically close karega
+
+try -> risky code ko handle karega
+
+except -> error handle karega
+
+
+49. MULTIPLE EXCEPTIONS
+-----------------------
+
+Example:
+
+try:
+
+    with open("data.txt", "r") as file:
+
+        data = file.read()
+
+        print(data)
+
+except FileNotFoundError:
+
+    print("File does not exist")
+
+except PermissionError:
+
+    print("Permission denied")
+
+except Exception as e:
+
+    print("Something went wrong:", e)
+
+
+50. FileExistsError
+-------------------
+
+"x" mode me useful hai.
+
+
+Example:
+
+try:
+
+    with open("data.txt", "x") as file:
+
+        file.write("Hello")
+
+except FileExistsError:
+
+    print("File already exists")
+
+
+51. PermissionError
+-------------------
+
+Agar Python ke paas file access karne ki permission nahi hai:
+
+try:
+
+    with open("data.txt", "r") as file:
+
+        print(file.read())
+
+except PermissionError:
+
+    print("You don't have permission to access this file")
+
+
+52. GENERAL EXCEPTION
+---------------------
+
+Exception as e ka use actual error message dekhne ke liye kar sakte hain.
+
+
+Example:
+
+try:
+
+    with open("data.txt", "r") as file:
+
+        print(file.read())
+
+except Exception as e:
+
+    print("Error:", e)
+
+
+IMPORTANT:
+
+General Exception ko blindly use karne ke bajay specific exceptions prefer karo.
+
+
+53. try-except-else
+-------------------
+
+else tab execute hota hai jab exception nahi aata.
+
+
+Example:
+
+try:
+
+    with open("data.txt", "r") as file:
+
+        data = file.read()
+
+except FileNotFoundError:
+
+    print("File not found")
+
+else:
+
+    print("File successfully read")
+
+    print(data)
+
+
+54. try-except-finally
+---------------------
+
+finally block hamesha execute hota hai.
+
+
+Example:
+
+try:
+
+    file = open("data.txt", "r")
+
+    print(file.read())
+
+except FileNotFoundError:
+
+    print("File not found")
+
+finally:
+
+    print("File operation completed")
+
+
+55. FULL SAFE FILE READING PROGRAM
+----------------------------------
+
+try:
+
+    with open("data.txt", "r") as file:
+
+        data = file.read()
+
+except FileNotFoundError:
+
+    print("File does not exist")
+
+except PermissionError:
+
+    print("Permission denied")
+
+except Exception as e:
+
+    print("Unexpected error:", e)
+
+else:
+
+    print("File read successfully")
+
+    print(data)
+
+
+56. WRITING WITH EXCEPTION HANDLING
+-----------------------------------
+
+try:
+
+    with open("data.txt", "w") as file:
+
+        file.write("Hello Python")
+
+except PermissionError:
+
+    print("You don't have permission to write")
+
+except Exception as e:
+
+    print("Error:", e)
+
+else:
+
+    print("Data written successfully")
+
+
+57. APPENDING WITH EXCEPTION HANDLING
+-------------------------------------
+
+try:
+
+    with open("data.txt", "a") as file:
+
+        file.write("\nNew Student")
+
+except PermissionError:
+
+    print("Permission denied")
+
+except Exception as e:
+
+    print("Error:", e)
+
+else:
+
+    print("Data appended successfully")
+
+
+58. READING USER DATA FROM FILE
+-------------------------------
+
+Example:
+
+try:
+
+    with open("students.txt", "r") as file:
+
+        for line in file:
+
+            print(line.strip())
+
+except FileNotFoundError:
+
+    print("students.txt not found")
+
+
+strip() extra newline remove karne ke liye useful hai.
+
+
+59. WRITING MULTIPLE STUDENTS
+-----------------------------
+
+students = [
+    "Ashu\n",
+    "Rahul\n",
+    "Aman\n",
+    "Rohit\n"
+]
+
+try:
+
+    with open("students.txt", "w") as file:
+
+        file.writelines(students)
+
+except Exception as e:
+
+    print("Error:", e)
+
+
+60. APPENDING NEW STUDENT
+-------------------------
+
+name = input("Enter student name: ")
+
+try:
+
+    with open("students.txt", "a") as file:
+
+        file.write(name + "\n")
+
+except Exception as e:
+
+    print("Error:", e)
+
+
+61. COUNT NUMBER OF LINES
+-------------------------
+
+try:
+
+    with open("data.txt", "r") as file:
+
+        lines = file.readlines()
+
+        print("Number of lines:", len(lines))
+
+except FileNotFoundError:
+
+    print("File not found")
+
+
+62. COUNT WORDS
+---------------
+
+try:
+
+    with open("data.txt", "r") as file:
+
+        data = file.read()
+
+        words = data.split()
+
+        print("Number of words:", len(words))
+
+except FileNotFoundError:
+
+    print("File not found")
+
+
+63. COUNT CHARACTERS
+--------------------
+
+try:
+
+    with open("data.txt", "r") as file:
+
+        data = file.read()
+
+        print("Characters:", len(data))
+
+except FileNotFoundError:
+
+    print("File not found")
+
+
+64. COPY ONE FILE INTO ANOTHER
+------------------------------
+
+try:
+
+    with open("source.txt", "r") as source:
+
+        data = source.read()
+
+    with open("destination.txt", "w") as destination:
+
+        destination.write(data)
+
+except FileNotFoundError:
+
+    print("Source file not found")
+
+except Exception as e:
+
+    print("Error:", e)
+
+
+65. COPY BINARY FILE
+--------------------
+
+Binary files ke liye rb/wb use karo.
+
+
+try:
+
+    with open("image.jpg", "rb") as source:
+
+        data = source.read()
+
+    with open("copy.jpg", "wb") as destination:
+
+        destination.write(data)
+
+except FileNotFoundError:
+
+    print("File not found")
+
+except Exception as e:
+
+    print("Error:", e)
+
+
+66. RENAMING A FILE
+-------------------
+
+os.rename() use hota hai.
+
+
+import os
+
+os.rename("old.txt", "new.txt")
+
+
+Safe version:
+
+import os
+
+try:
+
+    os.rename("old.txt", "new.txt")
+
+except FileNotFoundError:
+
+    print("File not found")
+
+except Exception as e:
+
+    print("Error:", e)
+
+
+67. FILE SIZE
+-------------
+
+os.path.getsize() file ka size bytes me return karta hai.
+
+
+import os
+
+size = os.path.getsize("data.txt")
+
+print("Size:", size, "bytes")
+
+
+68. LIST FILES IN DIRECTORY
+---------------------------
+
+import os
+
+files = os.listdir()
+
+print(files)
+
+
+Specific folder:
+
+files = os.listdir("myfolder")
+
+print(files)
+
+
+69. JSON FILE HANDLING
+----------------------
+
+Python objects ko JSON file me store karna common hai.
+
+
+import json
+
+
+data = {
+    "name": "Ashu",
+    "age": 19,
+    "course": "B.Tech"
+}
+
+
+with open("student.json", "w") as file:
+
+    json.dump(data, file, indent=4)
+
+
+70. READ JSON FILE
+------------------
+
+import json
+
+
+try:
+
+    with open("student.json", "r") as file:
+
+        data = json.load(file)
+
+        print(data)
+
+except FileNotFoundError:
+
+    print("JSON file not found")
+
+except json.JSONDecodeError:
+
+    print("Invalid JSON format")
+
+
+71. CSV FILE
+------------
+
+CSV ka full form:
+
+Comma Separated Values
+
+
+Example:
+
+name,age,course
+Ashu,19,CSE
+Rahul,20,IT
+
+
+Python me csv module use kar sakte hain.
+
+
+import csv
+
+
+with open("students.csv", "r") as file:
+
+    reader = csv.reader(file)
+
+    for row in reader:
+
+        print(row)
+
+
+72. CSV WRITE
+------------
+
+import csv
+
+
+data = [
+    ["Name", "Age", "Course"],
+    ["Ashu", 19, "CSE"],
+    ["Rahul", 20, "IT"]
+]
+
+
+with open("students.csv", "w", newline="") as file:
+
+    writer = csv.writer(file)
+
+    writer.writerows(data)
+
+
+73. ENCODING
+------------
+
+Text files ke saath encoding specify karna good practice hai.
+
+
+Example:
+
+with open("data.txt", "r", encoding="utf-8") as file:
+
+    data = file.read()
+
+    print(data)
+
+
+Writing:
+
+with open("data.txt", "w", encoding="utf-8") as file:
+
+    file.write("Hello Python")
+
+
+74. UnicodeDecodeError
+----------------------
+
+Kabhi-kabhi file ki encoding aur Python ki expected encoding different ho sakti hai.
+
+
+Example:
+
+try:
+
+    with open("data.txt", "r", encoding="utf-8") as file:
+
+        print(file.read())
+
+except UnicodeDecodeError:
+
+    print("File encoding is not compatible")
+
+
+75. FILE HANDLING BEST PRACTICES
+--------------------------------
+
+1. Always prefer with open()
+
+2. Correct mode choose karo
+
+3. Text files ke liye encoding="utf-8" use karna good practice hai
+
+4. Specific exceptions handle karo
+
+5. Large files ko line-by-line read karo
+
+6. Binary files ke liye rb/wb use karo
+
+7. User input ko validate karo
+
+8. Important operations me error handling rakho
+
+9. File paths carefully handle karo
+
+10. Unnecessary file open/close avoid karo
+
+
+76. MOST IMPORTANT DIFFERENCE
+-----------------------------
+
+r:
+
+Only read
+
+
+w:
+
+Write + old data delete
+
+
+a:
+
+Write at end + old data safe
+
+
+x:
+
+Create new file only
+
+
+r+:
+
+Read + Write + old data safe
+
+
+w+:
+
+Write + Read + old data delete
+
+
+a+:
+
+Append + Read + old data safe
+
+
+77. EASY WAY TO REMEMBER MODES
+------------------------------
+
+r = READ
+
+w = WRITE
+
+a = APPEND
+
+x = CREATE
+
++ = READ + WRITE
+
+b = BINARY
+
+
+Examples:
+
+r  = read
+w  = write
+a  = append
+r+ = read + write
+w+ = write + read
+a+ = append + read
+
+rb = read binary
+wb = write binary
+ab = append binary
+
+
+78. INTERVIEW QUESTIONS
+-----------------------
+
+Q1. What is file handling?
+
+Answer:
+
+File handling is the process of creating, reading, writing, updating and deleting files using a programming language.
+
+
+Q2. Difference between "w" and "a"?
+
+Answer:
+
+"w" overwrites existing data.
+
+"a" adds new data at the end without deleting existing data.
+
+
+Q3. Difference between "r" and "r+"?
+
+Answer:
+
+"r" is only for reading.
+
+"r+" is for both reading and writing.
+
+
+Q4. Difference between "w" and "w+"?
+
+Answer:
+
+"w" = write only.
+
+"w+" = write + read.
+
+Both overwrite existing data.
+
+
+Q5. Difference between "a" and "a+"?
+
+Answer:
+
+"a" = append only.
+
+"a+" = append + read.
+
+
+Q6. What happens if file does not exist in "r" mode?
+
+Answer:
+
+FileNotFoundError occurs.
+
+
+Q7. What happens if file already exists in "x" mode?
+
+Answer:
+
+FileExistsError occurs.
+
+
+Q8. Why use with open()?
+
+Answer:
+
+It automatically closes the file and makes file handling safer and cleaner.
+
+
+Q9. What is tell()?
+
+Answer:
+
+tell() returns the current position of the file pointer.
+
+
+Q10. What is seek()?
+
+Answer:
+
+seek() moves the file pointer to a specified position.
+
+
+Q11. What is readline()?
+
+Answer:
+
+readline() reads one line from a file.
+
+
+Q12. What is readlines()?
+
+Answer:
+
+readlines() reads all lines and returns them as a list.
+
+
+Q13. What is writelines()?
+
+Answer:
+
+writelines() writes multiple strings to a file.
+
+
+Q14. What is binary file?
+
+Answer:
+
+A binary file stores data in binary form and is commonly used for images, videos, audio and other non-text files.
+
+
+79. COMPLETE REAL-WORLD EXAMPLE
+-------------------------------
+
+Student data save karna:
+
+name = input("Enter name: ")
+age = input("Enter age: ")
+course = input("Enter course: ")
+
+
+try:
+
+    with open("students.txt", "a", encoding="utf-8") as file:
+
+        file.write(
+            f"Name: {name}, Age: {age}, Course: {course}\n"
+        )
+
+except PermissionError:
+
+    print("Permission denied")
+
+except Exception as e:
+
+    print("Error:", e)
+
+else:
+
+    print("Student data saved successfully")
+
+
+80. COMPLETE READ PROGRAM
+-------------------------
+
+try:
+
+    with open("students.txt", "r", encoding="utf-8") as file:
+
+        for line in file:
+
+            print(line.strip())
+
+except FileNotFoundError:
+
+    print("students.txt does not exist")
+
+except PermissionError:
+
+    print("Permission denied")
+
+except Exception as e:
+
+    print("Unexpected error:", e)
+
+
+81. COMPLETE MINI PROJECT — FILE BASED STUDENT SYSTEM
+------------------------------------------------------
+
+while True:
+
+    print("\n1. Add Student")
+    print("2. Show Students")
+    print("3. Exit")
+
+    choice = input("Enter choice: ")
+
+
+    if choice == "1":
+
+        name = input("Enter name: ")
+        age = input("Enter age: ")
+        course = input("Enter course: ")
+
+        try:
+
+            with open("students.txt", "a", encoding="utf-8") as file:
+
+                file.write(
+                    f"{name},{age},{course}\n"
+                )
+
+            print("Student added successfully")
+
+        except Exception as e:
+
+            print("Error:", e)
+
+
+    elif choice == "2":
+
+        try:
+
+            with open("students.txt", "r", encoding="utf-8") as file:
+
+                for line in file:
+
+                    print(line.strip())
+
+        except FileNotFoundError:
+
+            print("No student data found")
+
+        except Exception as e:
+
+            print("Error:", e)
+
+
+    elif choice == "3":
+
+        print("Program ended")
+
+        break
+
+
+    else:
+
+        print("Invalid choice")
+
+
+82. FINAL FILE HANDLING FLOW
+----------------------------
+
+Program
+   |
+   v
+open()
+   |
+   v
+Choose Mode
+   |
+   +---- r ----> Read
+   |
+   +---- w ----> Write / Overwrite
+   |
+   +---- a ----> Append
+   |
+   +---- x ----> Create
+   |
+   +---- + ----> Read + Write
+   |
+   +---- b ----> Binary
+   |
+   v
+Perform Operation
+   |
+   +---- read()
+   +---- readline()
+   +---- readlines()
+   +---- write()
+   +---- writelines()
+   +---- seek()
+   +---- tell()
+   |
+   v
+with block ends
+   |
+   v
+File automatically closes
+
+
+83. GOLDEN RULES TO REMEMBER
+----------------------------
+
+1. r = Read
+2. w = Write + overwrite
+3. a = Append
+4. x = Create
+5. + = Read + Write
+6. b = Binary
+7. r requires existing file
+8. x fails if file already exists
+9. w creates file if it doesn't exist
+10. a creates file if it doesn't exist
+11. seek() changes pointer position
+12. tell() tells pointer position
+13. read() reads complete data
+14. readline() reads one line
+15. readlines() returns list of lines
+16. write() writes one string
+17. writelines() writes multiple strings
+18. Prefer with open()
+19. Use try-except for possible file errors
+20. Use encoding="utf-8" for text files when appropriate
+
+
+84. RECOMMENDED GENERAL SYNTAX
+------------------------------
+
+For reading:
+
+try:
+
+    with open("file.txt", "r", encoding="utf-8") as file:
+
+        data = file.read()
+
+        print(data)
+
+except FileNotFoundError:
+
+    print("File not found")
+
+except Exception as e:
+
+    print("Error:", e)
+
+
+For writing:
+
+try:
+
+    with open("file.txt", "w", encoding="utf-8") as file:
+
+        file.write("Hello Python")
+
+except Exception as e:
+
+    print("Error:", e)
+
+
+For appending:
+
+try:
+
+    with open("file.txt", "a", encoding="utf-8") as file:
+
+        file.write("\nNew Data")
+
+except Exception as e:
+
+    print("Error:", e)
+
+
+END OF PYTHON FILE HANDLING NOTES
+=================================

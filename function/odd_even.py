@@ -1,0 +1,11 @@
+list1=[1,2,3,4,5,6,7,8,9,10]
+even= list(map(lambda a:a if a%2==0 else "",list1))
+odd= list(map(lambda a:a if a%2!=0 else "",list1))
+oddset =set(odd)
+oddlist=list(oddset)
+oddlist.remove("")
+b =set(even)
+c =list(b)
+c.remove("")
+print(c)
+print(oddlist)

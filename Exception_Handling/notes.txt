@@ -1,0 +1,3156 @@
+====================================================================
+              PYTHON EXCEPTION HANDLING COMPLETE NOTES
+                  BASIC → ADVANCED → INTERVIEW
+====================================================================
+
+
+=========================== CONTENTS ===============================
+
+1. What is an Exception?
+2. Error vs Exception
+3. Why Exception Handling?
+4. Types of Errors
+5. Syntax Error
+6. Runtime Error
+7. Logical Error
+8. Exception Handling Flow
+9. try
+10. except
+11. else
+12. finally
+13. Basic try-except
+14. Multiple except Blocks
+15. Catching Specific Exceptions
+16. Exception Hierarchy
+17. BaseException vs Exception
+18. Common Built-in Exceptions
+19. ValueError
+20. TypeError
+21. ZeroDivisionError
+22. IndexError
+23. KeyError
+24. NameError
+25. AttributeError
+26. FileNotFoundError
+27. ImportError
+28. ModuleNotFoundError
+29. PermissionError
+30. IsADirectoryError
+31. NotADirectoryError
+32. OverflowError
+33. RuntimeError
+34. RecursionError
+35. StopIteration
+36. AssertionError
+37. MemoryError
+38. OSError
+39. EOFError
+40. UnicodeError
+41. KeyboardInterrupt
+42. SystemExit
+43. Exception Object
+44. as keyword
+45. str(exception)
+46. repr(exception)
+47. args
+48. Multiple Exceptions
+49. Tuple of Exceptions
+50. Generic Exception
+51. Bare except
+52. else
+53. finally
+54. return with finally
+55. raise
+56. Re-raising Exceptions
+57. raise vs raise e
+58. Exception Chaining
+59. from
+60. raise ... from None
+61. Custom Exceptions
+62. Custom Exception Hierarchy
+63. Exception with Attributes
+64. Validation using Exceptions
+65. Exception Handling in Functions
+66. Exception Handling in Classes
+67. Exception Handling in OOP
+68. Exception Handling in File Handling
+69. Exception Handling with JSON
+70. Exception Handling with APIs
+71. Exception Handling with Database
+72. Exception Handling with Context Managers
+73. Contextlib
+74. Exception Suppression
+75. Logging Exceptions
+76. traceback Module
+77. traceback.print_exc()
+78. Logging vs print()
+79. Exception Handling Best Practices
+80. EAFP vs LBYL
+81. Nested try
+82. Nested Exceptions
+83. try-except inside loop
+84. Exception Handling in Loops
+85. Exception Handling in Comprehensions
+86. Exception Handling in Generators
+87. Exception Handling in Decorators
+88. Exception Handling in Threads
+89. Exception Handling in Async Code
+90. Exception Groups
+91. except*
+92. ExceptionGroup
+93. add_note()
+94. Notes on Exceptions
+95. Exception Chaining Details
+96. __cause__
+97. __context__
+98. __suppress_context__
+99. Custom __str__()
+100. Custom __repr__()
+101. Cleanup Patterns
+102. Resource Management
+103. Retry Logic
+104. Retry with Backoff
+105. Handling Expected vs Unexpected Exceptions
+106. Fail Fast
+107. Defensive Programming
+108. Security Considerations
+109. Common Mistakes
+110. Interview Questions
+111. Quick Revision
+112. Complete Real-World Example
+
+
+====================================================================
+                  1. WHAT IS AN EXCEPTION?
+====================================================================
+
+An exception is an event that occurs during program execution
+and interrupts the normal flow of the program.
+
+Example:
+
+a = 10
+b = 0
+
+print(a / b)
+
+
+This produces:
+
+ZeroDivisionError
+
+
+An exception tells us:
+
+    Something unexpected happened during execution.
+
+
+====================================================================
+                  2. ERROR vs EXCEPTION
+====================================================================
+
+Error:
+
+    A general problem in a program.
+    usually cannot handle at runtime
+    example syntax error
+
+Exception:
+
+    A runtime event that can be detected and handled using
+    exception-handling mechanisms.
+    can handle at runtime
+    example divide by zero
+
+
+Example:
+
+SyntaxError:
+
+    print("Hello"
+
+
+Runtime exception:
+
+    10 / 0
+
+
+Important:
+
+Not every error is necessarily recoverable.
+
+
+====================================================================
+                  3. WHY EXCEPTION HANDLING?
+====================================================================
+
+Without exception handling:
+
+    Program may terminate unexpectedly.
+
+With exception handling:
+
+    Program can handle expected failures gracefully.
+
+
+Example:
+
+try:
+
+    age = int(input("Enter age: "))
+
+except ValueError:
+
+    print("Please enter a valid number.")
+
+
+====================================================================
+                  4. TYPES OF ERRORS
+====================================================================
+
+Main categories:
+
+    1. Syntax Error
+    2. Runtime Error / Exception
+    3. Logical Error
+
+
+====================================================================
+                  5. SYNTAX ERROR
+====================================================================
+
+Occurs when Python syntax is invalid.
+
+Example:
+
+if True
+    print("Hello")
+
+
+Python cannot execute the code because syntax is invalid.
+
+
+Important:
+
+try-except generally cannot catch a syntax error in the same
+source code block because Python must parse the code first.
+
+
+====================================================================
+                  6. RUNTIME ERROR
+====================================================================
+
+Occurs while the program is executing.
+
+Example:
+
+print(10 / 0)
+
+
+Raises:
+
+ZeroDivisionError
+
+
+Runtime errors are commonly handled using try-except.
+
+
+====================================================================
+                  7. LOGICAL ERROR
+====================================================================
+
+Program runs but produces incorrect output.
+
+Example:
+
+price = 100
+discount = 20
+
+final_price = price + discount
+
+
+No exception occurs.
+
+But logic is wrong.
+
+Correct:
+
+final_price = price - discount
+
+
+Important:
+
+Exception handling does NOT automatically fix logical errors.
+
+
+====================================================================
+              8. EXCEPTION HANDLING FLOW
+====================================================================
+
+Basic flow:
+
+    try
+      |
+      v
+    Exception?
+     /    \
+   No      Yes
+   |        |
+   v        v
+ else     except
+   |        |
+   +----+---+
+        |
+        v
+      finally
+
+
+====================================================================
+                  9. try
+====================================================================
+
+try block contains code that may raise an exception.
+
+Example:
+
+try:
+    result = 10 / 0
+
+
+====================================================================
+                  10. except
+====================================================================
+
+except handles an exception.
+
+Example:
+
+try:
+    result = 10 / 0
+
+except ZeroDivisionError:
+    print("Cannot divide by zero.")
+
+
+====================================================================
+                  11. else
+====================================================================
+
+else runs only when no exception occurs in try.
+
+Example:
+
+try:
+
+    result = 10 / 2
+
+except ZeroDivisionError:
+
+    print("Cannot divide")
+
+else:
+
+    print("Result:", result)
+
+
+Output:
+
+Result: 5.0
+
+
+====================================================================
+                  12. finally
+====================================================================
+
+finally normally executes whether an exception occurred or not.
+
+Example:
+
+try:
+
+    x = 10 / 2
+
+except ZeroDivisionError:
+
+    print("Error")
+
+finally:
+
+    print("Always runs")
+
+
+Useful for cleanup.
+
+
+====================================================================
+              13. BASIC try-except
+====================================================================
+
+Example:
+
+try:
+
+    number = int(input("Enter number: "))
+
+    print(10 / number)
+
+except:
+
+    print("Something went wrong.")
+
+
+But this style is usually too broad.
+
+Prefer specific exceptions.
+
+
+====================================================================
+          14. CATCHING SPECIFIC EXCEPTIONS
+====================================================================
+
+Good:
+
+try:
+
+    number = int(input("Enter number: "))
+
+except ValueError:
+
+    print("Invalid number.")
+
+
+Better than:
+
+except:
+
+    print("Error")
+
+
+Specific exceptions make programs easier to debug.
+
+
+====================================================================
+              15. MULTIPLE except BLOCKS
+====================================================================
+
+Example:
+
+try:
+
+    number = int(input("Enter number: "))
+
+    result = 10 / number
+
+except ValueError:
+
+    print("Invalid number.")
+
+except ZeroDivisionError:
+
+    print("Cannot divide by zero.")
+
+
+Python checks except blocks in order.
+
+
+====================================================================
+              16. EXCEPTION HIERARCHY
+====================================================================
+
+Simplified hierarchy:
+
+BaseException
+    |
+    +-- BaseExceptionGroup
+    |
+    +-- Exception
+    |     |
+    |     +-- ArithmeticError
+    |     |     |
+    |     |     +-- ZeroDivisionError
+    |     |     +-- OverflowError
+    |     |
+    |     +-- LookupError
+    |     |     |
+    |     |     +-- IndexError
+    |     |     +-- KeyError
+    |     |
+    |     +-- OSError
+    |     |     |
+    |     |     +-- FileNotFoundError
+    |     |     +-- PermissionError
+    |     |
+    |     +-- ValueError
+    |     +-- TypeError
+    |     +-- RuntimeError
+    |     +-- AttributeError
+    |     +-- ImportError
+    |     +-- NameError
+    |
+    +-- KeyboardInterrupt
+    +-- SystemExit
+    +-- GeneratorExit
+
+
+Important:
+
+Most application exceptions inherit from Exception.
+
+KeyboardInterrupt and SystemExit inherit directly from
+BaseException, not Exception.
+
+
+====================================================================
+              17. BaseException vs Exception
+====================================================================
+
+BaseException is the root of Python's built-in exception
+hierarchy.
+
+Exception is the usual base class for application errors.
+
+Usually write:
+
+except Exception:
+
+NOT:
+
+except BaseException:
+
+
+Why?
+
+Because BaseException also includes:
+
+    KeyboardInterrupt
+    SystemExit
+    GeneratorExit
+
+
+Usually you don't want to accidentally swallow these.
+
+
+====================================================================
+              18. COMMON BUILT-IN EXCEPTIONS
+====================================================================
+
+Important exceptions:
+
+ValueError
+TypeError
+ZeroDivisionError
+IndexError
+KeyError
+NameError
+AttributeError
+FileNotFoundError
+PermissionError
+ImportError
+ModuleNotFoundError
+OSError
+OverflowError
+RuntimeError
+RecursionError
+StopIteration
+AssertionError
+MemoryError
+EOFError
+UnicodeError
+
+
+====================================================================
+                  19. ValueError
+====================================================================
+
+Correct type but invalid value.
+
+Example:
+
+int("abc")
+
+
+Raises:
+
+ValueError
+
+
+Example handling:
+
+try:
+
+    age = int("abc")
+
+except ValueError:
+
+    print("Invalid integer.")
+
+
+====================================================================
+                  20. TypeError
+====================================================================
+
+Wrong type for an operation.
+
+Example:
+
+"10" + 5
+
+
+Raises:
+
+TypeError
+
+
+Another example:
+
+len(10)
+
+
+====================================================================
+              21. ZeroDivisionError
+====================================================================
+
+Division by zero.
+
+Example:
+
+10 / 0
+
+10 // 0
+
+10 % 0
+
+
+Raises:
+
+ZeroDivisionError
+
+
+====================================================================
+                  22. IndexError
+====================================================================
+
+Index does not exist.
+
+Example:
+
+numbers = [10, 20]
+
+print(numbers[5])
+
+
+Raises:
+
+IndexError
+
+
+====================================================================
+                  23. KeyError
+====================================================================
+
+Dictionary key does not exist.
+
+Example:
+
+student = {
+    "name": "Ashu"
+}
+
+print(student["age"])
+
+
+Raises:
+
+KeyError
+
+
+Safer:
+
+student.get("age")
+
+
+====================================================================
+                  24. NameError
+====================================================================
+
+Variable/name does not exist.
+
+Example:
+
+print(age)
+
+
+if age was never defined:
+
+NameError
+
+
+====================================================================
+                  25. AttributeError
+====================================================================
+
+Object does not have requested attribute.
+
+Example:
+
+class Student:
+    pass
+
+
+s = Student()
+
+print(s.name)
+
+
+Raises:
+
+AttributeError
+
+
+====================================================================
+              26. FileNotFoundError
+====================================================================
+
+File does not exist.
+
+Example:
+
+open("missing.txt")
+
+
+Raises:
+
+FileNotFoundError
+
+
+====================================================================
+              27. ImportError
+====================================================================
+
+Raised when an import cannot be performed as requested.
+
+Example:
+
+from math import something_that_does_not_exist
+
+
+====================================================================
+          28. ModuleNotFoundError
+====================================================================
+
+Module cannot be found.
+
+Example:
+
+import nonexistentmodule
+
+
+Usually raises:
+
+ModuleNotFoundError
+
+
+ModuleNotFoundError is a subclass of ImportError.
+
+
+====================================================================
+              29. PermissionError
+====================================================================
+
+Operation lacks required permission.
+
+Common with files/directories or OS operations.
+
+
+====================================================================
+              30. IsADirectoryError
+====================================================================
+
+Operation expected a file but received a directory.
+
+
+====================================================================
+              31. NotADirectoryError
+====================================================================
+
+Operation expected a directory but encountered something that
+is not a directory.
+
+
+====================================================================
+              32. OverflowError
+====================================================================
+
+Result is too large for the requested operation in a context
+where Python/library cannot represent it.
+
+
+Example can occur in some numeric operations.
+
+
+====================================================================
+              33. RuntimeError
+====================================================================
+
+Generic runtime-related error when no more specific exception
+is appropriate.
+
+
+====================================================================
+              34. RecursionError
+====================================================================
+
+Raised when maximum recursion depth is exceeded.
+
+Example:
+
+def func():
+    func()
+
+func()
+
+
+====================================================================
+              35. StopIteration
+====================================================================
+
+Signals that an iterator has no more values.
+
+Example:
+
+iterator = iter([1, 2])
+
+next(iterator)
+next(iterator)
+
+next(iterator)
+
+
+The third next() raises StopIteration.
+
+
+IMPORTANT:
+
+A for loop handles StopIteration internally.
+
+
+====================================================================
+              36. AssertionError
+====================================================================
+
+Raised when an assert statement fails.
+
+Example:
+
+age = 15
+
+assert age >= 18, "Age must be 18+"
+
+
+Raises:
+
+AssertionError
+
+
+IMPORTANT:
+
+assert should not be used for user-input validation or security
+checks because assertions can be disabled with Python optimization.
+
+
+====================================================================
+              37. MemoryError
+====================================================================
+
+Raised when an operation cannot allocate required memory.
+
+
+====================================================================
+                  38. OSError
+====================================================================
+
+Base class for many operating-system related errors.
+
+Examples:
+
+    File operations
+    Network operations
+    OS operations
+
+
+Many specialized exceptions inherit from OSError.
+
+
+====================================================================
+                  39. EOFError
+====================================================================
+
+Raised when input() encounters end-of-file without reading
+data.
+
+
+====================================================================
+                  40. UnicodeError
+====================================================================
+
+Base class for Unicode-related errors.
+
+Common subclasses:
+
+    UnicodeEncodeError
+    UnicodeDecodeError
+    UnicodeTranslateError
+
+
+====================================================================
+              41. KeyboardInterrupt
+====================================================================
+
+Raised when the user interrupts the program, commonly with:
+
+Ctrl + C
+
+
+It inherits from BaseException rather than Exception.
+
+
+====================================================================
+                  42. SystemExit
+====================================================================
+
+Raised by:
+
+sys.exit()
+
+
+It also inherits directly from BaseException.
+
+
+====================================================================
+              43. EXCEPTION OBJECT
+====================================================================
+
+An exception is an object.
+
+Example:
+
+try:
+
+    int("abc")
+
+except ValueError as e:
+
+    print(type(e))
+    print(e)
+
+
+e contains the exception object.
+
+
+====================================================================
+                  44. as KEYWORD
+====================================================================
+
+Use as to store exception object.
+
+Example:
+
+try:
+
+    10 / 0
+
+except ZeroDivisionError as e:
+
+    print(e)
+
+
+====================================================================
+              45. str(exception)
+====================================================================
+
+Returns human-readable message.
+
+Example:
+
+except ValueError as e:
+
+    print(str(e))
+
+
+====================================================================
+              46. repr(exception)
+====================================================================
+
+Returns developer-oriented representation.
+
+Example:
+
+except ValueError as e:
+
+    print(repr(e))
+
+
+====================================================================
+                  47. args
+====================================================================
+
+Exceptions commonly store constructor arguments in:
+
+e.args
+
+
+Example:
+
+raise ValueError("Invalid age")
+
+
+Then:
+
+e.args
+
+
+may contain:
+
+("Invalid age",)
+
+
+====================================================================
+              48. MULTIPLE EXCEPTIONS
+====================================================================
+
+Example:
+
+try:
+
+    operation()
+
+except (ValueError, TypeError):
+
+    print("Invalid input")
+
+
+One handler handles multiple exception types.
+
+
+====================================================================
+              49. TUPLE OF EXCEPTIONS
+====================================================================
+
+Syntax:
+
+except (ValueError, TypeError) as e:
+
+    ...
+
+
+The parentheses create a tuple of exception classes.
+
+
+====================================================================
+              50. GENERIC EXCEPTION
+====================================================================
+
+Example:
+
+try:
+
+    operation()
+
+except Exception as e:
+
+    print("Unexpected application error:", e)
+
+
+Useful at boundaries such as:
+
+    API handlers
+    worker processes
+    top-level application loops
+
+
+But do not use it everywhere.
+
+
+====================================================================
+              51. BARE except
+====================================================================
+
+Example:
+
+try:
+    operation()
+
+except:
+    print("Error")
+
+
+This catches almost everything, including BaseException
+subclasses.
+
+Usually avoid it.
+
+Prefer:
+
+except Exception as e:
+
+
+unless you intentionally need broader behavior.
+
+
+====================================================================
+                  52. else
+====================================================================
+
+else runs only when try succeeds.
+
+Example:
+
+try:
+
+    result = int("10")
+
+except ValueError:
+
+    print("Invalid")
+
+else:
+
+    print("Success:", result)
+
+
+Why use else?
+
+It keeps success-path code separate from exception handling.
+
+
+====================================================================
+                  53. finally
+====================================================================
+
+finally normally runs regardless of success/failure.
+
+Example:
+
+try:
+
+    file = open("data.txt")
+
+except FileNotFoundError:
+
+    print("Missing file")
+
+finally:
+
+    print("Cleanup")
+
+
+For files, prefer with open(...) instead of manually managing
+close().
+
+
+====================================================================
+          54. return WITH finally
+====================================================================
+
+Important:
+
+finally runs even if try or except executes return.
+
+Example:
+
+def test():
+
+    try:
+        return 10
+
+    finally:
+        print("Finally")
+
+
+test()
+
+
+Output:
+
+Finally
+
+
+Returned value:
+
+10
+
+
+VERY IMPORTANT:
+
+A return inside finally can override an earlier return or
+suppress an exception.
+
+Avoid returning from finally.
+
+
+====================================================================
+                  55. raise
+====================================================================
+
+raise manually creates/raises an exception.
+
+Example:
+
+age = 15
+
+if age < 18:
+    raise ValueError("Age must be 18+")
+
+
+====================================================================
+              56. RE-RAISING EXCEPTIONS
+====================================================================
+
+Inside except:
+
+raise
+
+
+re-raises the currently handled exception while preserving
+its traceback.
+
+
+Example:
+
+try:
+
+    operation()
+
+except ValueError:
+
+    print("Logging error")
+
+    raise
+
+
+This is common when logging/adding context before allowing the
+caller to handle the exception.
+
+
+====================================================================
+              57. raise vs raise e
+====================================================================
+
+Inside an except block:
+
+raise
+
+means:
+
+    Re-raise the current exception.
+
+
+raise e
+
+explicitly raises the exception object again and can affect
+traceback presentation.
+
+
+Preferred when simply propagating:
+
+raise
+
+
+====================================================================
+              58. EXCEPTION CHAINING
+====================================================================
+
+Python supports exception chaining.
+
+Example:
+
+try:
+
+    int("abc")
+
+except ValueError as e:
+
+    raise RuntimeError("Could not process user input") from e
+
+
+This creates a clear relationship:
+
+RuntimeError
+    caused by
+ValueError
+
+
+====================================================================
+                  59. from
+====================================================================
+
+Syntax:
+
+raise NewException(...) from original_exception
+
+
+Example:
+
+try:
+
+    int("abc")
+
+except ValueError as e:
+
+    raise RuntimeError("Conversion failed") from e
+
+
+The original exception becomes the explicit cause.
+
+
+====================================================================
+          60. raise ... from None
+====================================================================
+
+Can suppress display of implicit exception context.
+
+Example:
+
+try:
+
+    int("abc")
+
+except ValueError:
+
+    raise RuntimeError(
+        "Invalid user input"
+    ) from None
+
+
+Useful when implementation details should not appear in the
+exception chain shown to the caller.
+
+
+====================================================================
+              61. CUSTOM EXCEPTIONS
+====================================================================
+
+Create custom exceptions by inheriting from Exception.
+
+Example:
+
+class InvalidAgeError(Exception):
+    pass
+
+
+raise InvalidAgeError("Invalid age")
+
+
+====================================================================
+          62. CUSTOM EXCEPTION HIERARCHY
+====================================================================
+
+Example:
+
+class ApplicationError(Exception):
+    pass
+
+
+class ValidationError(ApplicationError):
+    pass
+
+
+class AuthenticationError(ApplicationError):
+    pass
+
+
+Now:
+
+ValidationError
+AuthenticationError
+
+are application-specific exceptions.
+
+
+====================================================================
+        63. EXCEPTION WITH ATTRIBUTES
+====================================================================
+
+Custom exceptions can store useful structured information.
+
+Example:
+
+class InsufficientBalanceError(Exception):
+
+    def __init__(self, balance, amount):
+
+        self.balance = balance
+        self.amount = amount
+
+        super().__init__(
+            f"Balance={balance}, requested={amount}"
+        )
+
+
+====================================================================
+              64. VALIDATION USING EXCEPTIONS
+====================================================================
+
+Example:
+
+def set_age(age):
+
+    if not isinstance(age, int):
+        raise TypeError("Age must be integer")
+
+    if age < 0:
+        raise ValueError("Age cannot be negative")
+
+    return age
+
+
+This separates invalid input from successful processing.
+
+
+====================================================================
+        65. EXCEPTION HANDLING IN FUNCTIONS
+====================================================================
+
+A function can:
+
+    Handle an exception internally
+
+OR
+
+    Raise it to the caller.
+
+
+Example:
+
+def divide(a, b):
+
+    if b == 0:
+        raise ZeroDivisionError(
+            "Cannot divide by zero"
+        )
+
+    return a / b
+
+
+Caller:
+
+try:
+
+    print(divide(10, 0))
+
+except ZeroDivisionError as e:
+
+    print(e)
+
+
+====================================================================
+        66. EXCEPTION HANDLING IN CLASSES
+====================================================================
+
+Example:
+
+class BankAccount:
+
+    def __init__(self, balance):
+        self.balance = balance
+
+    def withdraw(self, amount):
+
+        if amount > self.balance:
+            raise ValueError(
+                "Insufficient balance"
+            )
+
+        self.balance -= amount
+
+
+====================================================================
+        67. EXCEPTION HANDLING IN OOP
+====================================================================
+
+Custom exception:
+
+class InsufficientBalanceError(Exception):
+    pass
+
+
+Class:
+
+class BankAccount:
+
+    def __init__(self, balance):
+        self.balance = balance
+
+    def withdraw(self, amount):
+
+        if amount > self.balance:
+            raise InsufficientBalanceError(
+                "Insufficient balance"
+            )
+
+
+====================================================================
+        68. FILE HANDLING + EXCEPTIONS
+====================================================================
+
+Example:
+
+try:
+
+    with open("data.txt", "r") as file:
+        data = file.read()
+
+except FileNotFoundError:
+
+    print("File does not exist")
+
+except PermissionError:
+
+    print("Permission denied")
+
+
+with automatically handles file cleanup.
+
+
+====================================================================
+              69. JSON EXCEPTIONS
+====================================================================
+
+Example:
+
+import json
+
+
+try:
+
+    data = json.loads('{"name": "Ashu"}')
+
+except json.JSONDecodeError:
+
+    print("Invalid JSON")
+
+
+====================================================================
+              70. API EXCEPTIONS
+====================================================================
+
+API code can fail because of:
+
+    Network errors
+    Timeout
+    Invalid response
+    Authentication
+    Server errors
+
+
+General pattern:
+
+try:
+
+    response = call_api()
+
+except TimeoutError:
+
+    print("Request timed out")
+
+except ConnectionError:
+
+    print("Connection failed")
+
+
+Exact exceptions depend on the HTTP library being used.
+
+
+====================================================================
+            71. DATABASE EXCEPTIONS
+====================================================================
+
+Database libraries usually provide their own exception classes.
+
+Example concept:
+
+try:
+
+    database_operation()
+
+except DatabaseError:
+
+    rollback()
+
+
+Exact exception classes depend on the database driver/ORM.
+
+
+====================================================================
+        72. CONTEXT MANAGERS + EXCEPTIONS
+====================================================================
+
+Example:
+
+class Resource:
+
+    def __enter__(self):
+        print("Opening")
+        return self
+
+    def __exit__(
+        self,
+        exc_type,
+        exc_value,
+        traceback
+    ):
+
+        print("Cleaning up")
+
+
+If an exception occurs inside:
+
+with Resource():
+
+    raise ValueError("Error")
+
+
+__exit__ receives exception information.
+
+
+====================================================================
+                  73. contextlib
+====================================================================
+
+Python provides:
+
+from contextlib import contextmanager
+
+
+Example:
+
+@contextmanager
+def resource():
+
+    print("Open")
+
+    try:
+        yield
+    finally:
+        print("Close")
+
+
+with resource():
+    print("Using resource")
+
+
+====================================================================
+              74. EXCEPTION SUPPRESSION
+====================================================================
+
+contextlib.suppress can ignore specific expected exceptions.
+
+Example:
+
+from contextlib import suppress
+
+
+with suppress(FileNotFoundError):
+
+    os.remove("temp.txt")
+
+
+Use only when ignoring the exception is genuinely intended.
+
+
+====================================================================
+                  75. LOGGING EXCEPTIONS
+====================================================================
+
+For real applications, use logging instead of print().
+
+Example:
+
+import logging
+
+
+logging.basicConfig(
+    level=logging.ERROR
+)
+
+
+try:
+
+    10 / 0
+
+except ZeroDivisionError:
+
+    logging.exception(
+        "Division failed"
+    )
+
+
+logging.exception() automatically includes traceback when
+called inside an exception handler.
+
+
+====================================================================
+              76. traceback MODULE
+====================================================================
+
+traceback provides tools for inspecting exceptions.
+
+Example:
+
+import traceback
+
+
+try:
+
+    10 / 0
+
+except Exception:
+
+    traceback.print_exc()
+
+
+Useful for debugging/logging.
+
+
+====================================================================
+              77. traceback.print_exc()
+====================================================================
+
+Prints the current exception traceback.
+
+Example:
+
+try:
+
+    10 / 0
+
+except Exception:
+
+    traceback.print_exc()
+
+
+Output includes:
+
+    Exception type
+    Message
+    File
+    Line
+    Call stack
+
+
+====================================================================
+              78. LOGGING vs print()
+====================================================================
+
+print():
+
+    Quick debugging
+    Small scripts
+
+
+logging:
+
+    Production applications
+    Log levels
+    Log files
+    Timestamps
+    Structured/centralized logging
+    Better operational debugging
+
+
+Common levels:
+
+    DEBUG
+    INFO
+    WARNING
+    ERROR
+    CRITICAL
+
+
+====================================================================
+        79. EXCEPTION HANDLING BEST PRACTICES
+====================================================================
+
+1. Catch specific exceptions.
+
+2. Keep try blocks small.
+
+3. Do not use bare except unnecessarily.
+
+4. Do not silently ignore exceptions.
+
+5. Use logging for production errors.
+
+6. Add useful context.
+
+7. Re-raise when caller should handle the error.
+
+8. Use custom exceptions for domain-specific failures.
+
+9. Use finally/with for cleanup.
+
+10. Do not use exceptions for normal control flow unless
+    appropriate to Python's EAFP style.
+
+11. Never expose sensitive internal details to users.
+
+12. Preserve the original exception when adding context.
+
+13. Avoid deeply nested exception handling.
+
+14. Do not catch Exception and immediately do nothing.
+
+15. Do not return from finally.
+
+
+====================================================================
+              80. EAFP vs LBYL
+====================================================================
+
+EAFP:
+
+    Easier to Ask Forgiveness than Permission.
+
+
+Try the operation and handle the exception if it fails.
+
+Example:
+
+try:
+
+    value = dictionary["name"]
+
+except KeyError:
+
+    value = "Unknown"
+
+
+LBYL:
+
+    Look Before You Leap.
+
+
+Check first.
+
+Example:
+
+if "name" in dictionary:
+
+    value = dictionary["name"]
+
+else:
+
+    value = "Unknown"
+
+
+Python often favors EAFP.
+
+
+====================================================================
+              81. NESTED try
+====================================================================
+
+try blocks can be nested.
+
+Example:
+
+try:
+
+    try:
+
+        value = int("abc")
+
+    except ValueError:
+
+        print("Inner handler")
+
+except Exception:
+
+    print("Outer handler")
+
+
+Avoid unnecessary nesting.
+
+
+====================================================================
+              82. NESTED EXCEPTIONS
+====================================================================
+
+An exception can occur inside an except block.
+
+Example:
+
+try:
+
+    operation()
+
+except ValueError:
+
+    another_operation()
+
+
+If another_operation() fails, a new exception is raised.
+
+
+Keep handlers simple to avoid confusion.
+
+
+====================================================================
+          83. try-except INSIDE LOOP
+====================================================================
+
+Useful when one bad item should not stop the whole loop.
+
+Example:
+
+numbers = ["10", "20", "abc", "30"]
+
+
+for value in numbers:
+
+    try:
+
+        number = int(value)
+        print(number)
+
+    except ValueError:
+
+        print("Invalid:", value)
+
+
+The loop continues.
+
+
+====================================================================
+          84. EXCEPTION HANDLING IN LOOPS
+====================================================================
+
+Bad design:
+
+for item in items:
+
+    try:
+
+        process(item)
+
+    except Exception:
+
+        pass
+
+
+This silently hides errors.
+
+Better:
+
+for item in items:
+
+    try:
+
+        process(item)
+
+    except ValueError as e:
+
+        log_error(item, e)
+
+
+Handle only expected failures.
+
+
+====================================================================
+          85. EXCEPTIONS IN COMPREHENSIONS
+====================================================================
+
+Normal list comprehensions do not have a direct try-except
+syntax.
+
+Instead use a helper function.
+
+Example:
+
+def safe_int(value):
+
+    try:
+        return int(value)
+
+    except ValueError:
+        return None
+
+
+values = [
+    safe_int(x)
+    for x in ["1", "abc", "3"]
+]
+
+
+====================================================================
+          86. EXCEPTIONS IN GENERATORS
+====================================================================
+
+Generators can raise and propagate exceptions.
+
+Example:
+
+def numbers():
+
+    yield 1
+
+    raise ValueError("Generator error")
+
+    yield 2
+
+
+The exception appears when iteration reaches that point.
+
+
+====================================================================
+          87. EXCEPTIONS IN DECORATORS
+====================================================================
+
+Decorators can catch exceptions around function calls.
+
+Example:
+
+def safe_call(func):
+
+    def wrapper(*args, **kwargs):
+
+        try:
+
+            return func(*args, **kwargs)
+
+        except Exception as e:
+
+            print("Error:", e)
+
+    return wrapper
+
+
+====================================================================
+          88. EXCEPTIONS IN THREADS
+====================================================================
+
+Exceptions raised in a worker thread do not automatically
+behave like exceptions in the main thread.
+
+Handle exceptions inside the worker or use mechanisms such as:
+
+    concurrent.futures
+
+
+Example concept:
+
+from concurrent.futures import ThreadPoolExecutor
+
+
+def task():
+    raise ValueError("Failed")
+
+
+with ThreadPoolExecutor() as executor:
+
+    future = executor.submit(task)
+
+    try:
+
+        future.result()
+
+    except ValueError as e:
+
+        print(e)
+
+
+future.result() re-raises the worker exception in the caller.
+
+
+====================================================================
+          89. EXCEPTIONS IN ASYNC CODE
+====================================================================
+
+Use try-except around await operations.
+
+Example:
+
+async def main():
+
+    try:
+
+        result = await some_operation()
+
+    except TimeoutError:
+
+        print("Timed out")
+
+
+For multiple async tasks, exception behavior depends on how
+tasks are created/awaited.
+
+
+====================================================================
+              90. EXCEPTION GROUPS
+====================================================================
+
+Python 3.11 introduced:
+
+    ExceptionGroup
+    except*
+
+
+ExceptionGroup allows multiple exceptions to be represented
+together.
+
+
+Example concept:
+
+raise ExceptionGroup(
+    "Multiple errors",
+    [
+        ValueError("Bad value"),
+        TypeError("Bad type")
+    ]
+)
+
+
+====================================================================
+                  91. except*
+====================================================================
+
+except* can handle matching exceptions inside an
+ExceptionGroup.
+
+Example:
+
+try:
+
+    raise ExceptionGroup(
+        "Errors",
+        [
+            ValueError("Invalid"),
+            TypeError("Wrong type")
+        ]
+    )
+
+except* ValueError as e:
+
+    print("Value errors:", e)
+
+except* TypeError as e:
+
+    print("Type errors:", e)
+
+
+This is especially useful with concurrent/parallel operations.
+
+
+====================================================================
+              92. ExceptionGroup
+====================================================================
+
+ExceptionGroup inherits from BaseExceptionGroup/ExceptionGroup
+hierarchy and can contain multiple exceptions.
+
+Useful when multiple independent operations fail at once.
+
+
+====================================================================
+                  93. add_note()
+====================================================================
+
+Python exceptions support adding notes.
+
+Example:
+
+try:
+
+    int("abc")
+
+except ValueError as e:
+
+    e.add_note(
+        "Input came from user registration form"
+    )
+
+    raise
+
+
+The note appears with the exception traceback.
+
+
+====================================================================
+              94. NOTES ON EXCEPTIONS
+====================================================================
+
+add_note() is useful for adding contextual information without
+creating a completely new exception.
+
+Example:
+
+except Exception as e:
+
+    e.add_note("Processing student ID 101")
+    raise
+
+
+====================================================================
+              95. EXCEPTION CHAINING DETAILS
+====================================================================
+
+Important attributes:
+
+__cause__
+__context__
+__suppress_context__
+
+
+These help describe relationships between exceptions.
+
+
+====================================================================
+                  96. __cause__
+====================================================================
+
+When using:
+
+raise NewError() from old_error
+
+
+old_error becomes:
+
+__cause__
+
+
+Example:
+
+try:
+
+    int("abc")
+
+except ValueError as e:
+
+    raise RuntimeError("Conversion failed") from e
+
+
+====================================================================
+                  97. __context__
+====================================================================
+
+If a new exception occurs while handling another exception,
+Python automatically records the earlier exception as context.
+
+
+Example:
+
+try:
+
+    int("abc")
+
+except ValueError:
+
+    10 / 0
+
+
+The ZeroDivisionError has the ValueError as its context.
+
+
+====================================================================
+            98. __suppress_context__
+====================================================================
+
+Using:
+
+raise NewError() from None
+
+
+suppresses display of the implicit context.
+
+Internally:
+
+__suppress_context__
+
+becomes True.
+
+
+====================================================================
+              99. CUSTOM __str__()
+====================================================================
+
+Custom exceptions can customize their message.
+
+Example:
+
+class InvalidAgeError(Exception):
+
+    def __str__(self):
+        return "Age must be 18 or above"
+
+
+====================================================================
+              100. CUSTOM __repr__()
+====================================================================
+
+Can also customize developer representation.
+
+Example:
+
+class MyError(Exception):
+
+    def __repr__(self):
+        return "MyError()"
+
+
+Usually __str__ is more important for user-facing messages.
+
+
+====================================================================
+              101. CLEANUP PATTERNS
+====================================================================
+
+Bad:
+
+file = open("data.txt")
+
+try:
+
+    data = file.read()
+
+finally:
+
+    file.close()
+
+
+This can work.
+
+Better:
+
+with open("data.txt") as file:
+
+    data = file.read()
+
+
+The context manager handles cleanup.
+
+
+====================================================================
+              102. RESOURCE MANAGEMENT
+====================================================================
+
+Resources include:
+
+    Files
+    Database connections
+    Locks
+    Sockets
+    Network connections
+
+
+Use:
+
+    with
+
+
+when the resource supports context management.
+
+
+====================================================================
+              103. RETRY LOGIC
+====================================================================
+
+Some exceptions are temporary.
+
+Examples:
+
+    Network timeout
+    Temporary connection failure
+
+
+Simple retry:
+
+for attempt in range(3):
+
+    try:
+
+        result = operation()
+        break
+
+    except TimeoutError:
+
+        if attempt == 2:
+            raise
+
+
+Do not blindly retry every exception.
+
+
+====================================================================
+              104. RETRY WITH BACKOFF
+====================================================================
+
+Instead of immediately retrying repeatedly, wait between
+attempts.
+
+Example concept:
+
+attempt 1:
+    wait 1 second
+
+attempt 2:
+    wait 2 seconds
+
+attempt 3:
+    wait 4 seconds
+
+
+This is called exponential backoff.
+
+Usually add jitter in distributed systems to avoid synchronized
+retries.
+
+
+====================================================================
+        105. EXPECTED vs UNEXPECTED EXCEPTIONS
+====================================================================
+
+Expected:
+
+    Invalid user input
+    Missing file
+    Network timeout
+    Duplicate record
+
+
+Handle them appropriately.
+
+
+Unexpected:
+
+    Programming bugs
+    Invalid internal state
+    Unexpected library failure
+
+
+Usually:
+
+    Log
+    Preserve traceback
+    Fail safely
+    Investigate/fix root cause
+
+
+Do not silently hide unexpected exceptions.
+
+
+====================================================================
+                  106. FAIL FAST
+====================================================================
+
+Fail fast means detecting invalid states early.
+
+Example:
+
+def withdraw(amount):
+
+    if amount <= 0:
+        raise ValueError(
+            "Amount must be positive"
+        )
+
+
+Instead of allowing invalid data to move deeper into the
+system.
+
+
+====================================================================
+              107. DEFENSIVE PROGRAMMING
+====================================================================
+
+Defensive programming means designing code to handle invalid
+conditions safely.
+
+Examples:
+
+    Validate inputs
+    Check assumptions
+    Use specific exceptions
+    Handle resource failures
+    Log unexpected failures
+
+
+But avoid excessive checks that make code unnecessarily complex.
+
+
+====================================================================
+              108. SECURITY CONSIDERATIONS
+====================================================================
+
+IMPORTANT:
+
+1. Do not expose passwords in exception messages.
+
+2. Do not expose database credentials.
+
+3. Do not expose API keys.
+
+4. Do not return raw stack traces to end users in production.
+
+5. Log sensitive information carefully.
+
+6. Never unpickle untrusted data.
+
+7. Do not catch exceptions and silently ignore security failures.
+
+8. Validate external input.
+
+
+====================================================================
+              109. COMMON MISTAKES
+====================================================================
+
+MISTAKE 1:
+
+except:
+
+    pass
+
+
+Problem:
+
+    Hides bugs.
+
+
+MISTAKE 2:
+
+except Exception:
+
+    pass
+
+
+Same problem.
+
+
+MISTAKE 3:
+
+Huge try block:
+
+try:
+
+    100 lines of code
+
+except Exception:
+
+    ...
+
+
+Problem:
+
+    Difficult to identify failing operation.
+
+
+Better:
+
+Use small try blocks around operations that can actually fail.
+
+
+MISTAKE 4:
+
+Returning from finally.
+
+Avoid.
+
+
+MISTAKE 5:
+
+Using exceptions for every normal condition.
+
+Use normal conditionals when they make more sense.
+
+
+MISTAKE 6:
+
+Catching the wrong exception.
+
+Example:
+
+try:
+
+    int(value)
+
+except TypeError:
+
+    ...
+
+
+But invalid string conversion normally raises ValueError.
+
+
+MISTAKE 7:
+
+Destroying traceback:
+
+except Exception as e:
+
+    raise RuntimeError(str(e))
+
+
+This loses useful exception context unless chaining is used.
+
+Better:
+
+raise RuntimeError("Operation failed") from e
+
+
+====================================================================
+              110. INTERVIEW QUESTIONS
+====================================================================
+
+1. What is an exception?
+
+2. Difference between error and exception?
+
+3. Difference between syntax and runtime errors?
+
+4. What is exception handling?
+
+5. What is try?
+
+6. What is except?
+
+7. What is else?
+
+8. What is finally?
+
+9. Does finally always execute?
+
+10. What happens if return is inside try?
+
+11. What happens if return is inside finally?
+
+12. What is raise?
+
+13. Difference between raise and raise e?
+
+14. What is re-raising?
+
+15. What is exception chaining?
+
+16. What does "raise ... from" do?
+
+17. What does "raise ... from None" do?
+
+18. What is a custom exception?
+
+19. Why create custom exceptions?
+
+20. What is Exception?
+
+21. What is BaseException?
+
+22. Difference between Exception and BaseException?
+
+23. Why should bare except be avoided?
+
+24. What is ValueError?
+
+25. What is TypeError?
+
+26. What is ZeroDivisionError?
+
+27. What is IndexError?
+
+28. What is KeyError?
+
+29. What is AttributeError?
+
+30. What is NameError?
+
+31. What is FileNotFoundError?
+
+32. What is ModuleNotFoundError?
+
+33. What is OSError?
+
+34. What is AssertionError?
+
+35. What is KeyboardInterrupt?
+
+36. Why does KeyboardInterrupt inherit from BaseException?
+
+37. What is an exception object?
+
+38. What is the "as e" syntax?
+
+39. What is e.args?
+
+40. What is traceback?
+
+41. What is traceback.print_exc()?
+
+42. Why use logging instead of print?
+
+43. What is EAFP?
+
+44. What is LBYL?
+
+45. Which style does Python commonly favor?
+
+46. What is nested try-except?
+
+47. How do you handle exceptions inside loops?
+
+48. How do you handle exceptions in generators?
+
+49. How do you handle exceptions in threads?
+
+50. How do you handle exceptions in async code?
+
+51. What is ExceptionGroup?
+
+52. What is except*?
+
+53. What is add_note()?
+
+54. What is __cause__?
+
+55. What is __context__?
+
+56. What is __suppress_context__?
+
+57. What is contextlib.suppress?
+
+58. What is a context manager?
+
+59. Why use with?
+
+60. What is retry logic?
+
+61. What is exponential backoff?
+
+62. When should an exception be retried?
+
+63. What is fail-fast programming?
+
+64. Why should exceptions not be silently swallowed?
+
+65. Why should try blocks be small?
+
+66. Why should specific exceptions be caught?
+
+67. Why is pickle dangerous with untrusted data?
+
+
+====================================================================
+              111. QUICK REVISION
+====================================================================
+
+try:
+
+    Code that may fail.
+
+
+except:
+
+    Handles exception.
+
+
+else:
+
+    Runs when no exception occurred.
+
+
+finally:
+
+    Cleanup code that normally runs regardless of success/failure.
+
+
+raise:
+
+    Manually raises exception.
+
+
+Exception:
+
+    Base class for most application exceptions.
+
+
+BaseException:
+
+    Root exception class.
+
+
+Custom Exception:
+
+    class MyError(Exception):
+        pass
+
+
+EAFP:
+
+    Try first, handle failure.
+
+
+LBYL:
+
+    Check first, then operate.
+
+
+Exception chaining:
+
+    raise NewError() from old_error
+
+
+Suppress context:
+
+    raise NewError() from None
+
+
+Exception object:
+
+    except Exception as e:
+
+
+Message:
+
+    str(e)
+
+
+Debug representation:
+
+    repr(e)
+
+
+Arguments:
+
+    e.args
+
+
+Traceback:
+
+    traceback.print_exc()
+
+
+Logging:
+
+    logging.exception("message")
+
+
+Cleanup:
+
+    with
+
+
+Multiple exceptions:
+
+    except (ValueError, TypeError):
+
+
+Multiple exception group:
+
+    except*
+
+
+Add context:
+
+    e.add_note("context")
+
+
+====================================================================
+          112. COMPLETE REAL-WORLD EXAMPLE
+====================================================================
+
+class InsufficientBalanceError(Exception):
+    """Raised when withdrawal exceeds available balance."""
+    pass
+
+
+class InvalidAmountError(Exception):
+    """Raised when amount is invalid."""
+    pass
+
+
+class BankAccount:
+
+    def __init__(self, owner, balance=0):
+
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+
+        if not isinstance(amount, (int, float)):
+            raise TypeError(
+                "Amount must be numeric"
+            )
+
+        if amount <= 0:
+            raise InvalidAmountError(
+                "Deposit must be positive"
+            )
+
+        self.balance += amount
+
+    def withdraw(self, amount):
+
+        if not isinstance(amount, (int, float)):
+            raise TypeError(
+                "Amount must be numeric"
+            )
+
+        if amount <= 0:
+            raise InvalidAmountError(
+                "Withdrawal must be positive"
+            )
+
+        if amount > self.balance:
+            raise InsufficientBalanceError(
+                f"Balance={self.balance}, "
+                f"requested={amount}"
+            )
+
+        self.balance -= amount
+
+
+account = BankAccount(
+    "Ashu",
+    5000
+)
+
+
+try:
+
+    account.deposit(1000)
+
+    account.withdraw(7000)
+
+except InsufficientBalanceError as e:
+
+    print("Transaction failed:", e)
+
+except InvalidAmountError as e:
+
+    print("Invalid amount:", e)
+
+except TypeError as e:
+
+    print("Wrong type:", e)
+
+else:
+
+    print("Transaction successful")
+
+finally:
+
+    print(
+        "Final balance:",
+        account.balance
+    )
+
+
+This example demonstrates:
+
+    Custom Exceptions
+    Exception hierarchy
+    raise
+    Multiple except
+    else
+    finally
+    TypeError
+    Validation
+    OOP + Exception Handling
+
+
+====================================================================
+                 MOST IMPORTANT RULES TO REMEMBER
+====================================================================
+
+1. Catch specific exceptions.
+
+2. Do not use bare except unnecessarily.
+
+3. Keep try blocks small.
+
+4. Use finally or context managers for cleanup.
+
+5. Use with for files/resources.
+
+6. Use raise for invalid states/input.
+
+7. Use custom exceptions for domain-specific errors.
+
+8. Use logging in production.
+
+9. Preserve traceback when re-raising.
+
+10. Prefer:
+
+        raise
+
+    over unnecessary:
+
+        raise e
+
+
+11. Use:
+
+        raise NewError(...) from e
+
+    when adding context.
+
+
+12. Use:
+
+        from None
+
+    when intentionally hiding implicit context.
+
+
+13. Do not return from finally.
+
+14. Do not silently pass exceptions.
+
+15. Do not catch BaseException unless you have a very specific
+    reason.
+
+16. KeyboardInterrupt and SystemExit are not normal application
+    exceptions.
+
+17. EAFP is an important Python style.
+
+18. Exceptions are objects.
+
+19. Custom exceptions are classes.
+
+20. ExceptionGroup/except* are important advanced Python
+    features.
+
+21. add_note() can add context to an existing exception.
+
+22. __cause__, __context__, and __suppress_context__ explain
+    exception relationships.
+
+23. Retry only transient failures.
+
+24. Use exponential backoff for appropriate retry scenarios.
+
+25. Never expose sensitive information in error messages.
+
+26. Never load untrusted pickle data.
+
+27. Exception handling handles runtime failures, not logical
+    mistakes.
+
+28. Good exception handling should make failures:
+
+        Predictable
+        Understandable
+        Recoverable where possible
+        Observable through logging
+
+
+====================================================================
+                  EXCEPTION HANDLING MASTER FLOW
+====================================================================
+
+                         OPERATION
+                             |
+                             v
+                           try
+                             |
+                  +----------+----------+
+                  |                     |
+             SUCCESS                  FAILURE
+                  |                     |
+                  v                     v
+                else                  except
+                  |                     |
+                  +----------+----------+
+                             |
+                             v
+                          finally
+                             |
+                             v
+                           END
+
+
+Advanced flow:
+
+Operation
+    |
+    v
+Exception
+    |
+    +--> Handle locally
+    |
+    +--> Re-raise
+    |
+    +--> Wrap with context
+    |       |
+    |       +--> raise NewError() from e
+    |
+    +--> Log
+    |
+    +--> Retry if transient
+    |
+    +--> Convert to domain-specific exception
+
+
+====================================================================
+              FINAL EXAM / INTERVIEW REVISION
+====================================================================
+
+try
+    ↓
+Code that may fail
+
+except
+    ↓
+Handle failure
+
+else
+    ↓
+Success path
+
+finally
+    ↓
+Cleanup
+
+raise
+    ↓
+Create/propagate exception
+
+Exception
+    ↓
+Normal application exception base
+
+Custom Exception
+    ↓
+Your own domain-specific error
+
+EAFP
+    ↓
+Try and handle failure
+
+Context Manager
+    ↓
+Safe resource management
+
+Logging
+    ↓
+Production observability
+
+Traceback
+    ↓
+Debugging information
+
+Exception Chaining
+    ↓
+Preserve root cause
+
+ExceptionGroup
+    ↓
+Multiple exceptions together
+
+except*
+    ↓
+Handle parts of ExceptionGroup
+
+====================================================================
+                     END OF NOTES
+====================================================================

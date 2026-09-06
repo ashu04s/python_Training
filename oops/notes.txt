@@ -1,0 +1,3756 @@
+====================================================================
+                    PYTHON OOP COMPLETE NOTES
+              BASIC → ADVANCED → EXPERT → INTERVIEW
+====================================================================
+
+
+======================== TABLE OF CONTENTS =========================
+
+1. OOP Introduction
+2. Procedural vs OOP
+3. Class
+4. Object
+5. Attributes
+6. Methods
+7. self
+8. __init__()
+9. __new__()
+10. Object Creation Flow
+11. Instance Variables
+12. Class Variables
+13. Local Variables
+14. Instance Methods
+15. Class Methods
+16. Static Methods
+17. Constructor/Initializer
+18. Encapsulation
+19. Public Members
+20. Protected Members
+21. Private Members
+22. Name Mangling
+23. Getter
+24. Setter
+25. @property
+26. Inheritance
+27. Types of Inheritance
+28. Single Inheritance
+29. Multilevel Inheritance
+30. Multiple Inheritance
+31. Hierarchical Inheritance
+32. Hybrid Inheritance
+33. Method Overriding
+34. super()
+35. MRO
+36. C3 Linearization
+37. Polymorphism
+38. Duck Typing
+39. Method Overloading
+40. Operator Overloading
+41. Abstraction
+42. Abstract Class
+43. Abstract Method
+44. ABC
+45. Interface Concept
+46. Protocol
+47. Structural Subtyping
+48. Composition
+49. Aggregation
+50. Association
+51. Dependency
+52. IS-A vs HAS-A
+53. Dependency Injection
+54. Coupling
+55. Cohesion
+56. Composition Over Inheritance
+57. Dunder Methods
+58. __str__()
+59. __repr__()
+60. __len__()
+61. __call__()
+62. __getitem__()
+63. __setitem__()
+64. __delitem__()
+65. __contains__()
+66. __iter__()
+67. __next__()
+68. __enter__()
+69. __exit__()
+70. __getattr__()
+71. __getattribute__()
+72. __setattr__()
+73. __delattr__()
+74. __eq__()
+75. Comparison Operators
+76. Arithmetic Operators
+77. Hashing
+78. __hash__()
+79. Object Identity
+80. == vs is
+81. Mutable vs Immutable
+82. Shallow Copy
+83. Deep Copy
+84. __copy__()
+85. __deepcopy__()
+86. Garbage Collection
+87. Reference Counting
+88. weakref
+89. Dataclass
+90. Advanced Dataclass
+91. __slots__
+92. Type Hints
+93. Generic Classes
+94. TypeVar
+95. Generic
+96. Descriptors
+97. __get__()
+98. __set__()
+99. __delete__()
+100. Descriptor Types
+101. __init_subclass__()
+102. __class_getitem__()
+103. Metaclasses
+104. type
+105. Custom Metaclass
+106. Metaclass __new__()
+107. Class Creation Process
+108. Context Managers
+109. Custom Exceptions
+110. Serialization
+111. Pickle
+112. __getstate__()
+113. __setstate__()
+114. Singleton Pattern
+115. Factory Pattern
+116. Builder Pattern
+117. Strategy Pattern
+118. Observer Pattern
+119. Adapter Pattern
+120. Decorator Pattern
+121. SOLID Principles
+122. Single Responsibility
+123. Open/Closed
+124. Liskov Substitution
+125. Interface Segregation
+126. Dependency Inversion
+127. Design Principles
+128. OOP Best Practices
+129. Complete OOP Example
+130. Interview Questions
+131. Quick Revision
+
+
+====================================================================
+                    1. WHAT IS OOP?
+====================================================================
+
+OOP = Object-Oriented Programming.
+
+It is a programming paradigm where programs are organized
+around objects and classes.
+
+Main concepts:
+
+    Class
+    Object
+    Attributes
+    Methods
+
+Four major pillars:
+
+    1. Encapsulation
+    2. Inheritance
+    3. Polymorphism
+    4. Abstraction
+
+
+Real-world example:
+
+Student
+
+Attributes:
+
+    name
+    age
+    course
+    roll_number
+
+Behaviors:
+
+    study()
+    attend_class()
+    give_exam()
+
+In Python:
+
+    Student = Class
+    Ashu = Object
+
+
+====================================================================
+                    2. PROCEDURAL VS OOP
+====================================================================
+
+Procedural Programming:
+
+    Program is organized around functions and procedures.
+
+OOP:
+
+    Program is organized around objects.
+
+Procedural example:
+
+    calculate_salary()
+    calculate_tax()
+    print_employee()
+
+OOP:
+
+    Employee
+        calculate_salary()
+        calculate_tax()
+        display()
+
+
+Advantages of OOP:
+
+    Code reuse
+    Maintainability
+    Scalability
+    Modularity
+    Encapsulation
+    Easier testing
+
+
+====================================================================
+                    3. CLASS
+====================================================================
+
+A class is a blueprint/template for creating objects.
+
+Example:
+
+class Student:
+    pass
+
+
+Student is a class.
+
+
+====================================================================
+                    4. OBJECT
+====================================================================
+
+An object is an instance of a class.
+
+Example:
+
+class Student:
+    pass
+
+
+s1 = Student()
+s2 = Student()
+
+
+Here:
+
+    Student = Class
+    s1 = Object
+    s2 = Object
+
+
+====================================================================
+                    5. ATTRIBUTES
+====================================================================
+
+Attributes are data associated with an object/class.
+
+Example:
+
+class Student:
+
+    college = "MIET"
+
+    def __init__(self, name):
+        self.name = name
+
+
+Here:
+
+    college = Class Attribute
+    name = Instance Attribute
+
+
+====================================================================
+                    6. METHODS
+====================================================================
+
+A method is a function defined inside a class.
+
+Example:
+
+class Student:
+
+    def study(self):
+        print("Student is studying")
+
+
+study() is a method.
+
+
+====================================================================
+                    7. self
+====================================================================
+
+self refers to the current object.
+
+Example:
+
+class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+
+s = Student("Ashu")
+
+
+self refers to s.
+
+Approximately:
+
+Student.__init__(s, "Ashu")
+
+
+Important:
+
+self is a convention, not a reserved keyword.
+
+But always use self for normal instance methods.
+
+
+====================================================================
+                    8. __init__()
+====================================================================
+
+__init__() initializes an already-created object.
+
+Example:
+
+class Student:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+s = Student("Ashu", 20)
+
+
+Important:
+
+__init__() is technically an initializer.
+
+The actual object creation method is __new__().
+
+
+====================================================================
+                    9. __new__()
+====================================================================
+
+__new__() creates the object.
+
+Example:
+
+class Student:
+
+    def __new__(cls):
+        print("Creating object")
+        return super().__new__(cls)
+
+    def __init__(self):
+        print("Initializing object")
+
+
+s = Student()
+
+
+Order:
+
+    __new__()
+        ↓
+    __init__()
+
+
+====================================================================
+              10. OBJECT CREATION FLOW
+====================================================================
+
+When:
+
+s = Student()
+
+
+Python approximately does:
+
+    1. Find Student class
+    2. Call Student.__new__()
+    3. Create object
+    4. Call Student.__init__()
+    5. Return object
+
+
+Flow:
+
+    Student()
+       |
+       v
+    __new__()
+       |
+       v
+    Object created
+       |
+       v
+    __init__()
+       |
+       v
+    Object ready
+
+
+====================================================================
+              11. INSTANCE VARIABLES
+====================================================================
+
+Variables belonging to individual objects.
+
+Example:
+
+class Student:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+s1 = Student("Ashu", 20)
+s2 = Student("Rahul", 21)
+
+
+s1.name = Ashu
+s2.name = Rahul
+
+
+Each object has separate instance data.
+
+
+====================================================================
+              12. CLASS VARIABLES
+====================================================================
+
+Variables shared by the class/objects.
+
+Example:
+
+class Student:
+
+    college = "MIET"
+
+    def __init__(self, name):
+        self.name = name
+
+
+college is a class variable.
+
+
+====================================================================
+              13. LOCAL VARIABLES
+====================================================================
+
+Variables created inside a method without self.
+
+Example:
+
+class Student:
+
+    def show(self):
+
+        message = "Hello"
+
+        print(message)
+
+
+message is a local variable.
+
+It belongs only to that method execution.
+
+
+====================================================================
+              14. INSTANCE METHODS
+====================================================================
+
+Instance methods work with object data.
+
+Example:
+
+class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def show(self):
+        print(self.name)
+
+
+s = Student("Ashu")
+
+s.show()
+
+
+First parameter:
+
+    self
+
+
+====================================================================
+              15. CLASS METHODS
+====================================================================
+
+Class methods work with class-level data.
+
+Use:
+
+@classmethod
+
+
+Example:
+
+class Student:
+
+    college = "MIET"
+
+    @classmethod
+    def show_college(cls):
+        print(cls.college)
+
+
+Student.show_college()
+
+
+cls refers to the class.
+
+
+====================================================================
+              16. STATIC METHODS
+====================================================================
+
+Static methods do not automatically receive:
+
+    self
+    cls
+
+
+Use:
+
+@staticmethod
+
+
+Example:
+
+class Calculator:
+
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+
+print(Calculator.add(10, 20))
+
+
+Use static methods for utility operations related to a class.
+
+
+====================================================================
+        17. INSTANCE vs CLASS vs STATIC METHOD
+====================================================================
+
+Instance Method:
+
+    No decorator
+    First parameter = self
+    Works with object data
+
+
+Class Method:
+
+    @classmethod
+    First parameter = cls
+    Works with class data
+
+
+Static Method:
+
+    @staticmethod
+    No automatic self/cls
+
+
+====================================================================
+                    18. ENCAPSULATION
+====================================================================
+
+Encapsulation means:
+
+    Bundling data and methods together
+    and controlling access to data.
+
+
+Example:
+
+class BankAccount:
+
+    def __init__(self, balance):
+        self._balance = balance
+
+    def deposit(self, amount):
+
+        if amount > 0:
+            self._balance += amount
+
+
+Data and behavior are bundled inside the class.
+
+
+====================================================================
+                    19. PUBLIC MEMBERS
+====================================================================
+
+Public members have no underscore prefix.
+
+Example:
+
+class Student:
+
+    def __init__(self):
+        self.name = "Ashu"
+
+
+s = Student()
+
+print(s.name)
+
+s.name = "Rahul"
+
+
+Public members can be accessed from outside.
+
+
+====================================================================
+                    20. PROTECTED MEMBERS
+====================================================================
+
+Convention:
+
+    _variable
+
+
+Example:
+
+class Student:
+
+    _college = "MIET"
+
+
+Protected members are intended for:
+
+    class
+    subclasses
+
+
+BUT:
+
+Python does NOT strictly prevent outside access.
+
+This works:
+
+s._college
+
+
+So protected in Python is mainly a convention.
+
+
+====================================================================
+                    21. PRIVATE MEMBERS
+====================================================================
+
+Convention:
+
+    __variable
+
+
+Example:
+
+class Student:
+
+    def __init__(self):
+        self.__name = "Ashu"
+
+
+Direct:
+
+s.__name
+
+
+normally causes AttributeError.
+
+
+====================================================================
+                    22. NAME MANGLING
+====================================================================
+
+Python changes:
+
+__name
+
+
+approximately into:
+
+_ClassName__name
+
+
+Example:
+
+class Student:
+
+    def __init__(self):
+        self.__name = "Ashu"
+
+
+Technically:
+
+s._Student__name
+
+
+can access it.
+
+Therefore Python private members are not absolutely
+inaccessible.
+
+They use name mangling.
+
+
+Remember:
+
+    name
+        = public
+
+    _name
+        = protected convention
+
+    __name
+        = private-style/name mangling
+
+
+====================================================================
+                    23. GETTER
+====================================================================
+
+Getter reads private data.
+
+Example:
+
+class Student:
+
+    def __init__(self):
+        self.__age = 20
+
+    def get_age(self):
+        return self.__age
+
+
+====================================================================
+                    24. SETTER
+====================================================================
+
+Setter modifies private data.
+
+Example:
+
+class Student:
+
+    def __init__(self):
+        self.__age = 20
+
+    def set_age(self, age):
+
+        if age >= 0:
+            self.__age = age
+
+
+====================================================================
+                    25. @property
+====================================================================
+
+@property provides getter-like syntax.
+
+Example:
+
+class Student:
+
+    def __init__(self, age):
+        self.__age = age
+
+    @property
+    def age(self):
+        return self.__age
+
+    @age.setter
+    def age(self, value):
+
+        if value >= 0:
+            self.__age = value
+
+
+s = Student(20)
+
+print(s.age)
+
+s.age = 21
+
+
+====================================================================
+                    26. INHERITANCE
+====================================================================
+
+Inheritance allows a child class to reuse parent class
+functionality.
+
+Example:
+
+class Animal:
+
+    def eat(self):
+        print("Eating")
+
+
+class Dog(Animal):
+
+    def bark(self):
+        print("Barking")
+
+
+d = Dog()
+
+d.eat()
+d.bark()
+
+
+Dog inherits Animal.
+
+
+====================================================================
+              27. TYPES OF INHERITANCE
+====================================================================
+
+Python supports:
+
+    1. Single
+    2. Multilevel
+    3. Multiple
+    4. Hierarchical
+    5. Hybrid
+
+
+====================================================================
+              28. SINGLE INHERITANCE
+====================================================================
+
+One parent -> One child.
+
+class Animal:
+    pass
+
+class Dog(Animal):
+    pass
+
+
+====================================================================
+              29. MULTILEVEL INHERITANCE
+====================================================================
+
+Grandparent -> Parent -> Child.
+
+class Animal:
+    pass
+
+class Dog(Animal):
+    pass
+
+class Puppy(Dog):
+    pass
+
+
+====================================================================
+              30. MULTIPLE INHERITANCE
+====================================================================
+
+One child -> Multiple parents.
+
+class Father:
+    def drive(self):
+        print("Driving")
+
+
+class Mother:
+    def cook(self):
+        print("Cooking")
+
+
+class Child(Father, Mother):
+    pass
+
+
+====================================================================
+              31. HIERARCHICAL INHERITANCE
+====================================================================
+
+One parent -> Multiple children.
+
+class Animal:
+    pass
+
+class Dog(Animal):
+    pass
+
+class Cat(Animal):
+    pass
+
+
+====================================================================
+              32. HYBRID INHERITANCE
+====================================================================
+
+Combination of multiple inheritance types.
+
+Example:
+
+    Multiple + Multilevel
+    Hierarchical + Multiple
+
+
+====================================================================
+              33. METHOD OVERRIDING
+====================================================================
+
+Child class provides its own implementation of a parent
+method.
+
+Example:
+
+class Animal:
+
+    def sound(self):
+        print("Animal sound")
+
+
+class Dog(Animal):
+
+    def sound(self):
+        print("Bark")
+
+
+d = Dog()
+
+d.sound()
+
+
+Output:
+
+Bark
+
+
+====================================================================
+                    34. super()
+====================================================================
+
+super() is used to access parent functionality.
+
+Example:
+
+class Animal:
+
+    def show(self):
+        print("Animal")
+
+
+class Dog(Animal):
+
+    def show(self):
+        super().show()
+        print("Dog")
+
+
+d = Dog()
+
+d.show()
+
+
+Output:
+
+Animal
+Dog
+
+
+super() is especially important in multiple inheritance because
+it supports cooperative method calls.
+
+
+====================================================================
+                    35. MRO
+====================================================================
+
+MRO = Method Resolution Order.
+
+It determines the order in which Python searches for methods.
+
+Example:
+
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(B):
+    pass
+
+
+print(C.mro())
+
+
+Order:
+
+C
+B
+A
+object
+
+
+====================================================================
+              36. C3 LINEARIZATION
+====================================================================
+
+Python uses C3 Linearization to calculate MRO.
+
+Important in multiple inheritance.
+
+Example:
+
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+
+class D(B, C):
+    pass
+
+
+MRO approximately:
+
+D
+B
+C
+A
+object
+
+
+C3 ensures:
+
+    Parent ordering is preserved.
+    Local precedence is preserved.
+    Consistent inheritance order is maintained.
+
+
+====================================================================
+              37. POLYMORPHISM
+====================================================================
+
+Polymorphism means:
+
+    One interface, multiple forms.
+
+
+Example:
+
+class Dog:
+
+    def sound(self):
+        print("Bark")
+
+
+class Cat:
+
+    def sound(self):
+        print("Meow")
+
+
+def make_sound(animal):
+    animal.sound()
+
+
+make_sound(Dog())
+make_sound(Cat())
+
+
+Same:
+
+    sound()
+
+Different behavior.
+
+
+====================================================================
+              38. DUCK TYPING
+====================================================================
+
+Python focuses on behavior rather than exact type.
+
+"if it walks like a duck and quacks like a duck,
+treat it like a duck."
+
+
+Example:
+
+class Dog:
+
+    def speak(self):
+        print("Bark")
+
+
+class Person:
+
+    def speak(self):
+        print("Hello")
+
+
+def speak(obj):
+    obj.speak()
+
+
+speak(Dog())
+speak(Person())
+
+
+Python cares that speak() exists.
+
+
+====================================================================
+              39. METHOD OVERLOADING
+====================================================================
+
+Traditional method overloading like Java is not directly
+supported.
+
+Example:
+
+class Calculator:
+
+    def add(self, a):
+        pass
+
+    def add(self, a, b):
+        pass
+
+
+Second add() replaces the first one.
+
+
+Python can simulate overloading using:
+
+    Default arguments
+    *args
+    **kwargs
+
+
+Example:
+
+class Calculator:
+
+    def add(self, a, b=0):
+        return a + b
+
+
+====================================================================
+              40. OPERATOR OVERLOADING
+====================================================================
+
+Operator overloading means defining custom behavior for
+operators.
+
+Example:
+
+a + b
+
+
+Python calls approximately:
+
+a.__add__(b)
+
+
+Example:
+
+class Number:
+
+    def __init__(self, value):
+        self.value = value
+
+    def __add__(self, other):
+        return Number(self.value + other.value)
+
+
+a = Number(10)
+b = Number(20)
+
+c = a + b
+
+print(c.value)
+
+
+====================================================================
+              41. ABSTRACTION
+====================================================================
+
+Abstraction means hiding unnecessary implementation details
+and exposing essential functionality.
+
+Example:
+
+ATM:
+
+    withdraw()
+    deposit()
+    check_balance()
+
+
+User does not need to know internal implementation.
+
+
+====================================================================
+              42. ABSTRACT CLASS
+====================================================================
+
+Abstract class defines a common interface/behavior.
+
+Python provides abstract classes using:
+
+    abc
+
+
+====================================================================
+              43. ABSTRACT METHOD
+====================================================================
+
+An abstract method must be implemented by concrete child
+classes.
+
+Example:
+
+from abc import ABC, abstractmethod
+
+
+class Animal(ABC):
+
+    @abstractmethod
+    def sound(self):
+        pass
+
+
+class Dog(Animal):
+
+    def sound(self):
+        print("Bark")
+
+
+====================================================================
+              44. ABC
+====================================================================
+
+ABC = Abstract Base Class.
+
+Import:
+
+from abc import ABC, abstractmethod
+
+
+ABC is used to create abstract classes.
+
+
+====================================================================
+              45. INTERFACE CONCEPT
+====================================================================
+
+Python does not have a separate:
+
+interface
+
+keyword like Java.
+
+Interface-like designs can be created using:
+
+    ABC
+    abstractmethod
+    Protocol
+
+
+====================================================================
+              46. PROTOCOL
+====================================================================
+
+Python's typing module provides Protocol.
+
+Protocol supports structural typing.
+
+Example:
+
+from typing import Protocol
+
+
+class Drawable(Protocol):
+
+    def draw(self) -> None:
+        ...
+
+
+A class does not necessarily need to explicitly inherit
+Drawable if it provides the required behavior.
+
+
+====================================================================
+              47. STRUCTURAL SUBTYPING
+====================================================================
+
+Structural subtyping means:
+
+    An object is compatible because it has the required
+    structure/behavior.
+
+This is similar to duck typing but can be expressed formally
+using typing.Protocol.
+
+
+Nominal typing:
+
+    Relationship based on explicit inheritance/type.
+
+
+Structural typing:
+
+    Relationship based on supported operations/methods.
+
+
+====================================================================
+              48. COMPOSITION
+====================================================================
+
+Composition = strong HAS-A relationship.
+
+Example:
+
+Car HAS-A Engine.
+
+
+class Engine:
+
+    def start(self):
+        print("Engine starts")
+
+
+class Car:
+
+    def __init__(self):
+        self.engine = Engine()
+
+
+car = Car()
+
+
+Engine is created as part of Car.
+
+
+====================================================================
+              49. AGGREGATION
+====================================================================
+
+Aggregation = weaker HAS-A relationship.
+
+Contained object can exist independently.
+
+Example:
+
+Teacher can exist without Department.
+
+
+class Teacher:
+    pass
+
+
+class Department:
+
+    def __init__(self, teacher):
+        self.teacher = teacher
+
+
+teacher = Teacher()
+
+department = Department(teacher)
+
+
+====================================================================
+              50. ASSOCIATION
+====================================================================
+
+Association means objects are related.
+
+Example:
+
+Teacher teaches Student.
+
+
+class Teacher:
+    pass
+
+class Student:
+    pass
+
+
+teacher = Teacher()
+student = Student()
+
+
+No ownership is required.
+
+
+====================================================================
+              51. DEPENDENCY
+====================================================================
+
+A class temporarily uses another object.
+
+Example:
+
+class Printer:
+
+    def print_document(self, document):
+        print(document)
+
+
+Printer depends on document.
+
+
+====================================================================
+              52. IS-A vs HAS-A
+====================================================================
+
+IS-A:
+
+    Inheritance.
+
+Dog IS-A Animal.
+
+
+HAS-A:
+
+    Composition/Aggregation.
+
+Car HAS-A Engine.
+
+
+====================================================================
+              53. DEPENDENCY INJECTION
+====================================================================
+
+Instead of creating dependencies inside a class, provide them
+from outside.
+
+Example:
+
+class Service:
+
+    def __init__(self, repository):
+        self.repository = repository
+
+
+repository = Repository()
+
+service = Service(repository)
+
+
+Benefits:
+
+    Low coupling
+    Easier testing
+    Flexibility
+
+
+====================================================================
+              54. COUPLING
+====================================================================
+
+Coupling = degree of dependency between components.
+
+High coupling:
+
+    Harder testing
+    Harder maintenance
+    Less flexibility
+
+
+Low coupling:
+
+    Easier testing
+    Easier maintenance
+    More flexibility
+
+
+GOOD:
+
+    Low coupling
+
+
+====================================================================
+              55. COHESION
+====================================================================
+
+Cohesion = how closely related responsibilities of a class are.
+
+High cohesion:
+
+    Focused class
+
+
+Low cohesion:
+
+    Unrelated responsibilities
+
+
+GOOD:
+
+    High cohesion
+    Low coupling
+
+
+====================================================================
+              56. COMPOSITION OVER INHERITANCE
+====================================================================
+
+Prefer composition when inheritance does not represent a
+strong IS-A relationship.
+
+Inheritance:
+
+    Dog IS-A Animal
+
+
+Composition:
+
+    Car HAS-A Engine
+
+
+Composition can provide more flexibility.
+
+
+====================================================================
+              57. DUNDER METHODS
+====================================================================
+
+Dunder = Double Underscore.
+
+Examples:
+
+__init__
+__new__
+__str__
+__repr__
+__add__
+__eq__
+__len__
+__call__
+
+
+They define special behavior for Python objects.
+
+
+====================================================================
+              58. __str__()
+====================================================================
+
+Provides user-friendly string representation.
+
+Example:
+
+class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return f"Student: {self.name}"
+
+
+s = Student("Ashu")
+
+print(s)
+
+
+====================================================================
+              59. __repr__()
+====================================================================
+
+Provides developer/debug representation.
+
+Example:
+
+class Student:
+
+    def __repr__(self):
+        return "Student()"
+
+
+repr(student)
+
+
+Ideally __repr__ should be unambiguous and useful for debugging.
+
+
+====================================================================
+              60. __len__()
+====================================================================
+
+Controls:
+
+len(object)
+
+
+Example:
+
+class Team:
+
+    def __init__(self, players):
+        self.players = players
+
+    def __len__(self):
+        return len(self.players)
+
+
+====================================================================
+              61. __call__()
+====================================================================
+
+Makes an object callable like a function.
+
+Example:
+
+class Greeter:
+
+    def __call__(self, name):
+        print("Hello", name)
+
+
+g = Greeter()
+
+g("Ashu")
+
+
+Internally:
+
+g.__call__("Ashu")
+
+
+====================================================================
+              62. __getitem__()
+====================================================================
+
+Controls:
+
+object[index]
+
+
+Example:
+
+class Numbers:
+
+    def __init__(self):
+        self.data = [10, 20, 30]
+
+    def __getitem__(self, index):
+        return self.data[index]
+
+
+n = Numbers()
+
+print(n[0])
+
+
+====================================================================
+              63. __setitem__()
+====================================================================
+
+Controls:
+
+object[index] = value
+
+
+Example:
+
+class Numbers:
+
+    def __init__(self):
+        self.data = [10, 20, 30]
+
+    def __setitem__(self, index, value):
+        self.data[index] = value
+
+
+====================================================================
+              64. __delitem__()
+====================================================================
+
+Controls:
+
+del object[index]
+
+
+Example:
+
+class Numbers:
+
+    def __init__(self):
+        self.data = [10, 20, 30]
+
+    def __delitem__(self, index):
+        del self.data[index]
+
+
+====================================================================
+              65. __contains__()
+====================================================================
+
+Controls:
+
+item in object
+
+
+Example:
+
+class Team:
+
+    def __init__(self):
+        self.players = ["Ashu", "Rahul"]
+
+    def __contains__(self, name):
+        return name in self.players
+
+
+====================================================================
+              66. __iter__()
+====================================================================
+
+Makes an object iterable.
+
+Example:
+
+class Numbers:
+
+    def __init__(self):
+        self.data = [1, 2, 3]
+
+    def __iter__(self):
+        return iter(self.data)
+
+
+====================================================================
+              67. __next__()
+====================================================================
+
+Defines the next value of an iterator.
+
+Example:
+
+class Counter:
+
+    def __init__(self, limit):
+        self.current = 1
+        self.limit = limit
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+
+        if self.current <= self.limit:
+
+            value = self.current
+            self.current += 1
+
+            return value
+
+        raise StopIteration
+
+
+====================================================================
+              68. __enter__() and __exit__()
+====================================================================
+
+Used to create context managers.
+
+Example:
+
+class Demo:
+
+    def __enter__(self):
+        print("Entering")
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print("Exiting")
+
+
+with Demo():
+    print("Inside")
+
+
+====================================================================
+              69. __getattr__()
+====================================================================
+
+Called when normal attribute lookup fails.
+
+Example:
+
+class Student:
+
+    def __getattr__(self, name):
+        return "Attribute not found"
+
+
+s = Student()
+
+print(s.age)
+
+
+====================================================================
+              70. __getattribute__()
+====================================================================
+
+Called for almost every normal attribute access.
+
+Example:
+
+class Demo:
+
+    def __getattribute__(self, name):
+        print("Accessing:", name)
+        return object.__getattribute__(self, name)
+
+
+Important:
+
+Using __getattribute__ incorrectly can cause infinite recursion.
+
+Use object.__getattribute__ when needed.
+
+
+====================================================================
+              71. __setattr__()
+====================================================================
+
+Controls attribute assignment.
+
+Example:
+
+class Student:
+
+    def __setattr__(self, name, value):
+        print("Setting:", name)
+        object.__setattr__(self, name, value)
+
+
+====================================================================
+              72. __delattr__()
+====================================================================
+
+Controls attribute deletion.
+
+Example:
+
+class Student:
+
+    def __delattr__(self, name):
+        print("Deleting:", name)
+        object.__delattr__(self, name)
+
+
+====================================================================
+              73. __eq__()
+====================================================================
+
+Controls ==.
+
+Example:
+
+class Student:
+
+    def __init__(self, roll):
+        self.roll = roll
+
+    def __eq__(self, other):
+        return self.roll == other.roll
+
+
+====================================================================
+              74. COMPARISON OPERATORS
+====================================================================
+
+Common dunder methods:
+
+__eq__   -> ==
+__ne__   -> !=
+__lt__   -> <
+__le__   -> <=
+__gt__   -> >
+__ge__   -> >=
+
+
+====================================================================
+              75. ARITHMETIC OPERATORS
+====================================================================
+
+__add__       +
+__sub__       -
+__mul__       *
+__truediv__   /
+__floordiv__  //
+__mod__       %
+__pow__       **
+
+
+Other useful methods:
+
+__neg__       -
+__pos__       +
+__abs__       abs()
+
+
+====================================================================
+              76. HASHING
+====================================================================
+
+Hashing converts an object/value into an integer hash.
+
+Used by:
+
+    dict
+    set
+
+
+Important methods:
+
+__hash__()
+__eq__()
+
+
+Objects used as dictionary keys must satisfy appropriate
+hash/equality requirements.
+
+
+====================================================================
+              77. __hash__()
+====================================================================
+
+Example:
+
+class Student:
+
+    def __hash__(self):
+        return hash(self.roll)
+
+
+Important:
+
+If equality-relevant data changes after hashing, using a
+mutable object as a dict key/set element can cause problems.
+
+
+====================================================================
+              78. OBJECT IDENTITY
+====================================================================
+
+Every object has identity.
+
+Use:
+
+id(object)
+
+
+Identity asks:
+
+    Is this exactly the same object?
+
+
+====================================================================
+              79. == vs is
+====================================================================
+
+==
+
+Checks equality/value.
+
+
+is
+
+Checks identity.
+
+
+Example:
+
+a = [1, 2]
+b = [1, 2]
+
+
+a == b
+
+True
+
+
+a is b
+
+False
+
+
+Same values.
+
+Different objects.
+
+
+====================================================================
+              80. MUTABLE vs IMMUTABLE
+====================================================================
+
+Mutable:
+
+    list
+    dict
+    set
+    most normal user-defined objects
+
+
+Immutable:
+
+    int
+    float
+    str
+    tuple
+    frozenset
+    bool
+
+
+Mutable object can change after creation.
+
+Immutable object cannot be changed in place.
+
+
+====================================================================
+              81. SHALLOW COPY
+====================================================================
+
+Use:
+
+copy.copy()
+
+
+Shallow copy creates a new outer object.
+
+Nested objects can still be shared.
+
+
+Example:
+
+import copy
+
+a = [[1, 2], [3, 4]]
+
+b = copy.copy(a)
+
+
+====================================================================
+              82. DEEP COPY
+====================================================================
+
+Use:
+
+copy.deepcopy()
+
+
+It recursively copies nested objects.
+
+Example:
+
+import copy
+
+a = [[1, 2], [3, 4]]
+
+b = copy.deepcopy(a)
+
+
+====================================================================
+              83. __copy__()
+====================================================================
+
+Can customize shallow copying.
+
+Example concept:
+
+def __copy__(self):
+    ...
+
+
+Python copy module can use this method.
+
+
+====================================================================
+              84. __deepcopy__()
+====================================================================
+
+Can customize deep copying.
+
+Signature commonly:
+
+def __deepcopy__(self, memo):
+    ...
+
+
+memo helps prevent repeated copying and handles recursive
+object structures.
+
+
+====================================================================
+              85. GARBAGE COLLECTION
+====================================================================
+
+Python manages memory automatically.
+
+Main concepts:
+
+    Reference counting
+    Cyclic garbage collector
+
+
+When objects become unreachable, memory can eventually
+be reclaimed.
+
+
+====================================================================
+              86. REFERENCE COUNTING
+====================================================================
+
+Python tracks references to objects.
+
+Example concept:
+
+a = Student()
+
+b = a
+
+
+Now both a and b refer to the same object.
+
+
+When references disappear, the object's reference count can
+decrease.
+
+
+====================================================================
+              87. weakref
+====================================================================
+
+weak references allow referencing an object without keeping
+it alive solely because of that reference.
+
+Module:
+
+import weakref
+
+
+Useful for:
+
+    Caches
+    Object tracking
+    Avoiding strong reference cycles in certain designs
+
+
+====================================================================
+              88. DATACLASS
+====================================================================
+
+Dataclass is useful for data-focused classes.
+
+Example:
+
+from dataclasses import dataclass
+
+
+@dataclass
+class Student:
+
+    name: str
+    age: int
+
+
+s = Student("Ashu", 20)
+
+
+Dataclass can automatically generate methods such as:
+
+    __init__
+    __repr__
+    __eq__
+
+
+depending on configuration.
+
+
+====================================================================
+              89. ADVANCED DATACLASS
+====================================================================
+
+Important features:
+
+    field()
+    default
+    default_factory
+    frozen=True
+    slots=True
+    order=True
+    kw_only=True
+
+
+Example:
+
+from dataclasses import dataclass, field
+
+
+@dataclass
+class Student:
+
+    name: str
+    subjects: list = field(default_factory=list)
+
+
+default_factory prevents sharing one mutable default list
+between instances.
+
+
+====================================================================
+              90. FROZEN DATACLASS
+====================================================================
+
+Example:
+
+@dataclass(frozen=True)
+class Student:
+
+    name: str
+    age: int
+
+
+Instances become immutable-like.
+
+Trying to modify fields raises an error.
+
+
+====================================================================
+              91. __slots__
+====================================================================
+
+__slots__ can restrict allowed instance attributes and can
+reduce memory overhead in suitable cases.
+
+Example:
+
+class Student:
+
+    __slots__ = ("name", "age")
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+This prevents arbitrary attributes such as:
+
+s.course = "CSE"
+
+when course is not listed.
+
+
+Note:
+
+__slots__ has inheritance and weak-reference considerations.
+
+
+====================================================================
+              92. TYPE HINTS
+====================================================================
+
+Python supports type hints.
+
+Example:
+
+class Student:
+
+    def __init__(self, name: str, age: int):
+        self.name = name
+        self.age = age
+
+    def get_age(self) -> int:
+        return self.age
+
+
+Type hints help:
+
+    IDEs
+    Static analyzers
+    Documentation
+    Maintainability
+
+
+Type hints are generally not enforced automatically at runtime.
+
+
+====================================================================
+              93. GENERIC CLASSES
+====================================================================
+
+Generics allow classes/functions to work with different types
+while preserving type information.
+
+Example:
+
+from typing import Generic, TypeVar
+
+
+T = TypeVar("T")
+
+
+class Box(Generic[T]):
+
+    def __init__(self, value: T):
+        self.value = value
+
+
+Box[int]
+Box[str]
+
+
+====================================================================
+              94. TypeVar
+====================================================================
+
+TypeVar represents a generic type variable.
+
+Example:
+
+T = TypeVar("T")
+
+
+It allows type relationships to be expressed.
+
+Example:
+
+def identity(value: T) -> T:
+    return value
+
+
+Input type and output type remain related.
+
+
+====================================================================
+              95. Generic
+====================================================================
+
+Generic is used to create generic classes.
+
+Example:
+
+from typing import Generic, TypeVar
+
+
+T = TypeVar("T")
+
+
+class Storage(Generic[T]):
+
+    def __init__(self, value: T):
+        self.value = value
+
+
+s1 = Storage[int](10)
+
+s2 = Storage[str]("Hello")
+
+
+====================================================================
+              96. DESCRIPTORS
+====================================================================
+
+Descriptors are advanced Python objects that control attribute
+access.
+
+A descriptor can define:
+
+    __get__()
+    __set__()
+    __delete__()
+
+
+Descriptors are the foundation of several Python features,
+including properties.
+
+
+====================================================================
+              97. __get__()
+====================================================================
+
+Controls reading an attribute.
+
+Example concept:
+
+class Descriptor:
+
+    def __get__(self, instance, owner):
+        return ...
+
+
+====================================================================
+              98. __set__()
+====================================================================
+
+Controls assigning an attribute.
+
+Example:
+
+class Descriptor:
+
+    def __set__(self, instance, value):
+        ...
+
+
+====================================================================
+              99. __delete__()
+====================================================================
+
+Controls deleting an attribute.
+
+Example:
+
+class Descriptor:
+
+    def __delete__(self, instance):
+        ...
+
+
+====================================================================
+              100. DESCRIPTOR TYPES
+====================================================================
+
+Data Descriptor:
+
+    Defines __set__ or __delete__
+    and __get__ optionally.
+
+
+Non-data Descriptor:
+
+    Defines only __get__.
+
+
+Data descriptors generally have higher priority than an
+instance's __dict__ during attribute lookup.
+
+
+Important built-in descriptor examples:
+
+    property
+    methods
+    classmethod
+    staticmethod
+
+
+====================================================================
+              101. __init_subclass__()
+====================================================================
+
+Called automatically when a class is subclassed.
+
+Example:
+
+class Parent:
+
+    def __init_subclass__(cls):
+        print("Child class created")
+
+
+class Child(Parent):
+    pass
+
+
+Useful for:
+
+    Class registration
+    Validation
+    Framework design
+    Automatic subclass configuration
+
+
+====================================================================
+              102. __class_getitem__()
+====================================================================
+
+Called when a class is subscripted.
+
+Example:
+
+MyClass[int]
+
+
+Python uses this mechanism for generic/type-related class
+syntax.
+
+It is an advanced feature.
+
+
+====================================================================
+              103. METACLASSES
+====================================================================
+
+A metaclass is a class whose instances are classes.
+
+Normal relationship:
+
+    Object is instance of Class.
+
+For classes:
+
+    Class is instance of Metaclass.
+
+
+Default metaclass is usually:
+
+    type
+
+
+====================================================================
+              104. type
+====================================================================
+
+type has two major uses.
+
+Check type:
+
+type(obj)
+
+
+Create a class dynamically:
+
+type(
+    "Student",
+    (),
+    {}
+)
+
+
+Example:
+
+Student = type(
+    "Student",
+    (),
+    {"name": "Ashu"}
+)
+
+
+====================================================================
+              105. CUSTOM METACLASS
+====================================================================
+
+Example:
+
+class Meta(type):
+
+    def __new__(mcls, name, bases, namespace):
+
+        print("Creating:", name)
+
+        return super().__new__(
+            mcls,
+            name,
+            bases,
+            namespace
+        )
+
+
+class Student(metaclass=Meta):
+    pass
+
+
+When Student class is created, Meta controls class creation.
+
+
+====================================================================
+              106. METACLASS __new__()
+====================================================================
+
+Metaclass __new__ can modify the class namespace before
+the class is created.
+
+Example uses:
+
+    Validation
+    Registration
+    Frameworks
+    ORM systems
+    Automatic class configuration
+
+
+Metaclasses are powerful and should be used carefully.
+
+
+====================================================================
+              107. CLASS CREATION PROCESS
+====================================================================
+
+Simplified process:
+
+    class Student:
+        ...
+
+
+Python approximately:
+
+    1. Determine metaclass
+    2. Prepare class namespace
+    3. Execute class body
+    4. Create class object
+    5. Call metaclass machinery
+    6. Call __init_subclass__ where applicable
+    7. Return class
+
+
+This is advanced Python object model behavior.
+
+
+====================================================================
+              108. CONTEXT MANAGERS
+====================================================================
+
+Context managers manage resources safely.
+
+Syntax:
+
+with resource:
+    ...
+
+
+Important methods:
+
+    __enter__()
+    __exit__()
+
+
+Examples:
+
+    Files
+    Database connections
+    Locks
+    Network resources
+
+
+====================================================================
+              109. CUSTOM EXCEPTIONS
+====================================================================
+
+Exceptions are classes.
+
+Example:
+
+class InvalidAgeError(Exception):
+    pass
+
+
+def check_age(age):
+
+    if age < 18:
+        raise InvalidAgeError("Age must be 18+")
+
+
+try:
+
+    check_age(15)
+
+except InvalidAgeError as e:
+
+    print(e)
+
+
+====================================================================
+              110. SERIALIZATION
+====================================================================
+
+Serialization converts an object into a storable/transmittable
+representation.
+
+Common approaches:
+
+    JSON
+    pickle
+
+
+JSON is usually preferred for interoperability.
+
+pickle is Python-specific and should NEVER be used to load
+untrusted data.
+
+
+====================================================================
+              111. PICKLE
+====================================================================
+
+Example:
+
+import pickle
+
+
+data = {"name": "Ashu"}
+
+with open("data.pkl", "wb") as file:
+    pickle.dump(data, file)
+
+
+Reading:
+
+with open("data.pkl", "rb") as file:
+    data = pickle.load(file)
+
+
+IMPORTANT:
+
+Never unpickle untrusted data.
+
+
+====================================================================
+              112. __getstate__()
+====================================================================
+
+Can customize what state gets serialized.
+
+Example concept:
+
+def __getstate__(self):
+    ...
+
+
+Useful when an object contains data that should not be
+serialized directly.
+
+
+====================================================================
+              113. __setstate__()
+====================================================================
+
+Can customize how serialized state is restored.
+
+Example:
+
+def __setstate__(self, state):
+    ...
+
+
+Used together with serialization mechanisms such as pickle.
+
+
+====================================================================
+              114. SINGLETON PATTERN
+====================================================================
+
+Singleton attempts to ensure one instance of a class.
+
+Example:
+
+class Singleton:
+
+    _instance = None
+
+    def __new__(cls):
+
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+
+        return cls._instance
+
+
+a = Singleton()
+b = Singleton()
+
+print(a is b)
+
+
+Output:
+
+True
+
+
+Use carefully.
+
+
+====================================================================
+              115. FACTORY PATTERN
+====================================================================
+
+Factory creates objects without exposing creation details.
+
+Example:
+
+class Dog:
+
+    def speak(self):
+        return "Bark"
+
+
+class Cat:
+
+    def speak(self):
+        return "Meow"
+
+
+class AnimalFactory:
+
+    @staticmethod
+    def create(animal_type):
+
+        if animal_type == "dog":
+            return Dog()
+
+        elif animal_type == "cat":
+            return Cat()
+
+        raise ValueError("Unknown animal")
+
+
+====================================================================
+              116. BUILDER PATTERN
+====================================================================
+
+Builder constructs complex objects step by step.
+
+Useful when an object has:
+
+    Many optional parameters
+    Complex construction logic
+
+
+Concept:
+
+builder
+    .set_name()
+    .set_age()
+    .set_course()
+    .build()
+
+
+====================================================================
+              117. STRATEGY PATTERN
+====================================================================
+
+Strategy pattern allows interchangeable algorithms.
+
+Example:
+
+Payment strategies:
+
+    UPI
+    Card
+    Cash
+
+
+Instead of changing main code, replace the strategy object.
+
+
+====================================================================
+              118. OBSERVER PATTERN
+====================================================================
+
+One object notifies multiple dependent objects when its state
+changes.
+
+Example:
+
+    YouTube channel
+        |
+        +-- Subscriber 1
+        +-- Subscriber 2
+        +-- Subscriber 3
+
+
+When channel publishes:
+
+    Subscribers receive notification.
+
+
+====================================================================
+              119. ADAPTER PATTERN
+====================================================================
+
+Adapter makes incompatible interfaces work together.
+
+Example:
+
+OldPaymentAPI:
+
+    pay_old()
+
+
+New system expects:
+
+    pay()
+
+
+Adapter converts one interface into another.
+
+
+====================================================================
+              120. DECORATOR PATTERN
+====================================================================
+
+Decorator adds behavior without modifying the original object.
+
+Python decorators are heavily related to this concept.
+
+Example:
+
+@login_required
+def dashboard():
+    ...
+
+
+Decorator adds authentication behavior.
+
+
+====================================================================
+              121. SOLID PRINCIPLES
+====================================================================
+
+S = Single Responsibility
+O = Open/Closed
+L = Liskov Substitution
+I = Interface Segregation
+D = Dependency Inversion
+
+
+====================================================================
+              122. SINGLE RESPONSIBILITY
+====================================================================
+
+A class should have one main reason to change.
+
+BAD:
+
+class Employee:
+
+    save_database()
+    send_email()
+    generate_report()
+
+
+Better:
+
+Employee
+EmployeeRepository
+EmailService
+ReportService
+
+
+====================================================================
+              123. OPEN/CLOSED PRINCIPLE
+====================================================================
+
+Software should be:
+
+    Open for extension
+    Closed for modification
+
+
+Add new behavior without unnecessarily modifying stable code.
+
+
+====================================================================
+              124. LISKOV SUBSTITUTION PRINCIPLE
+====================================================================
+
+Objects of a child class should be usable where parent objects
+are expected without breaking expected behavior.
+
+
+If:
+
+Dog IS-A Animal
+
+
+Dog should satisfy the behavioral expectations of Animal.
+
+
+====================================================================
+              125. INTERFACE SEGREGATION
+====================================================================
+
+Do not force classes to implement methods they do not need.
+
+Prefer smaller, focused interfaces/Protocols/ABCs.
+
+
+====================================================================
+              126. DEPENDENCY INVERSION
+====================================================================
+
+High-level modules should depend on abstractions, not concrete
+implementations.
+
+
+Example:
+
+Service
+    ↓
+Database abstraction
+    ↓
+MySQL / PostgreSQL
+
+
+====================================================================
+              127. DESIGN PRINCIPLES
+====================================================================
+
+Important principles:
+
+    DRY
+    KISS
+    YAGNI
+    Separation of Concerns
+    Composition over inheritance
+    High cohesion
+    Low coupling
+    Dependency injection
+    Program to abstractions
+
+
+DRY:
+
+    Don't Repeat Yourself.
+
+
+KISS:
+
+    Keep It Simple.
+
+
+YAGNI:
+
+    You Aren't Gonna Need It.
+
+
+====================================================================
+              128. OOP BEST PRACTICES
+====================================================================
+
+1. Keep classes focused.
+
+2. Prefer meaningful class names.
+
+3. Use snake_case for methods/variables.
+
+4. Use PascalCase for classes.
+
+5. Avoid unnecessary inheritance.
+
+6. Prefer composition when appropriate.
+
+7. Keep coupling low.
+
+8. Keep cohesion high.
+
+9. Use properties for controlled attribute access.
+
+10. Use ABC/Protocol where abstraction is useful.
+
+11. Avoid unnecessary metaclasses.
+
+12. Avoid overengineering.
+
+13. Use dependency injection for replaceable dependencies.
+
+14. Write tests for class behavior.
+
+15. Use type hints in larger projects.
+
+16. Use dataclasses for data-heavy classes.
+
+17. Use context managers for resource cleanup.
+
+18. Never unpickle untrusted data.
+
+19. Use __repr__ for useful debugging information.
+
+20. Keep methods small and focused.
+
+
+====================================================================
+              129. COMPLETE OOP EXAMPLE
+====================================================================
+
+from abc import ABC, abstractmethod
+
+
+class Account(ABC):
+
+    bank_name = "ABC Bank"
+
+    def __init__(
+        self,
+        account_number,
+        owner,
+        balance=0
+    ):
+
+        self.account_number = account_number
+        self.owner = owner
+        self._balance = balance
+
+    @property
+    def balance(self):
+        return self._balance
+
+    def deposit(self, amount):
+
+        if amount <= 0:
+            raise ValueError(
+                "Amount must be positive"
+            )
+
+        self._balance += amount
+
+    @abstractmethod
+    def withdraw(self, amount):
+        pass
+
+
+class SavingsAccount(Account):
+
+    def withdraw(self, amount):
+
+        if amount > self._balance:
+            raise ValueError(
+                "Insufficient balance"
+            )
+
+        self._balance -= amount
+
+
+account = SavingsAccount(
+    "101",
+    "Ashu",
+    5000
+)
+
+account.deposit(1000)
+
+account.withdraw(2000)
+
+print(account.balance)
+
+
+This example contains:
+
+    Class
+    Object
+    __init__
+    self
+    Class variable
+    Protected variable
+    Property
+    Encapsulation
+    Inheritance
+    Abstraction
+    ABC
+    Abstract method
+    Method overriding
+    Polymorphism
+
+
+====================================================================
+              130. IMPORTANT INTERVIEW QUESTIONS
+====================================================================
+
+1. What is OOP?
+
+2. What are the four pillars of OOP?
+
+3. What is a class?
+
+4. What is an object?
+
+5. What is self?
+
+6. Is self a keyword?
+
+7. What is __init__()?
+
+8. Is __init__() a constructor?
+
+9. What is __new__()?
+
+10. Difference between __new__() and __init__()?
+
+11. What is an instance variable?
+
+12. What is a class variable?
+
+13. What is a local variable?
+
+14. What is an instance method?
+
+15. What is a class method?
+
+16. What is a static method?
+
+17. Difference between self and cls?
+
+18. What is encapsulation?
+
+19. What is a public variable?
+
+20. What is a protected variable?
+
+21. What is a private variable?
+
+22. Does Python have strict private members?
+
+23. What is name mangling?
+
+24. Difference between _name and __name?
+
+25. What is a getter?
+
+26. What is a setter?
+
+27. What is @property?
+
+28. What is inheritance?
+
+29. What are types of inheritance?
+
+30. What is multiple inheritance?
+
+31. What is method overriding?
+
+32. What is super()?
+
+33. What is MRO?
+
+34. What is C3 Linearization?
+
+35. What is polymorphism?
+
+36. What is duck typing?
+
+37. Does Python support method overloading?
+
+38. How can overloading be simulated?
+
+39. What is operator overloading?
+
+40. What are dunder methods?
+
+41. What is abstraction?
+
+42. What is an abstract class?
+
+43. What is an abstract method?
+
+44. What is ABC?
+
+45. Does Python have interfaces?
+
+46. What is Protocol?
+
+47. What is structural subtyping?
+
+48. What is composition?
+
+49. What is aggregation?
+
+50. What is association?
+
+51. What is dependency?
+
+52. Difference between IS-A and HAS-A?
+
+53. What is dependency injection?
+
+54. What is coupling?
+
+55. What is cohesion?
+
+56. Why composition over inheritance?
+
+57. What is __str__()?
+
+58. What is __repr__()?
+
+59. Difference between __str__ and __repr__?
+
+60. What is __call__()?
+
+61. What is __getitem__()?
+
+62. What is __iter__()?
+
+63. What is __next__()?
+
+64. What is __enter__()?
+
+65. What is __exit__()?
+
+66. Difference between __getattr__ and __getattribute__?
+
+67. What is __setattr__?
+
+68. What is __eq__?
+
+69. What is __hash__?
+
+70. What is object identity?
+
+71. Difference between == and is?
+
+72. Mutable vs immutable?
+
+73. Shallow copy vs deep copy?
+
+74. What are __copy__ and __deepcopy__?
+
+75. What is garbage collection?
+
+76. What is reference counting?
+
+77. What is weakref?
+
+78. What is dataclass?
+
+79. What is default_factory?
+
+80. What is frozen dataclass?
+
+81. What is __slots__?
+
+82. What are type hints?
+
+83. What is TypeVar?
+
+84. What is Generic?
+
+85. What are descriptors?
+
+86. What is __get__?
+
+87. What is __set__?
+
+88. What is __delete__?
+
+89. Data descriptor vs non-data descriptor?
+
+90. What is __init_subclass__?
+
+91. What is __class_getitem__?
+
+92. What is a metaclass?
+
+93. What is type?
+
+94. What is a custom metaclass?
+
+95. How are classes created?
+
+96. What is a context manager?
+
+97. What are custom exceptions?
+
+98. What is serialization?
+
+99. What is pickle?
+
+100. Why should untrusted pickle data never be loaded?
+
+101. What is Singleton pattern?
+
+102. What is Factory pattern?
+
+103. What is Builder pattern?
+
+104. What is Strategy pattern?
+
+105. What is Observer pattern?
+
+106. What is Adapter pattern?
+
+107. What is Decorator pattern?
+
+108. What is SOLID?
+
+109. Explain SRP.
+
+110. Explain OCP.
+
+111. Explain LSP.
+
+112. Explain ISP.
+
+113. Explain DIP.
+
+114. What is DRY?
+
+115. What is KISS?
+
+116. What is YAGNI?
+
+117. What is high cohesion?
+
+118. What is low coupling?
+
+119. Why use dependency injection?
+
+120. Why prefer composition over inheritance?
+
+
+====================================================================
+              131. QUICK REVISION
+====================================================================
+
+CLASS:
+
+    Blueprint.
+
+
+OBJECT:
+
+    Instance of class.
+
+
+self:
+
+    Current object.
+
+
+cls:
+
+    Current class.
+
+
+__init__():
+
+    Initializes object.
+
+
+__new__():
+
+    Creates object.
+
+
+INSTANCE VARIABLE:
+
+    Object-specific data.
+
+
+CLASS VARIABLE:
+
+    Class-level/shared data.
+
+
+INSTANCE METHOD:
+
+    Uses self.
+
+
+CLASS METHOD:
+
+    Uses cls.
+
+
+STATIC METHOD:
+
+    No automatic self/cls.
+
+
+ENCAPSULATION:
+
+    Bundle data + methods + controlled access.
+
+
+PUBLIC:
+
+    name
+
+
+PROTECTED:
+
+    _name
+
+    Convention only.
+
+
+PRIVATE:
+
+    __name
+
+    Name mangling.
+
+
+INHERITANCE:
+
+    IS-A relationship.
+
+
+COMPOSITION:
+
+    HAS-A relationship.
+
+
+OVERRIDING:
+
+    Child changes parent method behavior.
+
+
+super():
+
+    Access/cooperate with parent implementation.
+
+
+MRO:
+
+    Method lookup order.
+
+
+POLYMORPHISM:
+
+    Same interface, different behavior.
+
+
+DUCK TYPING:
+
+    Behavior matters more than exact type.
+
+
+ABSTRACTION:
+
+    Hide implementation details.
+
+
+ABC:
+
+    Abstract Base Class.
+
+
+PROTOCOL:
+
+    Structural typing contract.
+
+
+DUNDER:
+
+    Double underscore special methods.
+
+
+__str__:
+
+    User-friendly representation.
+
+
+__repr__:
+
+    Developer/debug representation.
+
+
+__call__:
+
+    Makes object callable.
+
+
+__iter__:
+
+    Makes object iterable.
+
+
+__next__:
+
+    Produces next iterator value.
+
+
+__getitem__:
+
+    Supports indexing.
+
+
+__contains__:
+
+    Supports "in".
+
+
+DESCRIPTOR:
+
+    Controls attribute access.
+
+
+METACLASS:
+
+    Class whose instances are classes.
+
+
+DATACLASS:
+
+    Simplifies data-focused classes.
+
+
+__slots__:
+
+    Restricts attributes and can optimize memory usage.
+
+
+DEPENDENCY INJECTION:
+
+    Provide dependency from outside.
+
+
+COUPLING:
+
+    Degree of dependency.
+
+
+COHESION:
+
+    Relatedness of responsibilities.
+
+
+SOLID:
+
+    Five design principles.
+
+
+DRY:
+
+    Don't Repeat Yourself.
+
+
+KISS:
+
+    Keep It Simple.
+
+
+YAGNI:
+
+    You Aren't Gonna Need It.
+
+
+====================================================================
+                 MOST IMPORTANT OOP FORMULA
+====================================================================
+
+                         OOP
+                          |
+          +---------------+---------------+
+          |               |               |
+    Encapsulation    Inheritance    Polymorphism
+          |               |               |
+    Data Protection     IS-A          Many Forms
+          |
+      Abstraction
+          |
+    Hide Complexity
+
+
+Relationships:
+
+    Inheritance
+        ↓
+      IS-A
+
+    Composition
+        ↓
+      HAS-A
+
+
+Access conventions:
+
+    name
+      ↓
+    Public
+
+    _name
+      ↓
+    Protected Convention
+
+    __name
+      ↓
+    Private-style / Name Mangling
+
+
+Methods:
+
+    self
+      ↓
+    Instance Method
+
+    cls
+      ↓
+    Class Method
+
+    neither
+      ↓
+    Static Method
+
+
+Object lifecycle:
+
+    __new__()
+       ↓
+    object creation
+       ↓
+    __init__()
+       ↓
+    object usage
+       ↓
+    garbage collection
+
+
+Advanced object model:
+
+    Object
+       ↓
+    Class
+       ↓
+    Metaclass
+       ↓
+    type
+
+
+====================================================================
+                    END OF PYTHON OOP NOTES
+====================================================================
